@@ -1,0 +1,150 @@
+[
+ {
+  "id": "I1",
+  "title": "אצל Harmony, site-by-harmony.md מתאר מנוי Seal פעיל של 15%, אבל בבדיקה היום לא נמצאו selli…",
+  "body": "אצל Harmony, site-by-harmony.md מתאר מנוי Seal פעיל של 15%, אבל בבדיקה היום לא נמצאו selling plans פעילים ב-13 מוצרים. הסקריפט של Seal עדיין נטען.",
+  "kind": "note",
+  "status": "open",
+  "source": "work-plan.md › הערות על המקורות",
+  "author": "bot:grok-bot",
+  "related": [],
+  "created_at": "2026-10-04T12:00:00+03:00",
+  "updated_at": "2026-10-04T12:00:00+03:00"
+ },
+ {
+  "id": "I2",
+  "title": "synthesis-references.md §4.5 ממליץ גם על Recharge ו-Skio, ואף אחד מהם לא זוהה באתרי הייחוס…",
+  "body": "synthesis-references.md §4.5 ממליץ גם על Recharge ו-Skio, ואף אחד מהם לא זוהה באתרי הייחוס.",
+  "kind": "note",
+  "status": "open",
+  "source": "work-plan.md › הערות על המקורות",
+  "author": "bot:grok-bot",
+  "related": [],
+  "created_at": "2026-10-04T12:00:00+03:00",
+  "updated_at": "2026-10-04T12:00:00+03:00"
+ },
+ {
+  "id": "I3",
+  "title": "ב-Smiley וב-Woof יש שתי קבוצות selling plans במקביל (Appstle + GID 66228322305). שם הערכה …",
+  "body": "ב-Smiley וב-Woof יש שתי קבוצות selling plans במקביל (Appstle + GID 66228322305). שם הערכה של Smiley (\"תיקון למעבר מנויים\") רומז על מעבר בין אפליקציות; לא ידוע מה פעיל בצ'קאאוט.",
+  "kind": "note",
+  "status": "open",
+  "source": "work-plan.md › הערות על המקורות",
+  "author": "bot:grok-bot",
+  "related": [],
+  "created_at": "2026-10-04T12:00:00+03:00",
+  "updated_at": "2026-10-04T12:00:00+03:00"
+ },
+ {
+  "id": "I4",
+  "title": "כפתור ה-hero «לחסוך 50%» לא תואם את 40/45/51% בכרטיסים (T2.1).",
+  "body": "כפתור ה-hero «לחסוך 50%» לא תואם את 40/45/51% בכרטיסים (T2.1).",
+  "kind": "note",
+  "status": "open",
+  "source": "work-plan.md › הערות על המקורות",
+  "author": "bot:grok-bot",
+  "related": [],
+  "created_at": "2026-10-04T12:00:00+03:00",
+  "updated_at": "2026-10-04T12:00:00+03:00"
+ },
+ {
+  "id": "I5",
+  "title": "לא ידוע: התנהגות הוספה לסל ל\"חד-פעמי\" (מחיר 220 יחויב?) — הסקה, לא נבדק",
+  "body": "התנהגות הוספה לסל ל\"חד-פעמי\" (מחיר 220 יחויב?) — הסקה, לא נבדק\nמשפיע על: F1, F10\nמקור אפשרי: בדיקה ידנית בערכה / אייל",
+  "kind": "unknown",
+  "status": "open",
+  "source": "characterization.md › §6 חוסרי מידע",
+  "author": "bot:grok-bot",
+  "related": [
+   "F1",
+   "F10"
+  ],
+  "created_at": "2026-10-04T12:00:00+03:00",
+  "updated_at": "2026-10-04T12:00:00+03:00"
+ },
+ {
+  "id": "I6",
+  "title": "לא ידוע: אפליקציות מותקנות, פיקסלים, שער תשלום (PayPal נראה), אמצעי תשלום ישראליים",
+  "body": "אפליקציות מותקנות, פיקסלים, שער תשלום (PayPal נראה), אמצעי תשלום ישראליים\nמשפיע על: F1, F13\nמקור אפשרי: אייל / גישת Admin רחבה יותר",
+  "kind": "unknown",
+  "status": "open",
+  "source": "characterization.md › §6 חוסרי מידע",
+  "author": "bot:grok-bot",
+  "related": [
+   "F1",
+   "F13"
+  ],
+  "created_at": "2026-10-04T12:00:00+03:00",
+  "updated_at": "2026-10-04T12:00:00+03:00"
+ },
+ {
+  "id": "I7",
+  "title": "לא ידוע: תבניות מייל, flows, דף תודה",
+  "body": "תבניות מייל, flows, דף תודה\nמשפיע על: F13\nמקור אפשרי: אייל",
+  "kind": "unknown",
+  "status": "open",
+  "source": "characterization.md › §6 חוסרי מידע",
+  "author": "bot:grok-bot",
+  "related": [
+   "F13"
+  ],
+  "created_at": "2026-10-04T12:00:00+03:00",
+  "updated_at": "2026-10-04T12:00:00+03:00"
+ },
+ {
+  "id": "I8",
+  "title": "לא ידוע: LCP/INP/CLS",
+  "body": "LCP/INP/CLS\nמשפיע על: F14\nמקור אפשרי: הרצת Lighthouse/PSI",
+  "kind": "unknown",
+  "status": "open",
+  "source": "characterization.md › §6 חוסרי מידע",
+  "author": "bot:grok-bot",
+  "related": [
+   "F14"
+  ],
+  "created_at": "2026-10-04T12:00:00+03:00",
+  "updated_at": "2026-10-04T12:00:00+03:00"
+ },
+ {
+  "id": "I9",
+  "title": "לא ידוע: תווית סופית: ערכים, כמויות, אלרגנים; 30 יחידות = 28 ימי שימוש?",
+  "body": "תווית סופית: ערכים, כמויות, אלרגנים; 30 יחידות = 28 ימי שימוש?\nמשפיע על: F9, F12, F4\nמקור אפשרי: אייל / היצרן",
+  "kind": "unknown",
+  "status": "open",
+  "source": "characterization.md › §6 חוסרי מידע",
+  "author": "bot:grok-bot",
+  "related": [
+   "F9",
+   "F12",
+   "F4"
+  ],
+  "created_at": "2026-10-04T12:00:00+03:00",
+  "updated_at": "2026-10-04T12:00:00+03:00"
+ },
+ {
+  "id": "I10",
+  "title": "לא ידוע: זמן אספקה (SLA) והאם יש ספק משלוחים עם נקודות איסוף",
+  "body": "זמן אספקה (SLA) והאם יש ספק משלוחים עם נקודות איסוף\nמשפיע על: F7\nמקור אפשרי: אייל",
+  "kind": "unknown",
+  "status": "open",
+  "source": "characterization.md › §6 חוסרי מידע",
+  "author": "bot:grok-bot",
+  "related": [
+   "F7"
+  ],
+  "created_at": "2026-10-04T12:00:00+03:00",
+  "updated_at": "2026-10-04T12:00:00+03:00"
+ },
+ {
+  "id": "I11",
+  "title": "לא ידוע: נתוני תנועה/המרה קיימים",
+  "body": "נתוני תנועה/המרה קיימים\nמשפיע על: הערכת השפעה בפועל וניסויים\nמקור אפשרי: אייל / אין כרגע — ההשפעה במסמך הערכה בלבד",
+  "kind": "unknown",
+  "status": "open",
+  "source": "characterization.md › §6 חוסרי מידע",
+  "author": "bot:grok-bot",
+  "related": [],
+  "created_at": "2026-10-04T12:00:00+03:00",
+  "updated_at": "2026-10-04T12:00:00+03:00"
+ }
+]

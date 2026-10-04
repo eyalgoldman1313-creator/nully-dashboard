@@ -1,0 +1,4742 @@
+{
+  "id": "2026-10-04T09-57-45-403Z",
+  "captured_at": "2026-10-04T09:57:45.403Z",
+  "label": "snapshot ראשוני",
+  "source": "shopify-snapshot.mjs (read-only)",
+  "content_hash": "64e15b0991a3de6e",
+  "data": {
+    "schema": 1,
+    "shop": {
+      "myshopify": "cfam0j-2j.myshopify.com",
+      "name": "Nully Supplements",
+      "currency": "ILS",
+      "primaryDomain": "https://nully-shop.com"
+    },
+    "locales": [
+      {
+        "locale": "en",
+        "primary": true,
+        "published": true
+      }
+    ],
+    "theme": {
+      "id": "154899021876",
+      "name": "Nully Horizon RTL",
+      "role": "UNPUBLISHED",
+      "updatedAt": "2026-10-04T09:45:15Z"
+    },
+    "templates": {
+      "templates/index.json": {
+        "order": [
+          "nully_hero",
+          "nully_trust",
+          "nully_format",
+          "nully_story",
+          "nully_unwrap",
+          "nully_quality",
+          "nully_inside",
+          "nully_absorption",
+          "nully_scenarios",
+          "nully_compare",
+          "nully_offer",
+          "nully_faq",
+          "nully_cta"
+        ],
+        "sections": [
+          {
+            "id": "nully_hero",
+            "type": "section",
+            "disabled": false,
+            "settings": {
+              "align_baseline": false,
+              "background_color": "#faf8f9",
+              "background_image_position": "cover",
+              "background_media": "none",
+              "border": "none",
+              "border_color": "",
+              "border_opacity": 100,
+              "border_radius": 0,
+              "border_width": 1,
+              "content_direction": "row",
+              "gap": 40,
+              "gradient_direction": "to top",
+              "horizontal_alignment": "flex-start",
+              "horizontal_alignment_flex_direction_column": "center",
+              "overlay_color": "#00000026",
+              "overlay_style": "solid",
+              "padding-block-end": 64,
+              "padding-block-start": 44,
+              "section_height": "",
+              "section_height_custom": 50,
+              "section_width": "page-width",
+              "toggle_overlay": false,
+              "vertical_alignment": "center",
+              "vertical_alignment_flex_direction_column": "center",
+              "vertical_on_mobile": true,
+              "video_position": "cover"
+            },
+            "blocks": [
+              {
+                "id": "copy",
+                "type": "group",
+                "disabled": false,
+                "settings": {
+                  "align_baseline": false,
+                  "background_color": "",
+                  "background_image_position": "cover",
+                  "background_media": "none",
+                  "border": "none",
+                  "border_color": "",
+                  "border_opacity": 100,
+                  "border_radius": 0,
+                  "border_width": 1,
+                  "content_direction": "column",
+                  "custom_height": 100,
+                  "custom_width": 100,
+                  "custom_width_mobile": 100,
+                  "gap": 14,
+                  "gradient_direction": "to top",
+                  "height": "fit",
+                  "horizontal_alignment": "flex-start",
+                  "horizontal_alignment_flex_direction_column": "center",
+                  "link": "",
+                  "open_in_new_tab": false,
+                  "overlay_color": "#00000026",
+                  "overlay_style": "solid",
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "padding-inline-end": 0,
+                  "padding-inline-start": 0,
+                  "placeholder": "",
+                  "toggle_overlay": false,
+                  "vertical_alignment": "center",
+                  "vertical_alignment_flex_direction_column": "center",
+                  "vertical_on_mobile": true,
+                  "video_position": "cover",
+                  "width": "fill",
+                  "width_mobile": "fill"
+                }
+              },
+              {
+                "id": "media",
+                "type": "group",
+                "disabled": false,
+                "settings": {
+                  "align_baseline": false,
+                  "background_color": "",
+                  "background_image_position": "cover",
+                  "background_media": "none",
+                  "border": "none",
+                  "border_color": "",
+                  "border_opacity": 100,
+                  "border_radius": 0,
+                  "border_width": 1,
+                  "content_direction": "column",
+                  "custom_height": 100,
+                  "custom_width": 100,
+                  "custom_width_mobile": 100,
+                  "gap": 12,
+                  "gradient_direction": "to top",
+                  "height": "fit",
+                  "horizontal_alignment": "flex-start",
+                  "horizontal_alignment_flex_direction_column": "flex-start",
+                  "link": "",
+                  "open_in_new_tab": false,
+                  "overlay_color": "#00000026",
+                  "overlay_style": "solid",
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "padding-inline-end": 0,
+                  "padding-inline-start": 0,
+                  "placeholder": "",
+                  "toggle_overlay": false,
+                  "vertical_alignment": "center",
+                  "vertical_alignment_flex_direction_column": "center",
+                  "vertical_on_mobile": true,
+                  "video_position": "cover",
+                  "width": "fill",
+                  "width_mobile": "fill"
+                }
+              }
+            ]
+          },
+          {
+            "id": "nully_trust",
+            "type": "marquee",
+            "disabled": false,
+            "settings": {
+              "background_color": "#14807c",
+              "gap_between_elements": 48,
+              "movement_direction": "reverse",
+              "padding-block-end": 13,
+              "padding-block-start": 13
+            },
+            "blocks": [
+              {
+                "id": "note_1",
+                "type": "nully-trust-item",
+                "disabled": false,
+                "settings": {
+                  "icon": "sugar-free",
+                  "label": "ללא סוכר"
+                }
+              },
+              {
+                "id": "note_2",
+                "type": "nully-trust-item",
+                "disabled": false,
+                "settings": {
+                  "icon": "vegan",
+                  "label": "טבעוני"
+                }
+              },
+              {
+                "id": "note_3",
+                "type": "nully-trust-item",
+                "disabled": false,
+                "settings": {
+                  "icon": "gluten-free",
+                  "label": "ללא גלוטן"
+                }
+              },
+              {
+                "id": "note_4",
+                "type": "nully-trust-item",
+                "disabled": false,
+                "settings": {
+                  "icon": "natural-colour",
+                  "label": "צבעי מאכל טבעיים"
+                }
+              },
+              {
+                "id": "note_5",
+                "type": "nully-trust-item",
+                "disabled": false,
+                "settings": {
+                  "icon": "wrapped",
+                  "label": "ארוזות אחת אחת"
+                }
+              },
+              {
+                "id": "note_6",
+                "type": "nully-trust-item",
+                "disabled": false,
+                "settings": {
+                  "icon": "age-5",
+                  "label": "מתאים גם לקטנטנים"
+                }
+              },
+              {
+                "id": "note_7",
+                "type": "nully-trust-item",
+                "disabled": false,
+                "settings": {
+                  "icon": "b-vitamins",
+                  "label": "ויטמיני B6&B12"
+                }
+              },
+              {
+                "id": "note_8",
+                "type": "nully-trust-item",
+                "disabled": false,
+                "settings": {
+                  "icon": "omega-3",
+                  "label": "אומגה 3 ALA"
+                }
+              },
+              {
+                "id": "note_9",
+                "type": "nully-trust-item",
+                "disabled": false,
+                "settings": {
+                  "icon": "botanicals",
+                  "label": "כורכום וספירולינה"
+                }
+              }
+            ]
+          },
+          {
+            "id": "nully_format",
+            "type": "section",
+            "disabled": false,
+            "settings": {
+              "align_baseline": false,
+              "background_color": "#20afaa",
+              "background_image_position": "cover",
+              "background_media": "none",
+              "border": "none",
+              "border_color": "",
+              "border_opacity": 100,
+              "border_radius": 0,
+              "border_width": 1,
+              "content_direction": "column",
+              "gap": 26,
+              "gradient_direction": "to top",
+              "horizontal_alignment": "flex-start",
+              "horizontal_alignment_flex_direction_column": "center",
+              "overlay_color": "#00000026",
+              "overlay_style": "solid",
+              "padding-block-end": 48,
+              "padding-block-start": 48,
+              "section_height": "",
+              "section_height_custom": 50,
+              "section_width": "full-width",
+              "toggle_overlay": false,
+              "vertical_alignment": "center",
+              "vertical_alignment_flex_direction_column": "center",
+              "vertical_on_mobile": true,
+              "video_position": "cover"
+            },
+            "blocks": [
+              {
+                "id": "heading",
+                "type": "text",
+                "disabled": false,
+                "settings": {
+                  "alignment": "center",
+                  "background": false,
+                  "background_color": "#00000026",
+                  "case": "none",
+                  "corner_radius": 0,
+                  "font": "var(--font-body--family)",
+                  "font_size": "1rem",
+                  "letter_spacing": "normal",
+                  "line_height": "normal",
+                  "max_width": "none",
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "padding-inline-end": 0,
+                  "padding-inline-start": 0,
+                  "text": "<p>למה סוכרייה, ולא כדור</p>",
+                  "text_color": "#ffffff",
+                  "type_preset": "h2",
+                  "width": "100%",
+                  "wrap": "pretty"
+                }
+              },
+              {
+                "id": "cards",
+                "type": "group",
+                "disabled": false,
+                "settings": {
+                  "align_baseline": false,
+                  "background_color": "",
+                  "background_image_position": "cover",
+                  "background_media": "none",
+                  "border": "none",
+                  "border_color": "",
+                  "border_opacity": 100,
+                  "border_radius": 0,
+                  "border_width": 1,
+                  "content_direction": "row",
+                  "custom_height": 100,
+                  "custom_width": 100,
+                  "custom_width_mobile": 100,
+                  "gap": 14,
+                  "gradient_direction": "to top",
+                  "height": "fit",
+                  "horizontal_alignment": "flex-start",
+                  "horizontal_alignment_flex_direction_column": "flex-start",
+                  "link": "",
+                  "open_in_new_tab": false,
+                  "overlay_color": "#00000026",
+                  "overlay_style": "solid",
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "padding-inline-end": 0,
+                  "padding-inline-start": 0,
+                  "placeholder": "",
+                  "toggle_overlay": false,
+                  "vertical_alignment": "flex-start",
+                  "vertical_alignment_flex_direction_column": "center",
+                  "vertical_on_mobile": false,
+                  "video_position": "cover",
+                  "width": "fill",
+                  "width_mobile": "fill"
+                }
+              }
+            ]
+          },
+          {
+            "id": "nully_story",
+            "type": "nully-brand-story",
+            "disabled": false,
+            "settings": {
+              "background_color": "#FAF8F9",
+              "heading": "",
+              "heading_accent": ""
+            },
+            "blocks": [
+              {
+                "id": "step_1",
+                "type": "story_step",
+                "disabled": false,
+                "settings": {
+                  "body": "<p>מעל 87% ממי שחווה קשיי קשב, ריכוז וזיכרון מתמודד גם עם מחסור בוויטמינים, אצטילכולין וחומצות שומן חיוניות (רובם אפילו לא מודעים לכך).</p>",
+                  "heading": "פוקוס באמת צריך באמת להרגיש ככה?",
+                  "image": "shopify://shop_images/nully-story-problem-v2.png"
+                }
+              },
+              {
+                "id": "step_2",
+                "type": "story_step",
+                "disabled": false,
+                "settings": {
+                  "body": "<p>נולי היא יום מלא של פוקוס טבעי - סוכריה על מקל עם ALPHA‑GPC® ויטמינים, סיבים תזונתיים - וטעם בכל הפה</p>",
+                  "heading": "סוכריה אחת = 8 שעות של פוקוס",
+                  "image": "shopify://shop_images/nully-story-solution-v2.png",
+                  "image_position": "top"
+                }
+              },
+              {
+                "id": "step_3",
+                "type": "story_step",
+                "disabled": false,
+                "settings": {
+                  "body": "<p>⟨טקסט על ספיגה דרך רירית חלל הפה — מהר פי 36 מכדור, ישירות לזרם הדם⟩</p>",
+                  "heading": "⟨כותרת: המדע⟩"
+                }
+              },
+              {
+                "id": "step_4",
+                "type": "story_step",
+                "disabled": false,
+                "settings": {
+                  "body": "<p>⟨טקסט על התוצאה — עד 8 שעות של פוקוס, באופן טבעי, בלי קפאין⟩</p>",
+                  "heading": "⟨כותרת: התוצאה⟩"
+                }
+              }
+            ]
+          },
+          {
+            "id": "nully_unwrap",
+            "type": "nully-unwrap-scroll",
+            "disabled": false,
+            "settings": {
+              "gradient_bottom": "#B62C52",
+              "gradient_top": "#FAF8F9",
+              "heading": "הפכנו את הריכוז היום יומי",
+              "heading_accent": "לטעים ברמה קיצונית",
+              "lolly_naked": "shopify://shop_images/nully-unwrap-lolly-naked.png",
+              "lolly_torn": "shopify://shop_images/nully-unwrap-lolly-torn.png",
+              "lolly_wrapped": "shopify://shop_images/nully-unwrap-lolly-wrapped.png",
+              "pouch_back": "shopify://shop_images/nully-unwrap-pouch-back.png",
+              "pouch_front": "shopify://shop_images/nully-unwrap-pouch-front.png",
+              "scroll_length": 170,
+              "wrapper": "shopify://shop_images/nully-unwrap-wrapper.png"
+            },
+            "blocks": []
+          },
+          {
+            "id": "nully_quality",
+            "type": "nully-quality",
+            "disabled": false,
+            "settings": {
+              "background_color": "#fbf5ec",
+              "border_color": "#b62c52",
+              "card_background": "#ffffff",
+              "heading": "בקרת איכות ובדיקות מעבדה לכל סוכריה שייצרנו",
+              "subheading": "אנו בודקים כל אצווה שמיוצרת בסטנדרטים בינלאומיים ולא מוותרים על האיכות והטעם",
+              "text_color": "#0e2b2a"
+            },
+            "blocks": [
+              {
+                "id": "card_1",
+                "type": "card",
+                "disabled": false,
+                "settings": {
+                  "icon": "shield-check",
+                  "icon_2": "none",
+                  "label": "תקינת GMP&BRC",
+                  "text": "התקינה הנדרשת מהFDA והאיחוד האירופי לתקינות מזון"
+                }
+              },
+              {
+                "id": "card_2",
+                "type": "card",
+                "disabled": false,
+                "settings": {
+                  "icon": "globe",
+                  "icon_2": "none",
+                  "label": "ISO22000",
+                  "text": "תקן ייצור בין לאומי"
+                }
+              },
+              {
+                "id": "card_3",
+                "type": "card",
+                "disabled": false,
+                "settings": {
+                  "icon": "clipboard-check",
+                  "icon_2": "none",
+                  "label": "HACCP",
+                  "text": "התקינה הבין לאומית לבטיחות במזון"
+                }
+              },
+              {
+                "id": "card_4",
+                "type": "card",
+                "disabled": false,
+                "settings": {
+                  "icon": "vegan",
+                  "icon_2": "gluten-free",
+                  "label": "VEGAN & GLUTEN FREE",
+                  "text": "רכיבים טבעיים, טבעוני, ללא גלוטן, לא מהונדס גנטית"
+                }
+              }
+            ]
+          },
+          {
+            "id": "nully_inside",
+            "type": "section",
+            "disabled": false,
+            "settings": {
+              "align_baseline": false,
+              "background_color": "#ffffff",
+              "background_image_position": "cover",
+              "background_media": "none",
+              "border": "none",
+              "border_color": "",
+              "border_opacity": 100,
+              "border_radius": 0,
+              "border_width": 1,
+              "content_direction": "row",
+              "gap": 44,
+              "gradient_direction": "to top",
+              "horizontal_alignment": "flex-start",
+              "horizontal_alignment_flex_direction_column": "center",
+              "overlay_color": "#00000026",
+              "overlay_style": "solid",
+              "padding-block-end": 48,
+              "padding-block-start": 48,
+              "section_height": "",
+              "section_height_custom": 50,
+              "section_width": "page-width",
+              "toggle_overlay": false,
+              "vertical_alignment": "flex-start",
+              "vertical_alignment_flex_direction_column": "center",
+              "vertical_on_mobile": true,
+              "video_position": "cover"
+            },
+            "blocks": [
+              {
+                "id": "media",
+                "type": "group",
+                "disabled": false,
+                "settings": {
+                  "align_baseline": false,
+                  "background_color": "",
+                  "background_image_position": "cover",
+                  "background_media": "none",
+                  "border": "none",
+                  "border_color": "",
+                  "border_opacity": 100,
+                  "border_radius": 0,
+                  "border_width": 1,
+                  "content_direction": "column",
+                  "custom_height": 100,
+                  "custom_width": 100,
+                  "custom_width_mobile": 100,
+                  "gap": 12,
+                  "gradient_direction": "to top",
+                  "height": "fit",
+                  "horizontal_alignment": "flex-start",
+                  "horizontal_alignment_flex_direction_column": "flex-start",
+                  "link": "",
+                  "open_in_new_tab": false,
+                  "overlay_color": "#00000026",
+                  "overlay_style": "solid",
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "padding-inline-end": 0,
+                  "padding-inline-start": 0,
+                  "placeholder": "",
+                  "toggle_overlay": false,
+                  "vertical_alignment": "center",
+                  "vertical_alignment_flex_direction_column": "center",
+                  "vertical_on_mobile": true,
+                  "video_position": "cover",
+                  "width": "fill",
+                  "width_mobile": "fill"
+                }
+              },
+              {
+                "id": "list",
+                "type": "group",
+                "disabled": false,
+                "settings": {
+                  "align_baseline": false,
+                  "background_color": "",
+                  "background_image_position": "cover",
+                  "background_media": "none",
+                  "border": "none",
+                  "border_color": "",
+                  "border_opacity": 100,
+                  "border_radius": 0,
+                  "border_width": 1,
+                  "content_direction": "column",
+                  "custom_height": 100,
+                  "custom_width": 100,
+                  "custom_width_mobile": 100,
+                  "gap": 0,
+                  "gradient_direction": "to top",
+                  "height": "fit",
+                  "horizontal_alignment": "flex-start",
+                  "horizontal_alignment_flex_direction_column": "flex-start",
+                  "link": "",
+                  "open_in_new_tab": false,
+                  "overlay_color": "#00000026",
+                  "overlay_style": "solid",
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "padding-inline-end": 0,
+                  "padding-inline-start": 0,
+                  "placeholder": "",
+                  "toggle_overlay": false,
+                  "vertical_alignment": "center",
+                  "vertical_alignment_flex_direction_column": "center",
+                  "vertical_on_mobile": true,
+                  "video_position": "cover",
+                  "width": "fill",
+                  "width_mobile": "fill"
+                }
+              }
+            ]
+          },
+          {
+            "id": "nully_absorption",
+            "type": "section",
+            "disabled": false,
+            "settings": {
+              "align_baseline": false,
+              "background_color": "#14807c",
+              "background_image_position": "cover",
+              "background_media": "none",
+              "border": "none",
+              "border_color": "",
+              "border_opacity": 100,
+              "border_radius": 0,
+              "border_width": 1,
+              "content_direction": "column",
+              "gap": 20,
+              "gradient_direction": "to top",
+              "horizontal_alignment": "flex-start",
+              "horizontal_alignment_flex_direction_column": "center",
+              "overlay_color": "#00000026",
+              "overlay_style": "solid",
+              "padding-block-end": 56,
+              "padding-block-start": 56,
+              "section_height": "",
+              "section_height_custom": 50,
+              "section_width": "page-width",
+              "toggle_overlay": false,
+              "vertical_alignment": "center",
+              "vertical_alignment_flex_direction_column": "center",
+              "vertical_on_mobile": true,
+              "video_position": "cover"
+            },
+            "blocks": [
+              {
+                "id": "chart",
+                "type": "nully-absorption-chart",
+                "disabled": false,
+                "settings": {
+                  "arrival_icon": "blood",
+                  "footnote": "",
+                  "heading": "ספיגה מהירה פי 36",
+                  "origin_icon": "mouth",
+                  "subheading": "בזמן שכדור עוד עושה את הדרך דרך מערכת העיכול, NULLY כבר עובדת.",
+                  "track_1_caption": "ספיגה דרך הרירית בחלל הפה, בזמן המציצה.",
+                  "track_1_fill": 35,
+                  "track_1_icon": "lollipop",
+                  "track_1_label": "סוכריית NULLY",
+                  "track_1_stop_icons": "",
+                  "track_1_stops": "",
+                  "track_1_value": "",
+                  "track_2_caption": "עובר דרך הקיבה והמעי לפני שהוא מגיע לדם.",
+                  "track_2_fill": 100,
+                  "track_2_icon": "pill",
+                  "track_2_label": "כדור",
+                  "track_2_stop_icons": "stomach, intestine",
+                  "track_2_stops": "קיבה, מעי",
+                  "track_2_value": ""
+                }
+              }
+            ]
+          },
+          {
+            "id": "nully_scenarios",
+            "type": "nully-scenario-strip",
+            "disabled": false,
+            "settings": {
+              "background_color": "#faf8f9",
+              "card_width": 250,
+              "heading": "אתם משתפים אותנו",
+              "speed": 70,
+              "subheading": "",
+              "tilt": 1.5
+            },
+            "blocks": [
+              {
+                "id": "scenario_1",
+                "type": "nully-scenario-card",
+                "disabled": false,
+                "settings": {
+                  "author": "⟨שם⟩",
+                  "author_note": "",
+                  "image": "shopify://shop_images/nully-when-work.jpg",
+                  "quote": "⟨ביקורת מהעסק הקיים⟩",
+                  "rating": 5,
+                  "scenario": ""
+                }
+              },
+              {
+                "id": "scenario_2",
+                "type": "nully-scenario-card",
+                "disabled": false,
+                "settings": {
+                  "author": "⟨שם⟩",
+                  "author_note": "",
+                  "image": "shopify://shop_images/nully-when-exam.jpg",
+                  "quote": "⟨ביקורת מהעסק הקיים⟩",
+                  "rating": 5,
+                  "scenario": ""
+                }
+              },
+              {
+                "id": "scenario_3",
+                "type": "nully-scenario-card",
+                "disabled": false,
+                "settings": {
+                  "author": "⟨שם⟩",
+                  "author_note": "",
+                  "image": "shopify://shop_images/nully-when-homework.jpg",
+                  "quote": "⟨ביקורת מהעסק הקיים⟩",
+                  "rating": 5,
+                  "scenario": ""
+                }
+              },
+              {
+                "id": "scenario_4",
+                "type": "nully-scenario-card",
+                "disabled": false,
+                "settings": {
+                  "author": "⟨שם⟩",
+                  "author_note": "",
+                  "image": "shopify://shop_images/nully-when-drive.jpg",
+                  "quote": "⟨ביקורת מהעסק הקיים⟩",
+                  "rating": 5,
+                  "scenario": ""
+                }
+              },
+              {
+                "id": "scenario_5",
+                "type": "nully-scenario-card",
+                "disabled": false,
+                "settings": {
+                  "author": "⟨שם⟩",
+                  "author_note": "",
+                  "image": "shopify://shop_images/nully-when-onthego.jpg",
+                  "quote": "⟨ביקורת מהעסק הקיים⟩",
+                  "rating": 5,
+                  "scenario": ""
+                }
+              },
+              {
+                "id": "scenario_6",
+                "type": "nully-scenario-card",
+                "disabled": false,
+                "settings": {
+                  "author": "⟨שם⟩",
+                  "author_note": "",
+                  "image": "shopify://shop_images/nully-when-parent.jpg",
+                  "quote": "⟨ביקורת מהעסק הקיים⟩",
+                  "rating": 5,
+                  "scenario": ""
+                }
+              }
+            ]
+          },
+          {
+            "id": "nully_compare",
+            "type": "section",
+            "disabled": false,
+            "settings": {
+              "align_baseline": false,
+              "background_color": "#faf8f9",
+              "background_image_position": "cover",
+              "background_media": "none",
+              "border": "none",
+              "border_color": "",
+              "border_opacity": 100,
+              "border_radius": 0,
+              "border_width": 1,
+              "content_direction": "column",
+              "gap": 26,
+              "gradient_direction": "to top",
+              "horizontal_alignment": "flex-start",
+              "horizontal_alignment_flex_direction_column": "center",
+              "overlay_color": "#00000026",
+              "overlay_style": "solid",
+              "padding-block-end": 48,
+              "padding-block-start": 48,
+              "section_height": "",
+              "section_height_custom": 50,
+              "section_width": "page-width",
+              "toggle_overlay": false,
+              "vertical_alignment": "center",
+              "vertical_alignment_flex_direction_column": "center",
+              "vertical_on_mobile": true,
+              "video_position": "cover"
+            },
+            "blocks": [
+              {
+                "id": "table",
+                "type": "nully-comparison-table",
+                "disabled": false,
+                "settings": {
+                  "col_nully": "סוכריית NULLY",
+                  "col_pill": "כדור",
+                  "col_powder": "אבקה",
+                  "heading": "סוכרייה, כדור או אבקה?",
+                  "row_1_label": "איך לוקחים",
+                  "row_1_nully": "שמים בפה",
+                  "row_1_pill": "בולעים עם מים",
+                  "row_1_powder": "מערבבים ושותים",
+                  "row_2_label": "קל בכל מקום",
+                  "row_2_nully": "+",
+                  "row_2_pill": "-",
+                  "row_2_powder": "-",
+                  "row_3_label": "צריך מים",
+                  "row_3_nully": "-",
+                  "row_3_pill": "+",
+                  "row_3_powder": "+",
+                  "row_4_label": "טעם לוואי",
+                  "row_4_nully": "-",
+                  "row_4_pill": "+",
+                  "row_4_powder": "+",
+                  "row_5_label": "טבעוני",
+                  "row_5_nully": "+",
+                  "row_5_pill": "-",
+                  "row_5_powder": "-",
+                  "row_6_label": "מהונדס גנטית",
+                  "row_6_nully": "-",
+                  "row_6_pill": "+",
+                  "row_6_powder": "+",
+                  "row_7_label": "",
+                  "row_7_nully": "",
+                  "row_7_pill": "",
+                  "row_7_powder": ""
+                }
+              },
+              {
+                "id": "cta",
+                "type": "button",
+                "disabled": false,
+                "settings": {
+                  "custom_button_background": "{{ settings.color_palette.foreground }}",
+                  "custom_button_border": "{{ settings.color_palette.background }}",
+                  "custom_button_text": "{{ settings.color_palette.background }}",
+                  "custom_width": 100,
+                  "custom_width_mobile": 100,
+                  "label": "לבחירת אפשרויות",
+                  "link": "#nully-offer",
+                  "link_text_color": "",
+                  "open_in_new_tab": false,
+                  "style_class": "button",
+                  "width": "fit-content",
+                  "width_mobile": "fit-content"
+                }
+              }
+            ]
+          },
+          {
+            "id": "nully_offer",
+            "type": "nully-offer",
+            "disabled": false,
+            "settings": {
+              "background_color": "#faf8f9",
+              "media_position": "left",
+              "padding-block-end": 56,
+              "padding-block-start": 56,
+              "product": "nully-brainy"
+            },
+            "blocks": [
+              {
+                "id": "nully-gallery",
+                "type": "_product-media-gallery",
+                "disabled": false,
+                "settings": {
+                  "aspect_ratio": "1",
+                  "constrain_to_viewport": true,
+                  "extend_media": true,
+                  "hide_variants": false,
+                  "icons_style": "arrow",
+                  "image_gap": 0,
+                  "large_first_image": false,
+                  "media_columns": "one",
+                  "media_fit": "cover",
+                  "media_presentation": "carousel",
+                  "media_radius": 18,
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "padding-inline-end": 0,
+                  "padding-inline-start": 0,
+                  "slideshow_controls_style": "thumbnails",
+                  "slideshow_mobile_controls_style": "dots",
+                  "thumbnail_position": "bottom",
+                  "thumbnail_radius": 10,
+                  "thumbnail_width": 66,
+                  "video_loop": false,
+                  "zoom": true
+                }
+              },
+              {
+                "id": "nully-offer-column",
+                "type": "_nully-offer-column",
+                "disabled": false,
+                "settings": {}
+              }
+            ]
+          },
+          {
+            "id": "nully_faq",
+            "type": "section",
+            "disabled": false,
+            "settings": {
+              "align_baseline": false,
+              "background_color": "#ffffff",
+              "background_image_position": "cover",
+              "background_media": "none",
+              "border": "none",
+              "border_color": "",
+              "border_opacity": 100,
+              "border_radius": 0,
+              "border_width": 1,
+              "content_direction": "column",
+              "gap": 22,
+              "gradient_direction": "to top",
+              "horizontal_alignment": "flex-start",
+              "horizontal_alignment_flex_direction_column": "center",
+              "overlay_color": "#00000026",
+              "overlay_style": "solid",
+              "padding-block-end": 48,
+              "padding-block-start": 48,
+              "section_height": "",
+              "section_height_custom": 50,
+              "section_width": "page-width",
+              "toggle_overlay": false,
+              "vertical_alignment": "center",
+              "vertical_alignment_flex_direction_column": "center",
+              "vertical_on_mobile": true,
+              "video_position": "cover"
+            },
+            "blocks": [
+              {
+                "id": "heading",
+                "type": "text",
+                "disabled": false,
+                "settings": {
+                  "alignment": "center",
+                  "background": false,
+                  "background_color": "#00000026",
+                  "case": "none",
+                  "corner_radius": 0,
+                  "font": "var(--font-body--family)",
+                  "font_size": "1rem",
+                  "letter_spacing": "normal",
+                  "line_height": "normal",
+                  "max_width": "none",
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "padding-inline-end": 0,
+                  "padding-inline-start": 0,
+                  "text": "<p>שאלות שחוזרות</p>",
+                  "text_color": "",
+                  "type_preset": "h2",
+                  "width": "100%",
+                  "wrap": "pretty"
+                }
+              },
+              {
+                "id": "accordion",
+                "type": "accordion",
+                "disabled": false,
+                "settings": {
+                  "background_color": "",
+                  "border": "none",
+                  "border_color": "",
+                  "border_opacity": 100,
+                  "border_radius": 0,
+                  "border_width": 1,
+                  "divider_color": "",
+                  "dividers": true,
+                  "icon": "plus",
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "padding-inline-end": 0,
+                  "padding-inline-start": 0,
+                  "text_color": "",
+                  "type_preset": "h6"
+                }
+              }
+            ]
+          },
+          {
+            "id": "nully_cta",
+            "type": "section",
+            "disabled": false,
+            "settings": {
+              "align_baseline": false,
+              "background_color": "#b62c52",
+              "background_image_position": "cover",
+              "background_media": "none",
+              "border": "none",
+              "border_color": "",
+              "border_opacity": 100,
+              "border_radius": 0,
+              "border_width": 1,
+              "content_direction": "column",
+              "gap": 16,
+              "gradient_direction": "to top",
+              "horizontal_alignment": "flex-start",
+              "horizontal_alignment_flex_direction_column": "center",
+              "overlay_color": "#00000026",
+              "overlay_style": "solid",
+              "padding-block-end": 56,
+              "padding-block-start": 56,
+              "section_height": "",
+              "section_height_custom": 50,
+              "section_width": "page-width",
+              "toggle_overlay": false,
+              "vertical_alignment": "center",
+              "vertical_alignment_flex_direction_column": "center",
+              "vertical_on_mobile": true,
+              "video_position": "cover"
+            },
+            "blocks": [
+              {
+                "id": "heading",
+                "type": "text",
+                "disabled": false,
+                "settings": {
+                  "alignment": "center",
+                  "background": false,
+                  "background_color": "#00000026",
+                  "case": "none",
+                  "corner_radius": 0,
+                  "font": "var(--font-body--family)",
+                  "font_size": "1rem",
+                  "letter_spacing": "normal",
+                  "line_height": "normal",
+                  "max_width": "none",
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "padding-inline-end": 0,
+                  "padding-inline-start": 0,
+                  "text": "<p>טעים להתרכז.</p>",
+                  "text_color": "#ffffff",
+                  "type_preset": "h2",
+                  "width": "100%",
+                  "wrap": "pretty"
+                }
+              },
+              {
+                "id": "sub",
+                "type": "text",
+                "disabled": false,
+                "settings": {
+                  "alignment": "center",
+                  "background": false,
+                  "background_color": "#00000026",
+                  "case": "none",
+                  "corner_radius": 0,
+                  "font": "var(--font-body--family)",
+                  "font_size": "1rem",
+                  "letter_spacing": "normal",
+                  "line_height": "normal",
+                  "max_width": "none",
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "padding-inline-end": 0,
+                  "padding-inline-start": 0,
+                  "text": "<p>מארז אחד = חודש שלם. ביטול בכל עת.</p>",
+                  "text_color": "#ffd9e2",
+                  "type_preset": "paragraph",
+                  "width": "100%",
+                  "wrap": "pretty"
+                }
+              },
+              {
+                "id": "cta",
+                "type": "button",
+                "disabled": false,
+                "settings": {
+                  "custom_button_background": "#ffffff",
+                  "custom_button_border": "#ffffff",
+                  "custom_button_text": "#b62c52",
+                  "custom_width": 100,
+                  "custom_width_mobile": 100,
+                  "label": "⟨טקסט הכפתור⟩",
+                  "link": "#nully-offer",
+                  "link_text_color": "",
+                  "open_in_new_tab": false,
+                  "style_class": "button-custom",
+                  "width": "fit-content",
+                  "width_mobile": "fit-content"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "templates/product.json": {
+        "order": [
+          "main",
+          "nully_trust",
+          "nully_inside",
+          "nully_absorption",
+          "nully_compare",
+          "nully_faq"
+        ],
+        "sections": [
+          {
+            "id": "main",
+            "type": "product-information",
+            "disabled": false,
+            "settings": {
+              "background_color": "#ffffff",
+              "content_width": "content-center-aligned",
+              "desktop_media_position": "left",
+              "enable_sticky_add_to_cart": true,
+              "equal_columns": false,
+              "gap": 40,
+              "limit_details_width": true,
+              "padding-block-end": 52,
+              "padding-block-start": 28
+            },
+            "blocks": [
+              {
+                "id": "media-gallery",
+                "type": "_product-media-gallery",
+                "disabled": false,
+                "settings": {
+                  "aspect_ratio": "1",
+                  "constrain_to_viewport": true,
+                  "media_fit": "cover",
+                  "media_presentation": "carousel",
+                  "media_radius": 18,
+                  "slideshow_controls_style": "thumbnails",
+                  "slideshow_mobile_controls_style": "dots",
+                  "thumbnail_position": "bottom",
+                  "thumbnail_radius": 10,
+                  "thumbnail_width": 66,
+                  "zoom": true
+                }
+              },
+              {
+                "id": "product-details",
+                "type": "_product-details",
+                "disabled": false,
+                "settings": {
+                  "background_media": "none",
+                  "border": "none",
+                  "details_position": "flex-start",
+                  "gap": 16,
+                  "height": "fit",
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "padding-inline-end": 0,
+                  "padding-inline-start": 0,
+                  "sticky_details_desktop": false,
+                  "width": "fill"
+                }
+              }
+            ]
+          },
+          {
+            "id": "nully_trust",
+            "type": "marquee",
+            "disabled": false,
+            "settings": {
+              "background_color": "#14807c",
+              "gap_between_elements": 48,
+              "movement_direction": "normal",
+              "padding-block-end": 13,
+              "padding-block-start": 13
+            },
+            "blocks": [
+              {
+                "id": "note_1",
+                "type": "text",
+                "disabled": false,
+                "settings": {
+                  "alignment": "left",
+                  "max_width": "none",
+                  "text": "<p>ללא סוכר מוסף</p>",
+                  "text_color": "#ffffff",
+                  "type_preset": "paragraph",
+                  "width": "fit-content",
+                  "wrap": "pretty"
+                }
+              },
+              {
+                "id": "note_2",
+                "type": "text",
+                "disabled": false,
+                "settings": {
+                  "alignment": "left",
+                  "max_width": "none",
+                  "text": "<p>טבעוני</p>",
+                  "text_color": "#ffffff",
+                  "type_preset": "paragraph",
+                  "width": "fit-content",
+                  "wrap": "pretty"
+                }
+              },
+              {
+                "id": "note_3",
+                "type": "text",
+                "disabled": false,
+                "settings": {
+                  "alignment": "left",
+                  "max_width": "none",
+                  "text": "<p>ללא גלוטן</p>",
+                  "text_color": "#ffffff",
+                  "type_preset": "paragraph",
+                  "width": "fit-content",
+                  "wrap": "pretty"
+                }
+              },
+              {
+                "id": "note_4",
+                "type": "text",
+                "disabled": false,
+                "settings": {
+                  "alignment": "left",
+                  "max_width": "none",
+                  "text": "<p>ללא צבעי מאכל</p>",
+                  "text_color": "#ffffff",
+                  "type_preset": "paragraph",
+                  "width": "fit-content",
+                  "wrap": "pretty"
+                }
+              },
+              {
+                "id": "note_5",
+                "type": "text",
+                "disabled": false,
+                "settings": {
+                  "alignment": "left",
+                  "max_width": "none",
+                  "text": "<p>30 מנות ארוזות אישית</p>",
+                  "text_color": "#ffffff",
+                  "type_preset": "paragraph",
+                  "width": "fit-content",
+                  "wrap": "pretty"
+                }
+              },
+              {
+                "id": "note_6",
+                "type": "text",
+                "disabled": false,
+                "settings": {
+                  "alignment": "left",
+                  "max_width": "none",
+                  "text": "<p>מתאים מגיל 5</p>",
+                  "text_color": "#ffffff",
+                  "type_preset": "paragraph",
+                  "width": "fit-content",
+                  "wrap": "pretty"
+                }
+              }
+            ]
+          },
+          {
+            "id": "nully_inside",
+            "type": "section",
+            "disabled": false,
+            "settings": {
+              "background_color": "#faf8f9",
+              "background_media": "none",
+              "border": "none",
+              "content_direction": "row",
+              "gap": 44,
+              "horizontal_alignment": "flex-start",
+              "horizontal_alignment_flex_direction_column": "center",
+              "padding-block-end": 48,
+              "padding-block-start": 48,
+              "section_width": "page-width",
+              "vertical_alignment": "flex-start"
+            },
+            "blocks": [
+              {
+                "id": "media",
+                "type": "group",
+                "disabled": false,
+                "settings": {
+                  "background_media": "none",
+                  "border": "none",
+                  "content_direction": "column",
+                  "gap": 12,
+                  "height": "fit",
+                  "horizontal_alignment": "flex-start",
+                  "horizontal_alignment_flex_direction_column": "flex-start",
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "padding-inline-end": 0,
+                  "padding-inline-start": 0,
+                  "vertical_alignment": "center",
+                  "width": "fill"
+                }
+              },
+              {
+                "id": "list",
+                "type": "group",
+                "disabled": false,
+                "settings": {
+                  "background_media": "none",
+                  "border": "none",
+                  "content_direction": "column",
+                  "gap": 0,
+                  "height": "fit",
+                  "horizontal_alignment": "flex-start",
+                  "horizontal_alignment_flex_direction_column": "flex-start",
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "padding-inline-end": 0,
+                  "padding-inline-start": 0,
+                  "vertical_alignment": "center",
+                  "width": "fill"
+                }
+              }
+            ]
+          },
+          {
+            "id": "nully_absorption",
+            "type": "section",
+            "disabled": false,
+            "settings": {
+              "background_color": "#14807c",
+              "background_media": "none",
+              "border": "none",
+              "content_direction": "column",
+              "gap": 20,
+              "horizontal_alignment": "flex-start",
+              "horizontal_alignment_flex_direction_column": "center",
+              "padding-block-end": 56,
+              "padding-block-start": 56,
+              "section_width": "page-width",
+              "vertical_alignment": "center"
+            },
+            "blocks": [
+              {
+                "id": "chart",
+                "type": "nully-absorption-chart",
+                "disabled": false,
+                "settings": {}
+              }
+            ]
+          },
+          {
+            "id": "nully_compare",
+            "type": "section",
+            "disabled": false,
+            "settings": {
+              "background_color": "#ffffff",
+              "background_media": "none",
+              "border": "none",
+              "content_direction": "column",
+              "gap": 26,
+              "horizontal_alignment": "flex-start",
+              "horizontal_alignment_flex_direction_column": "center",
+              "padding-block-end": 48,
+              "padding-block-start": 48,
+              "section_width": "page-width",
+              "vertical_alignment": "center"
+            },
+            "blocks": [
+              {
+                "id": "table",
+                "type": "nully-comparison-table",
+                "disabled": false,
+                "settings": {}
+              }
+            ]
+          },
+          {
+            "id": "nully_faq",
+            "type": "section",
+            "disabled": false,
+            "settings": {
+              "background_color": "#faf8f9",
+              "background_media": "none",
+              "border": "none",
+              "content_direction": "column",
+              "gap": 22,
+              "horizontal_alignment": "flex-start",
+              "horizontal_alignment_flex_direction_column": "center",
+              "padding-block-end": 48,
+              "padding-block-start": 48,
+              "section_width": "page-width",
+              "vertical_alignment": "center"
+            },
+            "blocks": [
+              {
+                "id": "heading",
+                "type": "text",
+                "disabled": false,
+                "settings": {
+                  "alignment": "center",
+                  "max_width": "none",
+                  "text": "<p>שאלות שחוזרות</p>",
+                  "type_preset": "h2",
+                  "width": "100%",
+                  "wrap": "pretty"
+                }
+              },
+              {
+                "id": "accordion",
+                "type": "accordion",
+                "disabled": false,
+                "settings": {
+                  "dividers": true,
+                  "icon": "plus",
+                  "type_preset": "h6"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "templates/cart.json": {
+        "order": [
+          "cart-section",
+          "product_list_NNFgcy"
+        ],
+        "sections": [
+          {
+            "id": "cart-section",
+            "type": "main-cart",
+            "disabled": false,
+            "settings": {
+              "background_color": "{{ settings.color_palette.background }}",
+              "padding-block-end": 0,
+              "padding-block-start": 24,
+              "section_width": "page-width"
+            },
+            "blocks": [
+              {
+                "id": "cart-page-title",
+                "type": "_cart-title",
+                "disabled": false,
+                "settings": {
+                  "alignment": "left",
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "padding-inline-end": 0,
+                  "padding-inline-start": 0,
+                  "show_count": true,
+                  "title": "Cart",
+                  "type_preset": "h4"
+                }
+              },
+              {
+                "id": "cart-page-items",
+                "type": "_cart-products",
+                "disabled": false,
+                "settings": {
+                  "dividers": true,
+                  "gap": 24,
+                  "image_ratio": "portrait",
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "padding-inline-end": 0,
+                  "padding-inline-start": 0,
+                  "vendor": false
+                }
+              },
+              {
+                "id": "cart-page-summary",
+                "type": "_cart-summary",
+                "disabled": false,
+                "settings": {
+                  "background_color": "{{ settings.color_palette.color2 }}",
+                  "border": "none",
+                  "border_opacity": 100,
+                  "border_radius": 0,
+                  "border_width": 1,
+                  "extend_summary": true
+                }
+              }
+            ]
+          },
+          {
+            "id": "product_list_NNFgcy",
+            "type": "product-list",
+            "disabled": false,
+            "settings": {
+              "background_color": "{{ settings.color_palette.background }}",
+              "carousel_on_mobile": false,
+              "collection": "all",
+              "columns": 4,
+              "columns_gap": 8,
+              "gap": 28,
+              "horizontal_alignment": "flex-start",
+              "icons_shape": "none",
+              "icons_style": "arrow",
+              "layout_type": "grid",
+              "max_products": 4,
+              "mobile_card_size": "60cqw",
+              "mobile_columns": "2",
+              "padding-block-end": 48,
+              "padding-block-start": 48,
+              "rows_gap": 24,
+              "section_width": "page-width"
+            },
+            "blocks": [
+              {
+                "id": "static-header",
+                "type": "_product-list-content",
+                "disabled": false,
+                "settings": {
+                  "align_baseline": true,
+                  "background_image_position": "cover",
+                  "background_media": "none",
+                  "border": "none",
+                  "border_opacity": 100,
+                  "border_radius": 0,
+                  "border_width": 1,
+                  "content_direction": "row",
+                  "custom_height": 100,
+                  "custom_width": 100,
+                  "custom_width_mobile": 100,
+                  "gap": 12,
+                  "height": "fit",
+                  "horizontal_alignment": "space-between",
+                  "horizontal_alignment_flex_direction_column": "flex-start",
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "padding-inline-end": 0,
+                  "padding-inline-start": 0,
+                  "vertical_alignment": "flex-end",
+                  "vertical_alignment_flex_direction_column": "center",
+                  "vertical_on_mobile": false,
+                  "video_position": "cover",
+                  "width": "fill",
+                  "width_mobile": "fill"
+                }
+              },
+              {
+                "id": "static-product-card",
+                "type": "_product-card",
+                "disabled": false,
+                "settings": {
+                  "border": "none",
+                  "border_opacity": 100,
+                  "border_radius": 0,
+                  "border_width": 1,
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "padding-inline-end": 0,
+                  "padding-inline-start": 0,
+                  "product_card_gap": 4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "sections/header-group.json": {
+        "order": [
+          "announcements",
+          "header_section"
+        ],
+        "sections": [
+          {
+            "id": "announcements",
+            "type": "header-announcements",
+            "disabled": false,
+            "settings": {
+              "background_color": "#14807c",
+              "divider_color": "#eae3e6",
+              "divider_width": 0,
+              "padding-block-end": 9,
+              "padding-block-start": 9,
+              "section_width": "full-width",
+              "speed": 6
+            },
+            "blocks": [
+              {
+                "id": "note_1",
+                "type": "_announcement",
+                "disabled": false,
+                "settings": {
+                  "case": "none",
+                  "font": "var(--font-body--family)",
+                  "font_size": "0.8125rem",
+                  "letter_spacing": "normal",
+                  "text": "משלוח חינם לנקודת איסוף בהזמנה מעל 300 ₪",
+                  "text_color": "#ffffff",
+                  "weight": "600"
+                }
+              },
+              {
+                "id": "note_2",
+                "type": "_announcement",
+                "disabled": false,
+                "settings": {
+                  "case": "none",
+                  "font": "var(--font-body--family)",
+                  "font_size": "0.8125rem",
+                  "letter_spacing": "normal",
+                  "text": "במנוי — משלוח חינם לנקודת איסוף, תמיד",
+                  "text_color": "#ffffff",
+                  "weight": "600"
+                }
+              },
+              {
+                "id": "note_3",
+                "type": "_announcement",
+                "disabled": false,
+                "settings": {
+                  "case": "none",
+                  "font": "var(--font-body--family)",
+                  "font_size": "0.8125rem",
+                  "letter_spacing": "normal",
+                  "text": "30 סוכריות ארוזות אישית · מנה ליום, חודש שלם",
+                  "text_color": "#ffffff",
+                  "weight": "600"
+                }
+              }
+            ]
+          },
+          {
+            "id": "header_section",
+            "type": "header",
+            "disabled": false,
+            "settings": {
+              "divider_color": "#eae3e6",
+              "divider_size": "full-width",
+              "divider_width": 1,
+              "enable_sticky_header": "scroll-up",
+              "logo_position": "left",
+              "menu_position": "center",
+              "menu_row": "top",
+              "search_position": "right",
+              "search_row": "top",
+              "section_height": "compact",
+              "section_width": "page-width",
+              "show_country": false,
+              "show_language": false,
+              "show_search": false
+            },
+            "blocks": [
+              {
+                "id": "header-logo",
+                "type": "_header-logo",
+                "disabled": false,
+                "settings": {
+                  "hide_logo_on_home_page": false
+                }
+              },
+              {
+                "id": "header-menu",
+                "type": "_header-menu",
+                "disabled": false,
+                "settings": {}
+              }
+            ]
+          }
+        ]
+      },
+      "sections/footer-group.json": {
+        "order": [
+          "footer_main",
+          "footer_utilities"
+        ],
+        "sections": [
+          {
+            "id": "footer_main",
+            "type": "footer",
+            "disabled": false,
+            "settings": {
+              "background_color": "#0e2b2a",
+              "gap": 40,
+              "padding-block-end": 40,
+              "padding-block-start": 56,
+              "section_width": "page-width"
+            },
+            "blocks": [
+              {
+                "id": "brand",
+                "type": "group",
+                "disabled": false,
+                "settings": {
+                  "background_media": "none",
+                  "border": "none",
+                  "content_direction": "column",
+                  "gap": 14,
+                  "height": "fit",
+                  "horizontal_alignment": "flex-start",
+                  "horizontal_alignment_flex_direction_column": "flex-start",
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "padding-inline-end": 0,
+                  "padding-inline-start": 0,
+                  "vertical_alignment": "flex-start",
+                  "width": "fill"
+                }
+              },
+              {
+                "id": "links",
+                "type": "menu",
+                "disabled": false,
+                "settings": {
+                  "accordion_dividers": false,
+                  "accordion_icon": "plus",
+                  "heading": "המוצר",
+                  "heading_preset": "h6",
+                  "link_preset": "paragraph",
+                  "menu_spacing": 6,
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "show_as_accordion": true,
+                  "text_color": "#c8d8d6"
+                }
+              },
+              {
+                "id": "signup",
+                "type": "email-signup",
+                "disabled": false,
+                "settings": {
+                  "custom_button_background": "#b62c52",
+                  "custom_button_border": "#b62c52",
+                  "custom_button_text": "#ffffff",
+                  "display_type": "input_and_button",
+                  "heading": "10% הנחה על ההזמנה הראשונה",
+                  "heading_preset": "h6",
+                  "heading_text_color": "#ffffff",
+                  "input_background_color": "rgba(0,0,0,0)",
+                  "input_border_color": "#3a5b58",
+                  "input_style": "outline",
+                  "input_text_color": "#ffffff",
+                  "integrated_button": true,
+                  "label": "המייל שלך",
+                  "padding-block-end": 0,
+                  "padding-block-start": 0,
+                  "style_class": "button-custom",
+                  "width": "fill"
+                }
+              },
+              {
+                "id": "payments",
+                "type": "payment-icons",
+                "disabled": false,
+                "settings": {}
+              }
+            ]
+          },
+          {
+            "id": "footer_utilities",
+            "type": "footer-utilities",
+            "disabled": false,
+            "settings": {
+              "background_color": "#0e2b2a",
+              "divider_color": "#274a48",
+              "divider_thickness": 1,
+              "gap": 20,
+              "padding-block-end": 40,
+              "padding-block-start": 20,
+              "section_width": "page-width"
+            },
+            "blocks": [
+              {
+                "id": "copyright",
+                "type": "footer-copyright",
+                "disabled": false,
+                "settings": {}
+              },
+              {
+                "id": "policies",
+                "type": "footer-policy-list",
+                "disabled": false,
+                "settings": {}
+              }
+            ]
+          }
+        ]
+      },
+      "config/settings_data.json": {
+        "current": {
+          "badge_corner_radius": 100,
+          "badge_position": "top-right",
+          "badge_sale_background_color": "#b62c52",
+          "badge_sale_text_color": "#ffffff",
+          "badge_sold_out_background_color": "#eae3e6",
+          "badge_sold_out_text_color": "#5f7472",
+          "badge_text_transform": "none",
+          "button_border_radius_primary": 100,
+          "button_border_radius_secondary": 100,
+          "card_corner_radius": 16,
+          "card_hover_effect": "none",
+          "cart_price_font": "subheading",
+          "cart_type": "drawer",
+          "color_palette": {
+            "background": "#faf8f9",
+            "color1": "#ffffff",
+            "color10": "#5f7472",
+            "color11": "#0e2b2a",
+            "color12": "#ffffff",
+            "color13": "#14807c",
+            "color14": "#b62c52",
+            "color15": "#0e2b2a",
+            "color16": "#faf8f9",
+            "color17": "#ffffff",
+            "color18": "#0e2b2a",
+            "color2": "#eae3e6",
+            "color3": "#14807c",
+            "color4": "#20afaa",
+            "color5": "#e4f4f3",
+            "color6": "#b62c52",
+            "color7": "#ff6b8a",
+            "color8": "#ffe7ed",
+            "color9": "#faca41",
+            "foreground": "#0e2b2a"
+          },
+          "content_for_index": [],
+          "currency_code_enabled_cart_items": false,
+          "currency_code_enabled_product_cards": false,
+          "currency_code_enabled_product_pages": false,
+          "drawer_background_color": "#ffffff",
+          "drawer_border_color": "#eae3e6",
+          "drawer_text_color": "#0e2b2a",
+          "favicon": "shopify://shop_images/nully-favicon.png",
+          "icon_stroke": "default",
+          "input_border_width": 1,
+          "inputs_border_radius": 12,
+          "logo": "shopify://shop_images/nully-logo-turquoise.png",
+          "logo_height": 30,
+          "logo_height_mobile": 24,
+          "logo_inverse": "shopify://shop_images/nully-logo-white.png",
+          "page_background_color": "{{ settings.color_palette.background }}",
+          "page_text_color": "{{ settings.color_palette.foreground }}",
+          "page_transition_enabled": false,
+          "page_width": "normal",
+          "palette_input_background": "#ffffff",
+          "palette_input_border": "#eae3e6",
+          "palette_input_text": "#0e2b2a",
+          "palette_primary_button_background": "#14807c",
+          "palette_primary_button_border": "#14807c",
+          "palette_primary_button_text": "#ffffff",
+          "palette_secondary_button_background": "rgba(0,0,0,0)",
+          "palette_secondary_button_border": "#0e2b2a",
+          "palette_secondary_button_text": "#0e2b2a",
+          "palette_selected_variant_background": "#14807c",
+          "palette_selected_variant_border": "#14807c",
+          "palette_selected_variant_text": "#ffffff",
+          "palette_variant_background": "#ffffff",
+          "palette_variant_border": "#eae3e6",
+          "palette_variant_text": "#0e2b2a",
+          "popover_background_color": "#ffffff",
+          "popover_border_color": "#eae3e6",
+          "popover_border_radius": 16,
+          "popover_border_width": 1,
+          "popover_text_color": "#0e2b2a",
+          "primary_button_border_width": 0,
+          "product_corner_radius": 18,
+          "quick_add_background": "#ffffff",
+          "quick_add_text": "#0e2b2a",
+          "secondary_button_border_width": 1,
+          "show_add_discount_code": true,
+          "show_cart_note": false,
+          "show_variant_image": false,
+          "text_direction": "rtl",
+          "transition_to_main_product": false,
+          "type_accent_font": "helvetica_n7",
+          "type_body_font": "helvetica_n4",
+          "type_case_h1": "none",
+          "type_case_h2": "none",
+          "type_case_h3": "none",
+          "type_font_h1": "heading",
+          "type_font_h2": "heading",
+          "type_font_h3": "heading",
+          "type_font_h4": "heading",
+          "type_font_h5": "subheading",
+          "type_font_h6": "subheading",
+          "type_heading_font": "helvetica_n7",
+          "type_letter_spacing_h1": "heading-normal",
+          "type_letter_spacing_h2": "heading-normal",
+          "type_letter_spacing_h3": "heading-normal",
+          "type_line_height_h1": "display-tight",
+          "type_line_height_h2": "display-tight",
+          "type_line_height_h3": "display-normal",
+          "type_line_height_h4": "display-tight",
+          "type_line_height_h5": "display-loose",
+          "type_line_height_h6": "display-loose",
+          "type_line_height_paragraph": "body-loose",
+          "type_size_h1": "48",
+          "type_size_h2": "32",
+          "type_size_h3": "24",
+          "type_size_h4": "24",
+          "type_size_h5": "14",
+          "type_size_h6": "12",
+          "type_size_paragraph": "16",
+          "type_subheading_font": "helvetica_n4",
+          "variant_button_border_width": 1,
+          "variant_button_radius": 100,
+          "variant_button_width": "equal-width-buttons",
+          "variant_swatch_height": 34,
+          "variant_swatch_radius": 32,
+          "variant_swatch_width": 34
+        }
+      }
+    },
+    "products": [
+      {
+        "description": "<p>סוכריות מציצה קשיחות בטעמי פירות, המכילות קומפלקס ויטמינים, סיבים תזונתיים ו-ALPHA-GPC®. 30 מנות אישיות במארז, משקל נטו 240 גרם.</p>",
+        "handle": "nully-brainy",
+        "mediaAlts": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "onetimePriceMetafield": null,
+        "options": [
+          {
+            "name": "מזמינים וחוסכים",
+            "values": [
+              "רק אני",
+              "זוגי",
+              "משפחתי"
+            ]
+          }
+        ],
+        "productType": "תוסף תזונה",
+        "sellingPlanGroups": [],
+        "seo": {
+          "description": null,
+          "title": null
+        },
+        "status": "ACTIVE",
+        "tags": [
+          "ברייני",
+          "סוכריות על מקל",
+          "ריכוז"
+        ],
+        "title": "NULLY ברייני — סוכריות על מקל לריכוז",
+        "variants": [
+          {
+            "compareAtPrice": "365.00",
+            "inventoryPolicy": "CONTINUE",
+            "onetimePrice": "{\"amount\":\"290.00\",\"currency_code\":\"ILS\"}",
+            "options": {
+              "מזמינים וחוסכים": "רק אני"
+            },
+            "price": "220.00",
+            "sku": null,
+            "title": "רק אני",
+            "tracked": false
+          },
+          {
+            "compareAtPrice": "730.00",
+            "inventoryPolicy": "CONTINUE",
+            "onetimePrice": "{\"amount\":\"580.00\",\"currency_code\":\"ILS\"}",
+            "options": {
+              "מזמינים וחוסכים": "זוגי"
+            },
+            "price": "400.00",
+            "sku": null,
+            "title": "זוגי",
+            "tracked": false
+          },
+          {
+            "compareAtPrice": "1095.00",
+            "inventoryPolicy": "CONTINUE",
+            "onetimePrice": "{\"amount\":\"870.00\",\"currency_code\":\"ILS\"}",
+            "options": {
+              "מזמינים וחוסכים": "משפחתי"
+            },
+            "price": "540.00",
+            "sku": null,
+            "title": "משפחתי",
+            "tracked": false
+          }
+        ],
+        "vendor": "NULLY"
+      }
+    ],
+    "policies": [
+      {
+        "type": "PRIVACY_POLICY",
+        "title": "Privacy policy",
+        "url": "https://checkout.shopify.com/77564444724/policies/42764632116.html?locale=en",
+        "body": "<div>\n  <p>Last updated: August 11, 2026</p>\n  <p>Nully Supplements operates this store and website, including all related information, content, features, tools, products and services, in order to provide you, the customer, with a curated shopping experience (the  \"Services\"). Nully Supplements is powered by Shopify, which enables us to provide the Services to you. This Privacy Policy describes how we collect, use, and disclose your personal information when you visit, use, or make a purchase or other transaction using the Services or otherwise communicate with us. If there is a conflict between our Terms of Service and this Privacy Policy, this Privacy Policy controls with respect to the collection, processing, and disclosure of your personal information. </p>\n  <p>Please read this Privacy Policy carefully. By using and accessing any of the Services, you acknowledge that you have read this Privacy Policy and understand the collection, use, and disclosure of your information as described in this Privacy Policy.</p>\n  <h2>Personal Information We Collect or Process</h2>\n  <p>When we use the term  \"personal information,\" we are referring to information that identifies or can reasonably be linked to you or another person. Personal information does not include information that is collected anonymously or that has been de-identified, so that it cannot identify or be reasonably linked to you. We may collect or process the following categories of personal information, including inferences drawn from this personal information, depending on how you interact with the Services, where you live, and as permitted or required by applicable law:</p>\n  <ul>\n      <li><strong>Contact details</strong> including your name, address, billing address, shipping address, phone number, and email address.</li>\n      <li><strong>Financial information</strong> including credit card, debit card, and financial account numbers, payment card information, financial account information, transaction details, form of payment, payment confirmation and other payment details.</li>\n      <li><strong>Account information</strong> including your username, password, security questions, preferences and settings.</li>\n      <li><strong>Transaction information</strong> including the items you view, put in your cart, add to your wishlist, or purchase, return, exchange or cancel and your past transactions.</li>\n      <li><strong>Communications with us</strong> including the information you include in communications with us, for example, when sending a customer support inquiry.</li>\n      <li><strong>Device information</strong> including information about your device, browser, or network connection, your IP address, and other unique identifiers.</li>\n      <li><strong>Usage information</strong> including information regarding your interaction with the Services, including how and when you interact with or navigate the Services. </li>\n  </ul>\n  <h2>Personal Information Sources</h2>\n  <p>We may collect personal information from the following sources:</p>\n  <ul>\n      <li><strong>Directly from you</strong> including when you create an account, visit or use the Services, communicate with us, or otherwise provide us with your personal information;</li>\n      <li><strong>Automatically through the Services</strong> including from your device when you use our products or services or visit our websites, and through the use of cookies and similar technologies;</li>\n      <li><strong>From our service providers</strong> including when we engage them to enable certain technology and when they collect or process your personal information on our behalf; </li>\n      <li><strong>From our partners or other third parties.</strong></li>\n  </ul>\n  <h2>How We Use Your Personal Information</h2>\n  <p>Depending on how you interact with us or which of the Services you use, we may use personal information for the following purposes:</p>\n  <ul>\n      <li><strong>Provide, Tailor, and Improve the Services.</strong> We use your personal information to provide you with the Services, including to perform our contract with you, to process your payments, to fulfill your orders, to remember your preferences and items you are interested in, to send notifications to you related to your account, to process purchases, returns, exchanges or other transactions, to create, maintain and otherwise manage your account, to arrange for shipping, to facilitate any returns and exchanges, to enable you to post reviews, and to create a customized shopping experience for you, such as recommending products related to your purchases. This may include using your personal information to better tailor and improve the Services.</li>\n      <li><strong>Marketing and Advertising.</strong> We use your personal information for marketing and promotional purposes, such as to send marketing, advertising and promotional communications by email, text message or postal mail, and to show you online advertisements for products or services on the Services or other websites, including based on items you previously have purchased or added to your cart and other activity on the Services. </li>\n      <li><strong>Security and Fraud Prevention.</strong> We use your personal information to authenticate your account, to provide a secure payment and shopping experience, detect, investigate or take action regarding possible fraudulent, illegal, unsafe, or malicious activity, protect public safety, and to secure our services. If you choose to use the Services and register an account, you are responsible for keeping your account credentials safe. We highly recommend that you do not share your username, password or other access details with anyone else.</li>\n      <li><strong>Communicating with You.</strong> We use your personal information to provide you with customer support, to be responsive to you, to provide effective services to you and to maintain our business relationship with you. </li>\n      <li><strong>Legal Reasons.</strong> We use your personal information to comply with applicable law or respond to valid legal process, including requests from law enforcement or government agencies, to investigate or participate in civil discovery, potential or actual litigation, or other adversarial legal proceedings, and to enforce or investigate potential violations of our terms or policies.</li>\n  </ul>\n  <h2>How We Disclose Personal Information</h2>\n  <p>In certain circumstances, we may disclose your personal information to third parties for legitimate purposes subject to this Privacy Policy. Such circumstances may include:</p>\n  <ul>\n      <li>With Shopify, vendors and other third parties who perform services on our behalf (e.g. IT management, payment processing, data analytics, customer support, cloud storage, fulfillment and shipping).</li>\n      <li>With business and marketing partners to provide marketing services and advertise to you.  For example, we use Shopify to support personalized advertising with third-party services based on your online activity with different merchants and websites.  Our business and marketing partners will use your information in accordance with their own privacy notices. Depending on where you reside, you may have a right to direct us not to share information about you to show you targeted advertisements and marketing based on your online activity with different merchants and websites. .</li>\n      <li>When you direct, request us or otherwise consent to our disclosure of certain information to third parties, such as to ship you products or through your use of social media widgets or login integrations.</li>\n      <li>With our affiliates or otherwise within our corporate group.</li>\n      <li>\n      In connection with a business transaction such as a merger or bankruptcy, to comply with any applicable legal obligations (including to respond to subpoenas, search warrants and similar requests), to enforce any applicable terms of service or policies, and to protect or defend the Services, our rights, and the rights of our users or others.\n      </li>\n  </ul>\n  <h2>Relationship with Shopify</h2>\n  <p>The Services are hosted by Shopify, which collects and processes personal information about your access to and use of the Services in order to provide and improve the Services for you. Information you submit to the Services will be transmitted to and shared with Shopify as well as third parties that may be located in countries other than where you reside, in order to provide and improve the Services for you. In addition, to help protect, grow, and improve our business, we use certain Shopify enhanced features that incorporate data and information obtained from your interactions with our Store, along with other merchants and with Shopify. To provide these enhanced features, Shopify may make use of personal information collected about your interactions with our store, along with other merchants, and with Shopify. In these circumstances, Shopify is responsible for the processing of your personal information, including for responding to your requests to exercise your rights over use of your personal information for these purposes. To learn more about how Shopify uses your personal information and any rights you may have, you can visit the <a href=\"https://www.shopify.com/legal/privacy/app-users\">Shopify Consumer Privacy Policy</a> . Depending on where you live, you may exercise certain rights with respect to your personal information here <a href=\"https://privacy.shopify.com/en\">Shopify Privacy Portal Link</a>. </p>\n  <h2>Third Party Websites and Links</h2>\n  <p>The Services may provide links to websites or other online platforms operated by third parties. If you follow links to sites not affiliated or controlled by us, you should review their privacy and security policies and other terms and conditions. We do not guarantee and are not responsible for the privacy or security of such sites, including the accuracy, completeness, or reliability of information found on these sites. Information you provide on public or semi-public venues, including information you share on third-party social networking platforms may also be viewable by other users of the Services and/or users of those third-party platforms without limitation as to its use by us or by a third party. Our inclusion of such links does not, by itself, imply any endorsement of the content on such platforms or of their owners or operators, except as disclosed on the Services.</p>\n  <h2>Children's Data</h2>\n  <p>The Services are not intended to be used by children, and we do not knowingly collect any personal information about children under the age of majority in your jurisdiction. If you are the parent or guardian of a child who has provided us with their personal information, you may contact us using the contact details set out below to request that it be deleted.As of the Effective Date of this Privacy Policy, we do not have actual knowledge that we  \"share\" or  \"sell\" (as those terms are defined in applicable law) personal information of individuals under 16 years of age.</p>\n  <h2>Security and Retention of Your Information</h2>\n  <p>Please be aware that no security measures are perfect or impenetrable, and we cannot guarantee \"perfect security.\" In addition, any information you send to us may not be secure while in transit. We recommend that you do not use unsecure channels to communicate sensitive or confidential information to us.</p>\n  <p>How long we retain your personal information depends on different factors, such as whether we need the information to maintain your account, to provide you with Services, comply with legal obligations, resolve disputes or enforce other applicable contracts and policies.</p>\n  <h2>Your Rights and Choices</h2>\n  <p>Depending on where you live, you may have some or all of the rights listed below in relation to your personal information. However, these rights are not absolute, may apply only in certain circumstances and, in certain cases, we may decline your request as permitted by law.</p>\n  <ul>\n      <li><strong>Right to Access / Know.</strong> You may have a right to request access to personal information that we hold about you.</li>\n      <li><strong>Right to Delete.</strong> You may have a right to request that we delete personal information we maintain about you.</li>\n      <li><strong>Right to Correct.</strong> You may have a right to request that we correct inaccurate personal information we maintain about you.</li>\n      <li><strong>Right of Portability.</strong> You may have a right to receive a copy of the personal information we hold about you and to request that we transfer it to a third party, in certain circumstances and with certain exceptions.</li>\n      \n      <li>\n      <strong>Managing Communication Preferences.</strong> We may send you promotional emails, and you may opt out of receiving these at any time by using the unsubscribe option displayed in our emails to you. If you opt out, we may still send you non-promotional emails, such as those about your account or orders that you have made.\n      </li>\n  </ul>\n  <div>\n      \n  </div>\n  <p>You may exercise any of these rights where indicated on the Services or by contacting us using the contact details provided below. To learn more about how Shopify uses your personal information and any rights you may have, including rights related to data processed by Shopify, you can visit https://privacy.shopify.com/en. </p>\n  <p>We will not discriminate against you for exercising any of these rights. We may need to verify your identity before we can process your requests, as permitted or required under applicable law. In accordance with applicable laws, you may designate an authorized agent to make requests on your behalf to exercise your rights. Before accepting such a request from an agent, we will require that the agent provide proof you have authorized them to act on your behalf, and we may need you to verify your identity directly with us. We will respond to your request in a timely manner as required under applicable law.</p>\n  <h2>Complaints</h2>\n  <p>If you have complaints about how we process your personal information, please contact us using the contact details provided below. Depending on where you live, you may have the right to appeal our decision by contacting us using the contact details set out below, or lodge your complaint with your local data protection authority.</p>\n  <h2>International Transfers</h2>\n  <p>Please note that we may transfer, store and process your personal information outside the country you live in. </p>\n  <p>If we transfer your personal information out of the European Economic Area or the United Kingdom, we will rely on recognized transfer mechanisms like the European Commission's Standard Contractual Clauses, or any equivalent contracts issued by the relevant competent authority of the UK, as relevant, unless the data transfer is to a country that has been determined to provide an adequate level of protection.</p>\n  <h2>Changes to This Privacy Policy</h2>\n  <p>We may update this Privacy Policy from time to time, including to reflect changes to our practices or for other operational, legal, or regulatory reasons. We will post the revised Privacy Policy on this website, update the  \"Last updated\" date and provide notice as required by applicable law.</p>\n  <h2>Contact</h2>\n  <p>Should you have any questions about our privacy practices or this Privacy Policy, or if you would like to exercise any of the rights available to you, please call  or email us at support@nully-shop.com or contact us at Nully Supplements, Hadarim Street, 3701011 Pardes Hanna-Karkur, Israel. </p>\n</div>"
+      }
+    ],
+    "menus": [
+      {
+        "handle": "customer-account-main-menu",
+        "items": [
+          {
+            "items": [],
+            "title": "Orders",
+            "type": "CUSTOMER_ACCOUNT_PAGE",
+            "url": "https://shopify.com/77564444724/account/orders"
+          },
+          {
+            "items": [],
+            "title": "Profile",
+            "type": "CUSTOMER_ACCOUNT_PAGE",
+            "url": "https://shopify.com/77564444724/account/profile"
+          }
+        ],
+        "title": "Customer account main menu"
+      },
+      {
+        "handle": "footer",
+        "items": [
+          {
+            "items": [],
+            "title": "Search",
+            "type": "SEARCH",
+            "url": "/search"
+          }
+        ],
+        "title": "Footer menu"
+      },
+      {
+        "handle": "main-menu",
+        "items": [
+          {
+            "items": [],
+            "title": "Home",
+            "type": "FRONTPAGE",
+            "url": "/"
+          },
+          {
+            "items": [],
+            "title": "Catalog",
+            "type": "CATALOG",
+            "url": "/collections/all"
+          },
+          {
+            "items": [],
+            "title": "Contact",
+            "type": "PAGE",
+            "url": "/pages/contact"
+          }
+        ],
+        "title": "Main menu"
+      }
+    ],
+    "files": {
+      "AGENTS.md": {
+        "size": "21936",
+        "checksum": "5fae47f2a681b46c0f76f93a92a4e2e2",
+        "updatedAt": "2026-10-04T09:45:15Z"
+      },
+      "assets/accordion-custom.js": {
+        "size": "3483",
+        "checksum": "241e881e29c64e3ad23423f16b23d77a",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/anchored-popover.js": {
+        "size": "8667",
+        "checksum": "39a932d1f4afaa3a2b0cb29bd49c0e95",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/announcement-bar.js": {
+        "size": "2809",
+        "checksum": "36e29e5d660e823c068596f03a9c23c7",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/assistant-400-hebrew.woff2": {
+        "size": "7312",
+        "checksum": "77230f9bf712025df71f01a69616c063",
+        "updatedAt": "2026-09-03T11:21:25Z"
+      },
+      "assets/assistant-400-latin.woff2": {
+        "size": "22096",
+        "checksum": "90f4c7ac2d8098549e4dda98ba0b2cb2",
+        "updatedAt": "2026-09-03T11:21:25Z"
+      },
+      "assets/assistant-500-hebrew.woff2": {
+        "size": "7312",
+        "checksum": "77230f9bf712025df71f01a69616c063",
+        "updatedAt": "2026-09-03T11:21:26Z"
+      },
+      "assets/assistant-500-latin.woff2": {
+        "size": "22096",
+        "checksum": "90f4c7ac2d8098549e4dda98ba0b2cb2",
+        "updatedAt": "2026-09-03T11:21:26Z"
+      },
+      "assets/assistant-600-hebrew.woff2": {
+        "size": "7312",
+        "checksum": "77230f9bf712025df71f01a69616c063",
+        "updatedAt": "2026-09-03T11:21:26Z"
+      },
+      "assets/assistant-600-latin.woff2": {
+        "size": "22096",
+        "checksum": "90f4c7ac2d8098549e4dda98ba0b2cb2",
+        "updatedAt": "2026-09-03T11:21:26Z"
+      },
+      "assets/assistant-700-hebrew.woff2": {
+        "size": "7312",
+        "checksum": "77230f9bf712025df71f01a69616c063",
+        "updatedAt": "2026-09-03T11:21:26Z"
+      },
+      "assets/assistant-700-latin.woff2": {
+        "size": "22096",
+        "checksum": "90f4c7ac2d8098549e4dda98ba0b2cb2",
+        "updatedAt": "2026-09-03T11:21:26Z"
+      },
+      "assets/auto-close-details.js": {
+        "size": "593",
+        "checksum": "b43336b12161ce9b1742f7907323e160",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/base.css": {
+        "size": "45622",
+        "checksum": "388d604b136cb92218a169f6cc7aa6fb",
+        "updatedAt": "2026-09-02T15:28:50Z"
+      },
+      "assets/blog-posts-list.js": {
+        "size": "289",
+        "checksum": "564ae49090a7cb44a94999c68ca28ff0",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/cart-discount.js": {
+        "size": "9144",
+        "checksum": "00c73231598116a90907c3af876c2b7b",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/cart-drawer.js": {
+        "size": "5251",
+        "checksum": "aea6cb964c3bcc38c4f297fed92679a0",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/cart-icon.js": {
+        "size": "4167",
+        "checksum": "1939b0aff30fb84bb2b406d3fe30f1f6",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/cart-note.js": {
+        "size": "2190",
+        "checksum": "83efac45cc9c26d3092899a3f004d40d",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/collection-links.js": {
+        "size": "6079",
+        "checksum": "0b7bedf9f886e9f9b43de183d76da7d0",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/comparison-slider.js": {
+        "size": "4487",
+        "checksum": "cbad3e1ec1ead981058cd0972dd67d56",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/component-cart-items.js": {
+        "size": "16405",
+        "checksum": "cb86f18ab0dfa74f6437144c2e851104",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/component-cart-quantity-selector.js": {
+        "size": "1475",
+        "checksum": "c7d753e6ac16cf3129e48ac8304945dc",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/component-quantity-selector.js": {
+        "size": "8962",
+        "checksum": "d42713b24ff2b13bc7c80b138a0bae6b",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/component.js": {
+        "size": "11406",
+        "checksum": "834feeca91801d25741cf3615ce08f68",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/copy-to-clipboard.js": {
+        "size": "742",
+        "checksum": "49f0850481d5bc7a1bc798d49825ece9",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/dialog.js": {
+        "size": "4410",
+        "checksum": "b435152b36e4d3b5b6ad860a3ce5b430",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/disclosures-summary-fit.js": {
+        "size": "3978",
+        "checksum": "3a76c2da3062069c5b2a8f19ec9904af",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/drag-zoom-wrapper.js": {
+        "size": "16156",
+        "checksum": "a66f2f57d1067174bca2b5366794f4ec",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/Draggable.min.js": {
+        "size": "35497",
+        "checksum": "4388c4922992f66a21f82c9bb9c815a3",
+        "updatedAt": "2026-09-14T01:16:28Z"
+      },
+      "assets/events.js": {
+        "size": "2981",
+        "checksum": "e2026da246ee82e68e2c7a30f8968e4e",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/facets.js": {
+        "size": "31877",
+        "checksum": "686ddf7d71a685d256bcd69365872336",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/Flip.min.js": {
+        "size": "25013",
+        "checksum": "450e95f8d65a63d37790531a95204f46",
+        "updatedAt": "2026-09-14T01:16:28Z"
+      },
+      "assets/floating-panel.js": {
+        "size": "1839",
+        "checksum": "87c74c2ebc952af8ea1f7faa1464452b",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/fly-to-cart.js": {
+        "size": "2566",
+        "checksum": "3bf08b479ba8020740c5e67bd1979d2f",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/focus.js": {
+        "size": "3338",
+        "checksum": "93cef08f7646c03390b98ca3fc207854",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/fredoka-400-hebrew.woff2": {
+        "size": "8852",
+        "checksum": "e3b7076aee49a198b28246237611749c",
+        "updatedAt": "2026-09-03T11:21:25Z"
+      },
+      "assets/fredoka-400-latin.woff2": {
+        "size": "29732",
+        "checksum": "9591efe1be62434d2d107e2b19702029",
+        "updatedAt": "2026-09-03T11:21:25Z"
+      },
+      "assets/fredoka-500-hebrew.woff2": {
+        "size": "8852",
+        "checksum": "e3b7076aee49a198b28246237611749c",
+        "updatedAt": "2026-09-03T11:21:25Z"
+      },
+      "assets/fredoka-500-latin.woff2": {
+        "size": "29732",
+        "checksum": "9591efe1be62434d2d107e2b19702029",
+        "updatedAt": "2026-09-03T11:21:25Z"
+      },
+      "assets/fredoka-600-hebrew.woff2": {
+        "size": "8852",
+        "checksum": "e3b7076aee49a198b28246237611749c",
+        "updatedAt": "2026-09-03T11:21:25Z"
+      },
+      "assets/fredoka-600-latin.woff2": {
+        "size": "29732",
+        "checksum": "9591efe1be62434d2d107e2b19702029",
+        "updatedAt": "2026-09-03T11:21:25Z"
+      },
+      "assets/fredoka-700-hebrew.woff2": {
+        "size": "8852",
+        "checksum": "e3b7076aee49a198b28246237611749c",
+        "updatedAt": "2026-09-03T11:21:25Z"
+      },
+      "assets/fredoka-700-latin.woff2": {
+        "size": "29732",
+        "checksum": "9591efe1be62434d2d107e2b19702029",
+        "updatedAt": "2026-09-03T11:21:25Z"
+      },
+      "assets/gift-card-recipient-form.js": {
+        "size": "13980",
+        "checksum": "c58a5f84d981238595321795a34b3405",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/global.d.ts": {
+        "size": "3194",
+        "checksum": "7a05c29336979e371f16e37eaced7f53",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/gsap.min.js": {
+        "size": "72435",
+        "checksum": "5e6e6cba1d2eabb40740bdc12f736a3c",
+        "updatedAt": "2026-09-14T01:16:28Z"
+      },
+      "assets/header-actions.js": {
+        "size": "2535",
+        "checksum": "a793bcff12ac62cd390d03c26c4f2042",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/header-drawer.js": {
+        "size": "5469",
+        "checksum": "867d4e68d35fa5aed6e0f8ad22dd65c8",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/header-menu.js": {
+        "size": "19737",
+        "checksum": "830ad1b4bd435dbad3bf7c2ae88e55ce",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/header.js": {
+        "size": "10482",
+        "checksum": "c307d4310b45506c962a3a8a0acbfc13",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-account.svg": {
+        "size": "430",
+        "checksum": "1e855a77e052c31df6a5d22194edf694",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-add-to-cart.svg": {
+        "size": "566",
+        "checksum": "0e09f334225e6a8aa3a5e96cea7b993c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-arrow.svg": {
+        "size": "283",
+        "checksum": "831f4e75081de201a6758bd34d45fd74",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-available.svg": {
+        "size": "618",
+        "checksum": "c7158f81354c551e37c5f4f9f17df493",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-caret.svg": {
+        "size": "265",
+        "checksum": "5bded8e71340ce25b38d10187a977ff7",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-cart.svg": {
+        "size": "503",
+        "checksum": "e1f5aa72b798185e87f3be07a94a3770",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-checkmark-burst.svg": {
+        "size": "1730",
+        "checksum": "9eb9d263753155260498c08644a9d433",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-checkmark.svg": {
+        "size": "459",
+        "checksum": "1646af15d45cd9e5859b01d80165b143",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-chevron-left.svg": {
+        "size": "281",
+        "checksum": "c472e27024b5c4d8f8bce49a7aac8209",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-chevron-right.svg": {
+        "size": "281",
+        "checksum": "f1b9ea6a660c438e62a4cef28d005e5f",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-close-menu.svg": {
+        "size": "290",
+        "checksum": "2e8c791303ff720186fabad601c5490d",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-close.svg": {
+        "size": "667",
+        "checksum": "1b2adb1c84dfde67b215a566e2274cac",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-delete.svg": {
+        "size": "773",
+        "checksum": "dde7b45b21c4c2d2819c4ff3c1cbac7d",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-discount.svg": {
+        "size": "592",
+        "checksum": "ea990ccb99e936cdde646f6562de08eb",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-double-chevron.svg": {
+        "size": "215",
+        "checksum": "1917a728286096d88afbb26b279c712a",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-error.svg": {
+        "size": "648",
+        "checksum": "c369491713254f68872e43e7889de942",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-external.svg": {
+        "size": "430",
+        "checksum": "19e2558780266d6637429939c302a4ae",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-filter.svg": {
+        "size": "226",
+        "checksum": "bea699b5cbc47b72d1537ace7cfae340",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-filters-close.svg": {
+        "size": "399",
+        "checksum": "080e74e8f59a8e5bd14d39863fb75492",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-grid-default.svg": {
+        "size": "6937",
+        "checksum": "0eb7421c035185e6fbf333e245091a57",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-grid-dense.svg": {
+        "size": "3146",
+        "checksum": "203697fbe7b0c0b48ab82db1bf20bb84",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-info.svg": {
+        "size": "389",
+        "checksum": "4c82e1dca7c2992fabe83f2b04e7e17a",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-inventory.svg": {
+        "size": "251",
+        "checksum": "7ed9c605d7cfe070e8782c71bdc96ae2",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-menu.svg": {
+        "size": "341",
+        "checksum": "d331a711063220dbe768034c39a0f6a3",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-minus.svg": {
+        "size": "235",
+        "checksum": "a3f8d7735085ca1a83f087e76121717b",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-one-col-mobile.svg": {
+        "size": "243",
+        "checksum": "9cc1c4909945839b8bed088bc67d8e41",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-orders.svg": {
+        "size": "670",
+        "checksum": "5f86dad381b83b9f8afbbcccdb065774",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-pause.svg": {
+        "size": "345",
+        "checksum": "fd8cf8622cf673bd1303a8bd1976c589",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-play.svg": {
+        "size": "386",
+        "checksum": "2d5bc5f773c5dddad854c04f8156c98a",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-plus.svg": {
+        "size": "386",
+        "checksum": "b3bae609a9c0ff912f741df742b15ee5",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-reset.svg": {
+        "size": "343",
+        "checksum": "6cd93f497a974fb225c2456a285a0c55",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-search.svg": {
+        "size": "333",
+        "checksum": "8ab51bfda98c32759048d3160a266ec7",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-shopify.svg": {
+        "size": "2675",
+        "checksum": "5a15cd438f2fd1b20b28cd68f830fc65",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-unavailable.svg": {
+        "size": "825",
+        "checksum": "03eba9e012e44e212c7703d07bbda6a3",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/icon-warning.svg": {
+        "size": "539",
+        "checksum": "ef29d51730e2cdf32c1e3e0d02437084",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/jsconfig.json": {
+        "size": "345",
+        "checksum": "450c4f13d26ea64c467b526969fe0a90",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/jumbo-text.js": {
+        "size": "6996",
+        "checksum": "ee78e17089874e28bb475faba9ece982",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/layered-slideshow.js": {
+        "size": "18566",
+        "checksum": "cb5bea68613383deba9ed03dbb8d9e27",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/local-pickup.js": {
+        "size": "4397",
+        "checksum": "07c4dac1d4fe9a3657c419c2c2c950f8",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/localization.js": {
+        "size": "17545",
+        "checksum": "5ea7b8d3b7ae06a719026d52d2cf0c61",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/marquee.js": {
+        "size": "10313",
+        "checksum": "36f9f6d37f83f4f255fbb1c8c44d2ba3",
+        "updatedAt": "2026-09-13T12:16:38Z"
+      },
+      "assets/media-gallery.js": {
+        "size": "2972",
+        "checksum": "3e432f478f1776a606fc57fb2197017e",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/media.js": {
+        "size": "6766",
+        "checksum": "a290a3c21f2e7a22ff3628653e120ea8",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/money-formatting.js": {
+        "size": "7249",
+        "checksum": "a9c1d3504564a192ed1200ba196728c4",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/morph.js": {
+        "size": "25159",
+        "checksum": "8fb08fab55059553f56330444dfb2733",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/MotionPathPlugin.min.js": {
+        "size": "21712",
+        "checksum": "8d23e36fa1b0eaa5f01d840345a9a3ee",
+        "updatedAt": "2026-09-14T01:16:28Z"
+      },
+      "assets/nully-absorb.js": {
+        "size": "4856",
+        "checksum": "f828f25c48f9f750974911e0f1f54cc3",
+        "updatedAt": "2026-09-13T12:41:57Z"
+      },
+      "assets/nully-brand-story.js": {
+        "size": "3490",
+        "checksum": "b263bd2cd5b7a930c69e9e403e524d9a",
+        "updatedAt": "2026-09-14T11:37:22Z"
+      },
+      "assets/nully-bubbles.js": {
+        "size": "3339",
+        "checksum": "5d8621376ae1d79f00d832c244be0d0b",
+        "updatedAt": "2026-09-14T15:35:41Z"
+      },
+      "assets/nully-gsap.js": {
+        "size": "3583",
+        "checksum": "f2e6359616209a510be6420113f72166",
+        "updatedAt": "2026-09-09T12:44:04Z"
+      },
+      "assets/nully-header.js": {
+        "size": "3125",
+        "checksum": "43c0fb84a0521de2b27e37b589b16bef",
+        "updatedAt": "2026-09-14T14:35:35Z"
+      },
+      "assets/nully-hero-enhance.js": {
+        "size": "5069",
+        "checksum": "7b5e20b21bad207458556c14c111be53",
+        "updatedAt": "2026-09-16T12:14:32Z"
+      },
+      "assets/nully-offer-cards.js": {
+        "size": "4095",
+        "checksum": "760333602520c4bbc1596dbf4f54dc0a",
+        "updatedAt": "2026-09-07T06:00:30Z"
+      },
+      "assets/nully-reveal.js": {
+        "size": "1404",
+        "checksum": "9cffb548a173cdb60f0311ffc7978312",
+        "updatedAt": "2026-09-03T10:49:56Z"
+      },
+      "assets/nully-strip.js": {
+        "size": "1340",
+        "checksum": "c5fdb9dc0b3bafc292caa3b29738d6c8",
+        "updatedAt": "2026-09-09T07:55:54Z"
+      },
+      "assets/nully-trust-strip.js": {
+        "size": "1087",
+        "checksum": "68c151b3ab40b25d865cd2869adacb43",
+        "updatedAt": "2026-09-09T13:02:04Z"
+      },
+      "assets/nully-unwrap-scroll.js": {
+        "size": "6535",
+        "checksum": "ea5cb831b6e662f833d6e5a9ba397c0d",
+        "updatedAt": "2026-09-16T09:45:20Z"
+      },
+      "assets/overflow-list.css": {
+        "size": "1288",
+        "checksum": "1cf842b1ac615414465b03cef1b4ab61",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/overflow-list.js": {
+        "size": "11495",
+        "checksum": "54f56aefcf501e7e103ad2414a0458bc",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/package.json": {
+        "size": "23",
+        "checksum": "d0707362e90f00edd12435e9d3b9d71c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/page-view-event.js": {
+        "size": "562",
+        "checksum": "5b2509093afc663c28929110b728a78c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/paginated-list-aspect-ratio.js": {
+        "size": "5419",
+        "checksum": "da60f1118ea83c20921660241f1e2a67",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/paginated-list.js": {
+        "size": "10825",
+        "checksum": "1be3498d4d84a917732a9126c39921a2",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/performance.js": {
+        "size": "1588",
+        "checksum": "713cb2de96983008f8a722cef196a656",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/popover-polyfill.js": {
+        "size": "25893",
+        "checksum": "260275a9bc513a0b076d6644adff5e51",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/predictive-search.js": {
+        "size": "14341",
+        "checksum": "7762b5f22f78bd819b5176841e548371",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/price-per-item.js": {
+        "size": "4595",
+        "checksum": "14706b4d5229dc6f479c4e16a07a69cd",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/product-card.js": {
+        "size": "22664",
+        "checksum": "491507d09fb6cb7431c4eb25cd9626f6",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/product-custom-property.js": {
+        "size": "1043",
+        "checksum": "03ac05d7b3f0483956dabaf9569c3f9f",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/product-form.js": {
+        "size": "40384",
+        "checksum": "f68671e1d3000bdbc4bb960f52e84a14",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/product-hotspot.js": {
+        "size": "10540",
+        "checksum": "6f8aa1b7fffbbb43563e406a80e594fb",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/product-inventory.js": {
+        "size": "1734",
+        "checksum": "523618fbff60bcd61af7e60841522632",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/product-price.js": {
+        "size": "3541",
+        "checksum": "a321eacdcd059957c851ab7735cf0f24",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/product-recommendations.js": {
+        "size": "4881",
+        "checksum": "76700c518b031c12eed747379efdcfdd",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/product-sku.js": {
+        "size": "2531",
+        "checksum": "ca1a72c536af41e484b3608e1c2d489f",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/qr-code-generator.js": {
+        "size": "45556",
+        "checksum": "7f2a1555f006ebdc3a240d5a8d3eb6a3",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/qr-code-image.js": {
+        "size": "1032",
+        "checksum": "c85630daefa5fdd4f76cb0fabb2834b8",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/quick-add.js": {
+        "size": "13647",
+        "checksum": "cdf460690955e8da4ffc72583965b0a8",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/quick-order-list.js": {
+        "size": "20940",
+        "checksum": "fc46c898a795b3b47e3442d6a2b43d2c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/recently-viewed-products.js": {
+        "size": "1154",
+        "checksum": "c9b3d78dee56c21afcf4e71a38d6fce4",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/results-list.js": {
+        "size": "1968",
+        "checksum": "e8ec8ab0b3dbf711699a47f871a7af6c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/rte-formatter.js": {
+        "size": "740",
+        "checksum": "311f4bdf60b5f14da1576286f901b9e8",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/rubik-400-hebrew.woff2": {
+        "size": "9348",
+        "checksum": "bda074a677ba3677e48b3403660e2d9c",
+        "updatedAt": "2026-09-02T15:35:26Z"
+      },
+      "assets/rubik-400-latin.woff2": {
+        "size": "35348",
+        "checksum": "b65daadded7406d746e61b25ebbe0ca9",
+        "updatedAt": "2026-09-02T15:35:26Z"
+      },
+      "assets/rubik-500-hebrew.woff2": {
+        "size": "9348",
+        "checksum": "bda074a677ba3677e48b3403660e2d9c",
+        "updatedAt": "2026-09-02T15:35:26Z"
+      },
+      "assets/rubik-500-latin.woff2": {
+        "size": "35348",
+        "checksum": "b65daadded7406d746e61b25ebbe0ca9",
+        "updatedAt": "2026-09-02T15:35:26Z"
+      },
+      "assets/rubik-700-hebrew.woff2": {
+        "size": "9348",
+        "checksum": "bda074a677ba3677e48b3403660e2d9c",
+        "updatedAt": "2026-09-02T15:35:26Z"
+      },
+      "assets/rubik-700-latin.woff2": {
+        "size": "35348",
+        "checksum": "b65daadded7406d746e61b25ebbe0ca9",
+        "updatedAt": "2026-09-02T15:35:26Z"
+      },
+      "assets/scroll-container.js": {
+        "size": "5384",
+        "checksum": "fa951fb4ce116d3de82ed40ea26c213c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/scrolling.js": {
+        "size": "12864",
+        "checksum": "8df76251fd67496cbbc7ead987888066",
+        "updatedAt": "2026-09-02T15:28:55Z"
+      },
+      "assets/ScrollTrigger.min.js": {
+        "size": "44157",
+        "checksum": "00a3e5c78a5bfc5e47677f5c8cdb9030",
+        "updatedAt": "2026-09-14T01:16:28Z"
+      },
+      "assets/search-page-input.js": {
+        "size": "1300",
+        "checksum": "c3230e0c9e844cdb49c2478b41d870c3",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/section-hydration.js": {
+        "size": "1289",
+        "checksum": "84579a04e279c719e83ee93e3843ffb3",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/section-renderer.js": {
+        "size": "9090",
+        "checksum": "70db5bb8f8b3abf395dd995d205c5fbb",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/show-more.js": {
+        "size": "3964",
+        "checksum": "24aa393a67d6d6f950b12dd92a857556",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/slideshow.js": {
+        "size": "28956",
+        "checksum": "d6dd6db494e503680a42e5d650483652",
+        "updatedAt": "2026-09-02T15:28:55Z"
+      },
+      "assets/SplitText.min.js": {
+        "size": "7247",
+        "checksum": "253d65596b33a46683005584f91daf39",
+        "updatedAt": "2026-09-14T01:16:28Z"
+      },
+      "assets/standard-actions-override.js": {
+        "size": "1070",
+        "checksum": "c522fac7904268366e0ae5a6eb2edf57",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/standard-actions.d.ts": {
+        "size": "4312",
+        "checksum": "90672b378531a71714ecc9174224c6dd",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/standard-events.d.ts": {
+        "size": "29804",
+        "checksum": "8f96fbf3ba80773a84f5efb93f7b2633",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/sticky-add-to-cart.js": {
+        "size": "14274",
+        "checksum": "2a3db0e52eb2187ec266e6329255729c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/template-giftcard.css": {
+        "size": "3145",
+        "checksum": "2c36c0e8bd3cdc083c6e03ebe56424b7",
+        "updatedAt": "2026-09-02T15:28:55Z"
+      },
+      "assets/theme-drawer.js": {
+        "size": "13373",
+        "checksum": "4f6cd87cd58c358d6a8dcc66dfd696fe",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/theme-editor.js": {
+        "size": "13390",
+        "checksum": "7f77411f90810dc0b140bf1a5c50b431",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/utilities.js": {
+        "size": "29387",
+        "checksum": "379400f2d03b76859a4a24f52540440a",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/variant-picker.js": {
+        "size": "20766",
+        "checksum": "3afe3d34b4fbaf687c7d81fb9ba45bb1",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/variant-resolution.js": {
+        "size": "2379",
+        "checksum": "c9bf75826bde2ea4a97cecdce469f50a",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/video-background.js": {
+        "size": "849",
+        "checksum": "f307b002b76a76fe544bae5eb479f07b",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/view-event-elements.d.ts": {
+        "size": "893",
+        "checksum": "4ef622955559a78a7a23ae7f57415d87",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/view-event-elements.js": {
+        "size": "518",
+        "checksum": "8ff82cbd34993d786143f41c53b51005",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/view-transitions.js": {
+        "size": "6718",
+        "checksum": "824b276db98a2d100f8d1cf7517c839d",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/volume-pricing-info.js": {
+        "size": "2301",
+        "checksum": "14eced0a9298d8ad7616eeab938fb988",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/volume-pricing.js": {
+        "size": "508",
+        "checksum": "d7a310b5d1380edc88020562eeb0422e",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "assets/zoom-dialog.js": {
+        "size": "9371",
+        "checksum": "b5a8867b3e888dd548323ff5857d03ae",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/accelerated-checkout.liquid": {
+        "size": "1243",
+        "checksum": "5cf129008c5d52b7d41356cb55b3e6bb",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/accordion.liquid": {
+        "size": "7188",
+        "checksum": "6f214e55135f307e75ca79928fb16cfe",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/add-to-cart.liquid": {
+        "size": "2651",
+        "checksum": "53a64fd12a773a61b1d5da92a10249a4",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/button.liquid": {
+        "size": "3760",
+        "checksum": "0b20126e4fa7e0d53793056c5abbc91c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/buy-buttons.liquid": {
+        "size": "22156",
+        "checksum": "f941513a8302fbd4bfcff28c980c4d18",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/collection-card.liquid": {
+        "size": "4483",
+        "checksum": "64dd3e7fd6e7fed43847ab86b1994402",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/collection-title.liquid": {
+        "size": "8501",
+        "checksum": "d2feba1f80b1d37b04f7ee9b633f07aa",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/comparison-slider.liquid": {
+        "size": "21222",
+        "checksum": "51fafe5917dbc62c76b46a0aa1d63e03",
+        "updatedAt": "2026-09-02T15:28:56Z"
+      },
+      "blocks/contact-form-submit-button.liquid": {
+        "size": "3514",
+        "checksum": "83c9d43ccbc38ccc680315a8e9a40cd5",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/contact-form.liquid": {
+        "size": "9201",
+        "checksum": "18bbe608ef37e81b582a2c43607ec2c6",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/custom-liquid.liquid": {
+        "size": "412",
+        "checksum": "ff3549a1c3293462c357c788b1d9fb6a",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/disclosures.liquid": {
+        "size": "17442",
+        "checksum": "401b1fbf731eea8fa99ed884ef6cc53f",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/email-signup.liquid": {
+        "size": "21533",
+        "checksum": "9487cfee2c1a75cf8a7747825244c698",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/featured-collection.liquid": {
+        "size": "524",
+        "checksum": "9f74a2a84a9ea3105b7cec356a69b978",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/filters.liquid": {
+        "size": "43257",
+        "checksum": "0565089833fd55267fd9e1e0b7667332",
+        "updatedAt": "2026-09-02T15:28:56Z"
+      },
+      "blocks/follow-on-shop.liquid": {
+        "size": "1420",
+        "checksum": "4b98f8847161b49e85d8fd1fb6af0492",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/footer-copyright.liquid": {
+        "size": "2334",
+        "checksum": "6a5808cc8d090504b5b0a7fd49ff72b1",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/footer-policy-list.liquid": {
+        "size": "5371",
+        "checksum": "78af66be72c324400bcfe51cd6c26149",
+        "updatedAt": "2026-09-02T15:28:56Z"
+      },
+      "blocks/group.liquid": {
+        "size": "11649",
+        "checksum": "d6091edf9ef4cae255b1fba158d51686",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/icon.liquid": {
+        "size": "7430",
+        "checksum": "36c242987b848b2337cc90f55d43cdc2",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/image.liquid": {
+        "size": "7597",
+        "checksum": "fa72014a14447f9f3cc2484f85137d34",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/jumbo-text.liquid": {
+        "size": "3009",
+        "checksum": "e0b691db85dc7324dce0516859fa0b53",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/logo.liquid": {
+        "size": "7365",
+        "checksum": "5f431c05ac0de1fa45cf4fcd0c73010f",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/menu.liquid": {
+        "size": "8753",
+        "checksum": "611585fbed0a372d8f382517ea1e363d",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/nully-absorption-chart.liquid": {
+        "size": "21203",
+        "checksum": "9822fd67d04ac47944dfcde93a9546ed",
+        "updatedAt": "2026-09-13T12:56:48Z"
+      },
+      "blocks/nully-comparison-table.liquid": {
+        "size": "15305",
+        "checksum": "8bb69edfb3034e9bb3cdb3bc9f85bd7a",
+        "updatedAt": "2026-09-16T11:38:39Z"
+      },
+      "blocks/nully-loop-video.liquid": {
+        "size": "5763",
+        "checksum": "e0fb27ac2851dc050b294eb673a66696",
+        "updatedAt": "2026-10-04T08:55:56Z"
+      },
+      "blocks/nully-offer-cards.liquid": {
+        "size": "12992",
+        "checksum": "ce3c2bbae76fd955256006fbba5d72ba",
+        "updatedAt": "2026-09-07T06:39:39Z"
+      },
+      "blocks/nully-scenario-card.liquid": {
+        "size": "4834",
+        "checksum": "ad5838574e2ccfdd11bfe19bf9b2262f",
+        "updatedAt": "2026-09-07T06:56:32Z"
+      },
+      "blocks/nully-stat-bubbles.liquid": {
+        "size": "10773",
+        "checksum": "f1bfa8ce04ad69e24cca35370be6709d",
+        "updatedAt": "2026-09-16T10:40:20Z"
+      },
+      "blocks/nully-trust-item.liquid": {
+        "size": "3060",
+        "checksum": "16372bf8b535220bd965e2a92be0f15b",
+        "updatedAt": "2026-09-09T13:02:04Z"
+      },
+      "blocks/page-content.liquid": {
+        "size": "674",
+        "checksum": "2891c6251675e12da2355e317360060c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/page.liquid": {
+        "size": "3290",
+        "checksum": "f109d6a6886187ce5f7967fc0c48dae6",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/payment-icons.liquid": {
+        "size": "2834",
+        "checksum": "2db914a318b2053981bab436296c4073",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/popup-link.liquid": {
+        "size": "5783",
+        "checksum": "982fd8e45f656d48646a29883042fbb9",
+        "updatedAt": "2026-09-02T15:28:57Z"
+      },
+      "blocks/price.liquid": {
+        "size": "9829",
+        "checksum": "54c90df3fd6ada0289b51f0b18f4eb98",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/product-card.liquid": {
+        "size": "7107",
+        "checksum": "7b76a8dc41f863fb01f68d1552644ee2",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/product-custom-property.liquid": {
+        "size": "9822",
+        "checksum": "79e83d9a9413123854a9f3a21976621e",
+        "updatedAt": "2026-09-02T15:28:57Z"
+      },
+      "blocks/product-description.liquid": {
+        "size": "8345",
+        "checksum": "30c8ec9b147be0cc1d10d2d6dd3ecc3a",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/product-inventory.liquid": {
+        "size": "4956",
+        "checksum": "696781184c1602ebd95e3734037fc942",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/product-recommendations.liquid": {
+        "size": "14784",
+        "checksum": "e18908a63084db699b3a9d21c2aefe5c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/product-title.liquid": {
+        "size": "8585",
+        "checksum": "cd223cddea37961335ca8b614a8f406e",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/quantity.liquid": {
+        "size": "2630",
+        "checksum": "728bfd581d02959f964c13a407835787",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/review.liquid": {
+        "size": "8223",
+        "checksum": "46fbe46c1898eb20ad2e94696355a023",
+        "updatedAt": "2026-09-02T15:28:57Z"
+      },
+      "blocks/sku.liquid": {
+        "size": "7877",
+        "checksum": "291e1ac4a38e0c14a80b55e28746c94b",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/social-links.liquid": {
+        "size": "6665",
+        "checksum": "86742abe84d26799261aed39d9e0ba90",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/spacer.liquid": {
+        "size": "4580",
+        "checksum": "4ae59ec43e21e73c769b0b366417a8ba",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/swatches.liquid": {
+        "size": "4380",
+        "checksum": "1b00f4e2521bf4c0ec4e4f7637ff3426",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/text.liquid": {
+        "size": "8273",
+        "checksum": "8de85933da7e65b4e328086e95f153de",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/variant-picker.liquid": {
+        "size": "5531",
+        "checksum": "7e7c12a38d3399025cae1d2e27e08191",
+        "updatedAt": "2026-09-16T12:23:50Z"
+      },
+      "blocks/video.liquid": {
+        "size": "6285",
+        "checksum": "2a59a7bf4607144d3e6f95f3e2e79f58",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_accordion-row.liquid": {
+        "size": "7883",
+        "checksum": "4a8f09cbd0dc4bdd3be155c863dd91d6",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_announcement.liquid": {
+        "size": "5910",
+        "checksum": "8b60b517f7a7a045a07adac365d188c8",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_blog-post-card.liquid": {
+        "size": "3323",
+        "checksum": "f55fafa82254b4dbe3032e230f9521ec",
+        "updatedAt": "2026-09-03T11:24:34Z"
+      },
+      "blocks/_blog-post-content.liquid": {
+        "size": "845",
+        "checksum": "d9ea1595c9be59ef41c9828afc85ed87",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_blog-post-description.liquid": {
+        "size": "8477",
+        "checksum": "89dc3b465391f3ee3a5b6b79bb1f15c2",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_blog-post-featured-image.liquid": {
+        "size": "7494",
+        "checksum": "f68212f2b1a9a110d56a54083f773103",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_blog-post-image.liquid": {
+        "size": "3346",
+        "checksum": "f0947158b8511bb823aaf86a009c9544",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_blog-post-info-text.liquid": {
+        "size": "4935",
+        "checksum": "6a10cb1bdaeff7c8b7f08241b2c867fd",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_blog-post-title.liquid": {
+        "size": "8717",
+        "checksum": "50ea04b4d43f9adf990cf9d5fa31902f",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_card.liquid": {
+        "size": "13950",
+        "checksum": "d19e468513ec6b66df3616637df4a8b1",
+        "updatedAt": "2026-09-02T15:28:58Z"
+      },
+      "blocks/_carousel-content.liquid": {
+        "size": "6180",
+        "checksum": "5a86d1f196ee545c3d6a2dea90dc2675",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_cart-products.liquid": {
+        "size": "3730",
+        "checksum": "b2391450c7acd9076a9dc1db6244c3f7",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_cart-summary.liquid": {
+        "size": "6525",
+        "checksum": "d935a70e4dfa4ccc8fdd6401c2c47b06",
+        "updatedAt": "2026-09-02T15:28:58Z"
+      },
+      "blocks/_cart-title.liquid": {
+        "size": "4430",
+        "checksum": "37863233c3ae914951eaa4793a1b29e2",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_collection-card-image.liquid": {
+        "size": "4003",
+        "checksum": "7191a02692c1f6ab6680a65c795ca1ad",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_collection-card.liquid": {
+        "size": "3968",
+        "checksum": "9799156808f92811d96659c6dc977d2c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_collection-image.liquid": {
+        "size": "4031",
+        "checksum": "c387423c09bd5a316d79db972e40b143",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_collection-info.liquid": {
+        "size": "3983",
+        "checksum": "e1e34784756e9bbda3115a1a9ac4452a",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_collection-link.liquid": {
+        "size": "4479",
+        "checksum": "5374f9b747a6dbdf408104fac15836aa",
+        "updatedAt": "2026-09-02T15:28:59Z"
+      },
+      "blocks/_content-without-appearance.liquid": {
+        "size": "2061",
+        "checksum": "61c6d39aaf0f8762172cecad0d1ad36c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_content.liquid": {
+        "size": "2857",
+        "checksum": "59a2b4326e0d8516eb620129af5e5159",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_divider.liquid": {
+        "size": "1672",
+        "checksum": "d5fcfa7610089a201a106caaf5fa3c4d",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_featured-blog-posts-card.liquid": {
+        "size": "7940",
+        "checksum": "9e58a583f1513bd398bb63178f4d6493",
+        "updatedAt": "2026-09-03T11:24:34Z"
+      },
+      "blocks/_featured-blog-posts-image.liquid": {
+        "size": "2720",
+        "checksum": "e1a7d3be7c21a4fcc8cab9eaeb1d88d1",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_featured-blog-posts-title.liquid": {
+        "size": "8499",
+        "checksum": "f39c9da1469378d579d10c03b343065c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_featured-product-gallery.liquid": {
+        "size": "1863",
+        "checksum": "f196eeda6503f58b6d07104b14efef76",
+        "updatedAt": "2026-09-02T15:28:59Z"
+      },
+      "blocks/_featured-product-information-carousel.liquid": {
+        "size": "6111",
+        "checksum": "9307c1ead4f2f0a34de08c7b6f4eff90",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_featured-product-price.liquid": {
+        "size": "2691",
+        "checksum": "d9c8a743f5bf45d948f6b3f04a761acb",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_featured-product.liquid": {
+        "size": "1391",
+        "checksum": "46038938ca370446b159d1c9b7ad0036",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_footer-social-icons.liquid": {
+        "size": "530",
+        "checksum": "6783574d4a2754761aefe441de798636",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_header-logo.liquid": {
+        "size": "5772",
+        "checksum": "e09a0cc322ec23d4af10ad34b79cc8b5",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_header-menu.liquid": {
+        "size": "30701",
+        "checksum": "d1e26c4ee76f179a56b2f6af4c1c89ec",
+        "updatedAt": "2026-09-02T15:29:00Z"
+      },
+      "blocks/_heading.liquid": {
+        "size": "6891",
+        "checksum": "e0ed1ca47ddb883f99ba31db24e89a54",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_hotspot-product.liquid": {
+        "size": "3427",
+        "checksum": "8aa106ec8b4d6a36b08631b2114ee886",
+        "updatedAt": "2026-09-02T15:29:00Z"
+      },
+      "blocks/_image.liquid": {
+        "size": "4593",
+        "checksum": "7fcf25e23c348583f17dd2c3137ac31c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_inline-collection-title.liquid": {
+        "size": "4015",
+        "checksum": "137fc70a372347de14a03baab375b72f",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_inline-text.liquid": {
+        "size": "3759",
+        "checksum": "3b4f4bf7d4325c4727660ab9d3f89298",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_layered-slide.liquid": {
+        "size": "10608",
+        "checksum": "2c44ffd70aaec1e173da081d27eb12f5",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_marquee.liquid": {
+        "size": "4750",
+        "checksum": "e7a57b298208278e91e07a61ec0a5c8d",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_media-without-appearance.liquid": {
+        "size": "2340",
+        "checksum": "d38911df7ab2caf00a884614b735b7dd",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_nully-offer-column.liquid": {
+        "size": "873",
+        "checksum": "55b7a0fddb02b74bdc61d4a672ed15e1",
+        "updatedAt": "2026-09-03T10:52:02Z"
+      },
+      "blocks/_product-card-gallery.liquid": {
+        "size": "4836",
+        "checksum": "12c1d050f402a16631380baa411285ce",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_product-card-group.liquid": {
+        "size": "11708",
+        "checksum": "a8752209e382297366b472e144f050ac",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_product-card.liquid": {
+        "size": "3946",
+        "checksum": "259da138b00f7110fefdc4063c98fa93",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_product-details.liquid": {
+        "size": "18148",
+        "checksum": "d10b317cd8b98bffaccb79290e7b53c2",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_product-list-button.liquid": {
+        "size": "4050",
+        "checksum": "028d3c15e79bd16f7f1ab3e2292fd3da",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_product-list-content.liquid": {
+        "size": "10249",
+        "checksum": "f69b2db4d7c29b28a78bb8054f1adc13",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_product-list-text.liquid": {
+        "size": "8296",
+        "checksum": "4dcf2fb8c38d3c65e7ca085539742ec6",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_product-media-gallery.liquid": {
+        "size": "7816",
+        "checksum": "89ff49e1a2a023a1829882c1d7dd15a3",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_search-input.liquid": {
+        "size": "8005",
+        "checksum": "d76facbaeb1188dd1203429a31b5e413",
+        "updatedAt": "2026-09-02T15:29:01Z"
+      },
+      "blocks/_slide.liquid": {
+        "size": "13664",
+        "checksum": "27c900ea1145ee32056941e76476d509",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "blocks/_social-link.liquid": {
+        "size": "3039",
+        "checksum": "c8a1fb6f19cddeb0f37cda2c0c0db0fa",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "config/settings_data.json": {
+        "size": "7651",
+        "checksum": "d31e6283272996174b0855590d41c8c2",
+        "updatedAt": "2026-09-03T11:26:53Z"
+      },
+      "config/settings_schema.json": {
+        "size": "50706",
+        "checksum": "27daf775fcf323565a282b64b76fc82f",
+        "updatedAt": "2026-09-02T15:29:01Z"
+      },
+      "layout/password.liquid": {
+        "size": "4642",
+        "checksum": "5162c35828e9450b9a56ddcf6cf6fdbb",
+        "updatedAt": "2026-09-02T15:29:01Z"
+      },
+      "layout/theme.liquid": {
+        "size": "7815",
+        "checksum": "2b836b461fcba9bcf554cde9545d5dbe",
+        "updatedAt": "2026-09-02T15:37:48Z"
+      },
+      "locales/ar.json": {
+        "size": "22277",
+        "checksum": "3f990e0a6425d8dad405f960564b5d11",
+        "updatedAt": "2026-09-02T15:29:02Z"
+      },
+      "locales/ar.schema.json": {
+        "size": "61213",
+        "checksum": "13f2f27244a20380944dfbb324eeddd5",
+        "updatedAt": "2026-09-02T15:29:02Z"
+      },
+      "locales/bg.json": {
+        "size": "22805",
+        "checksum": "798696fe9f2587c2e6deb8fe55676140",
+        "updatedAt": "2026-09-02T15:29:03Z"
+      },
+      "locales/cs.json": {
+        "size": "17849",
+        "checksum": "51c9309891457465d404c06b1e0918e3",
+        "updatedAt": "2026-09-02T15:29:03Z"
+      },
+      "locales/cs.schema.json": {
+        "size": "51559",
+        "checksum": "55ec5d27055ce3bfb8c76b53d13930da",
+        "updatedAt": "2026-09-02T15:29:03Z"
+      },
+      "locales/da.json": {
+        "size": "16260",
+        "checksum": "47b140d7efdc6967493576818c5f426c",
+        "updatedAt": "2026-09-02T15:29:03Z"
+      },
+      "locales/da.schema.json": {
+        "size": "49392",
+        "checksum": "9e21482309900614b3161d527897215f",
+        "updatedAt": "2026-09-02T15:29:03Z"
+      },
+      "locales/de.json": {
+        "size": "17058",
+        "checksum": "2bb7741b068585277165302375857ebf",
+        "updatedAt": "2026-09-02T15:29:03Z"
+      },
+      "locales/de.schema.json": {
+        "size": "51147",
+        "checksum": "9fffb85b3f304bf8be0ee5eabbde5dd8",
+        "updatedAt": "2026-09-02T15:29:03Z"
+      },
+      "locales/el.json": {
+        "size": "24358",
+        "checksum": "6c1abb6229bffbe301165c2a3b7137ab",
+        "updatedAt": "2026-09-02T15:29:03Z"
+      },
+      "locales/en.default.json": {
+        "size": "19077",
+        "checksum": "58b1eeca3cfa3ae12fa95be53570c333",
+        "updatedAt": "2026-09-03T11:01:09Z"
+      },
+      "locales/en.default.schema.json": {
+        "size": "51948",
+        "checksum": "e28cdc8eb4741aadfe9e9622b64883d2",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "locales/es.json": {
+        "size": "17988",
+        "checksum": "6ac0848971ce14b95a3a0f8c6f940a0f",
+        "updatedAt": "2026-09-02T15:29:03Z"
+      },
+      "locales/es.schema.json": {
+        "size": "53130",
+        "checksum": "c1cee005ad1982d880c097c0154e40dd",
+        "updatedAt": "2026-09-02T15:29:03Z"
+      },
+      "locales/fi.json": {
+        "size": "16697",
+        "checksum": "bb15104c152d991876b66dbd7bdf7b86",
+        "updatedAt": "2026-09-02T15:29:03Z"
+      },
+      "locales/fi.schema.json": {
+        "size": "50241",
+        "checksum": "d6c77138f17b38255d002faa33a3693d",
+        "updatedAt": "2026-09-02T15:29:03Z"
+      },
+      "locales/fr.json": {
+        "size": "18120",
+        "checksum": "480879249f90b4331767ef4107bca4df",
+        "updatedAt": "2026-09-02T15:29:03Z"
+      },
+      "locales/fr.schema.json": {
+        "size": "53536",
+        "checksum": "bc734ec649136b342a31af277481e2d9",
+        "updatedAt": "2026-09-02T15:29:03Z"
+      },
+      "locales/he.json": {
+        "size": "19077",
+        "checksum": "58b1eeca3cfa3ae12fa95be53570c333",
+        "updatedAt": "2026-09-02T15:29:03Z"
+      },
+      "locales/he.schema.json": {
+        "size": "56632",
+        "checksum": "0e841b3cc45402facac4a3e3af06b386",
+        "updatedAt": "2026-09-02T15:29:03Z"
+      },
+      "locales/hr.json": {
+        "size": "17586",
+        "checksum": "e068c1c09e3efcc56dbfef509cd6047d",
+        "updatedAt": "2026-09-02T15:29:05Z"
+      },
+      "locales/hu.json": {
+        "size": "18149",
+        "checksum": "7ca9417061dd3a969fecbde7a9809afa",
+        "updatedAt": "2026-09-02T15:29:05Z"
+      },
+      "locales/id.json": {
+        "size": "16365",
+        "checksum": "aec59337ab83b98f68cc2ad90c76691d",
+        "updatedAt": "2026-09-02T15:29:05Z"
+      },
+      "locales/it.json": {
+        "size": "17430",
+        "checksum": "5bdd86a3314634154db4b091ebf3d1b1",
+        "updatedAt": "2026-09-02T15:29:05Z"
+      },
+      "locales/it.schema.json": {
+        "size": "53219",
+        "checksum": "4bd5c88554f659082e571079021278ee",
+        "updatedAt": "2026-09-02T15:29:05Z"
+      },
+      "locales/ja.json": {
+        "size": "18956",
+        "checksum": "d8fafabfa8564290f64f14265012fcf7",
+        "updatedAt": "2026-09-02T15:29:05Z"
+      },
+      "locales/ja.schema.json": {
+        "size": "55758",
+        "checksum": "76e86a6fedf8a28ab20199b07d4f1acb",
+        "updatedAt": "2026-09-02T15:29:05Z"
+      },
+      "locales/ko.json": {
+        "size": "17273",
+        "checksum": "5168f06630244ccea621a568d1803f72",
+        "updatedAt": "2026-09-02T15:29:05Z"
+      },
+      "locales/ko.schema.json": {
+        "size": "51280",
+        "checksum": "50aff4b95b297328bf4a11ca323f8c11",
+        "updatedAt": "2026-09-02T15:29:05Z"
+      },
+      "locales/lt.json": {
+        "size": "18535",
+        "checksum": "a405787d2cf4de9706eb6761641113c3",
+        "updatedAt": "2026-09-02T15:29:05Z"
+      },
+      "locales/nb.json": {
+        "size": "16156",
+        "checksum": "89ab56539b5822255725a306455b0610",
+        "updatedAt": "2026-09-02T15:29:05Z"
+      },
+      "locales/nb.schema.json": {
+        "size": "49150",
+        "checksum": "8222ff794975655fca85fa4bbc21f178",
+        "updatedAt": "2026-09-02T15:29:05Z"
+      },
+      "locales/nl.json": {
+        "size": "17192",
+        "checksum": "43f3312a6cac9493985cbe7a96ba0326",
+        "updatedAt": "2026-09-02T15:29:06Z"
+      },
+      "locales/nl.schema.json": {
+        "size": "49769",
+        "checksum": "785947613cd7b58272ab440029e61fd4",
+        "updatedAt": "2026-09-02T15:29:06Z"
+      },
+      "locales/pl.json": {
+        "size": "17831",
+        "checksum": "fb73f5b109758ecdbc93695d7a3569bd",
+        "updatedAt": "2026-09-02T15:29:06Z"
+      },
+      "locales/pl.schema.json": {
+        "size": "52160",
+        "checksum": "1435ad90ef36fb55bc193555c75f543b",
+        "updatedAt": "2026-09-02T15:29:06Z"
+      },
+      "locales/pt-BR.json": {
+        "size": "17347",
+        "checksum": "0239c7373ee25f9437ad17439d020381",
+        "updatedAt": "2026-09-02T15:29:06Z"
+      },
+      "locales/pt-BR.schema.json": {
+        "size": "51698",
+        "checksum": "5698c7a97707efb6e8b71c73fe6d53d1",
+        "updatedAt": "2026-09-02T15:29:06Z"
+      },
+      "locales/pt-PT.json": {
+        "size": "17767",
+        "checksum": "110ae8f309c8d7cbd62df4d58ebb53cc",
+        "updatedAt": "2026-09-02T15:29:06Z"
+      },
+      "locales/pt-PT.schema.json": {
+        "size": "53139",
+        "checksum": "00ef808a9003a1ed67269b8ca4e44ac3",
+        "updatedAt": "2026-09-02T15:29:06Z"
+      },
+      "locales/ro.json": {
+        "size": "18025",
+        "checksum": "ba68db9b968f2d337398f114fb02578d",
+        "updatedAt": "2026-09-02T15:29:07Z"
+      },
+      "locales/ru.json": {
+        "size": "23830",
+        "checksum": "605ec9b1e11dbd51b15152a17675d309",
+        "updatedAt": "2026-09-02T15:29:07Z"
+      },
+      "locales/sk.json": {
+        "size": "17861",
+        "checksum": "31e0fd62b90a6feb7370497356da65ef",
+        "updatedAt": "2026-09-02T15:29:07Z"
+      },
+      "locales/sl.json": {
+        "size": "17868",
+        "checksum": "96e0f1004293b332b73ee06c30ac3322",
+        "updatedAt": "2026-09-02T15:29:07Z"
+      },
+      "locales/sv.json": {
+        "size": "16436",
+        "checksum": "b5ef1dc4f1afdb26f0d6ed421291c1ac",
+        "updatedAt": "2026-09-02T15:29:08Z"
+      },
+      "locales/sv.schema.json": {
+        "size": "49181",
+        "checksum": "1aa1ac8ee1a54a9db5ed5a0471ee6df8",
+        "updatedAt": "2026-09-02T15:29:08Z"
+      },
+      "locales/th.json": {
+        "size": "26177",
+        "checksum": "2d95738442c0051cc01fc15e4c2df087",
+        "updatedAt": "2026-09-02T15:29:08Z"
+      },
+      "locales/th.schema.json": {
+        "size": "82652",
+        "checksum": "dacc201cce35407284392c0e98f5269d",
+        "updatedAt": "2026-09-02T15:29:08Z"
+      },
+      "locales/tr.json": {
+        "size": "17148",
+        "checksum": "60921520b1d02489740f15170c68b6ef",
+        "updatedAt": "2026-09-02T15:29:08Z"
+      },
+      "locales/tr.schema.json": {
+        "size": "51184",
+        "checksum": "f6b1c4998b0fd05a6f9e579acc20b8a8",
+        "updatedAt": "2026-09-02T15:29:08Z"
+      },
+      "locales/ur.json": {
+        "size": "20648",
+        "checksum": "467d9901010eeda2b8624821dc74b3d7",
+        "updatedAt": "2026-09-02T15:29:08Z"
+      },
+      "locales/ur.schema.json": {
+        "size": "61800",
+        "checksum": "f9859feaecb6fa234a6bd72829641432",
+        "updatedAt": "2026-09-02T15:29:08Z"
+      },
+      "locales/vi.json": {
+        "size": "18747",
+        "checksum": "8a66fa5bde1c6a3e454015f3d070d3cb",
+        "updatedAt": "2026-09-02T15:29:08Z"
+      },
+      "locales/zh-CN.json": {
+        "size": "15704",
+        "checksum": "184cc9b8ebb3764cb437b1ea8829c6c0",
+        "updatedAt": "2026-09-02T15:29:08Z"
+      },
+      "locales/zh-CN.schema.json": {
+        "size": "46773",
+        "checksum": "33a9afd332cbf9d49f545a58850b649b",
+        "updatedAt": "2026-09-02T15:29:08Z"
+      },
+      "locales/zh-TW.json": {
+        "size": "15888",
+        "checksum": "2a25238e399f13bb34abb93bb114b505",
+        "updatedAt": "2026-09-02T15:29:08Z"
+      },
+      "locales/zh-TW.schema.json": {
+        "size": "46698",
+        "checksum": "3e6c08bb00ad22352cd7bdc3bdb7b442",
+        "updatedAt": "2026-09-02T15:29:08Z"
+      },
+      "sections/carousel.liquid": {
+        "size": "9928",
+        "checksum": "b1086d54741b7643ef0462237502d6b5",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/cart-drawer-section.liquid": {
+        "size": "212",
+        "checksum": "9f42c443489b580e8a3a86b9e2e197c7",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/collection-links.liquid": {
+        "size": "8869",
+        "checksum": "b847fee17522392e5013e4358faf0dab",
+        "updatedAt": "2026-09-02T15:29:08Z"
+      },
+      "sections/collection-list.liquid": {
+        "size": "26070",
+        "checksum": "558525a4a66d429ef01efb6f79a780cf",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/custom-liquid.liquid": {
+        "size": "1908",
+        "checksum": "f860a17415890515311b99a9bd3a268e",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/divider.liquid": {
+        "size": "3485",
+        "checksum": "3d8120edb4275f80b353cb8c8dd11206",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/featured-blog-posts.liquid": {
+        "size": "13423",
+        "checksum": "8601e19d9751fcab5fa55e00fbffa1f9",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/featured-product-information.liquid": {
+        "size": "6092",
+        "checksum": "0e0cb8b8ba53833690dc309de3f64858",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/featured-product.liquid": {
+        "size": "5876",
+        "checksum": "14909dc1bccf576dcabb03d7eb28cf37",
+        "updatedAt": "2026-09-02T15:29:09Z"
+      },
+      "sections/footer-group.json": {
+        "size": "4162",
+        "checksum": "63c09355450a50353a39d16c69852a72",
+        "updatedAt": "2026-09-03T11:27:16Z"
+      },
+      "sections/footer-utilities.liquid": {
+        "size": "5005",
+        "checksum": "3ed089c8973cda3132d1d75a41bc2458",
+        "updatedAt": "2026-09-02T15:29:10Z"
+      },
+      "sections/footer.liquid": {
+        "size": "6255",
+        "checksum": "7fcf2ac03a9c89427dfb7c774f40fcc3",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/header-announcements.liquid": {
+        "size": "5230",
+        "checksum": "9a5000af47c4e4e15e2a9f58c0434a50",
+        "updatedAt": "2026-09-02T15:29:10Z"
+      },
+      "sections/header-group.json": {
+        "size": "3052",
+        "checksum": "3daadd4a4140f1adcaa4d69f43828027",
+        "updatedAt": "2026-10-04T09:43:28Z"
+      },
+      "sections/header.liquid": {
+        "size": "54942",
+        "checksum": "81b1ea1a59a85ca4c2600ef82443b220",
+        "updatedAt": "2026-09-02T15:29:10Z"
+      },
+      "sections/hero.liquid": {
+        "size": "44631",
+        "checksum": "5745519e242f92f9192593c13c86e7e9",
+        "updatedAt": "2026-09-02T15:29:10Z"
+      },
+      "sections/layered-slideshow.liquid": {
+        "size": "15414",
+        "checksum": "1a8292de9e5a0398d50b2e001cd696f1",
+        "updatedAt": "2026-09-02T15:29:10Z"
+      },
+      "sections/logo.liquid": {
+        "size": "8730",
+        "checksum": "966b501d0ee380f1e168f48a771d07ab",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/main-404.liquid": {
+        "size": "4306",
+        "checksum": "33202c7d11db7d95c26b38de507b9f0d",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/main-blog-post.liquid": {
+        "size": "4664",
+        "checksum": "8750fdadfa316b4dafc1b742ab74e0c4",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/main-blog.liquid": {
+        "size": "5781",
+        "checksum": "6b1fada57c75fdd76aa5766dc02eb79a",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/main-cart.liquid": {
+        "size": "5547",
+        "checksum": "e75c39a766e55bb841213b3a63c3c8b7",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/main-collection-list.liquid": {
+        "size": "7845",
+        "checksum": "2966e0072a47f9375c5751b2ea821a88",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/main-collection.liquid": {
+        "size": "7131",
+        "checksum": "53e639200ad5d3666ffff48bc2461943",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/main-page.liquid": {
+        "size": "2186",
+        "checksum": "0c217bd3bbb0d1be7d6ee85fd3668337",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/marquee.liquid": {
+        "size": "5768",
+        "checksum": "4b8e6a6500d5c4c297467d8e73c312c0",
+        "updatedAt": "2026-09-09T13:16:18Z"
+      },
+      "sections/media-with-content.liquid": {
+        "size": "12801",
+        "checksum": "20ad0f1dd3d7d7712148047d5e607fc8",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/nully-brand-story.liquid": {
+        "size": "9108",
+        "checksum": "1289a459fb34c5d46d1e190135e63364",
+        "updatedAt": "2026-09-16T10:46:50Z"
+      },
+      "sections/nully-offer.liquid": {
+        "size": "4558",
+        "checksum": "eab9c70a0280208ffc9fda02352aec69",
+        "updatedAt": "2026-09-03T10:52:02Z"
+      },
+      "sections/nully-quality.liquid": {
+        "size": "10935",
+        "checksum": "4ec7da0d2c8a06d57c51ce58c34918bf",
+        "updatedAt": "2026-09-16T12:06:44Z"
+      },
+      "sections/nully-scenario-strip.liquid": {
+        "size": "7459",
+        "checksum": "29b7ecad97758c61c10708dd5bd7d0e6",
+        "updatedAt": "2026-09-09T10:16:13Z"
+      },
+      "sections/nully-unwrap-scroll.liquid": {
+        "size": "10731",
+        "checksum": "5a9873740737db2d85ec812d8150c960",
+        "updatedAt": "2026-09-16T09:45:20Z"
+      },
+      "sections/password-footer.liquid": {
+        "size": "2314",
+        "checksum": "b6bd4b69c0a2450477040da43f3e8108",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/password.liquid": {
+        "size": "8142",
+        "checksum": "2860e255321e21854b8c51518fb29a75",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/predictive-search-empty.liquid": {
+        "size": "290",
+        "checksum": "fb3b2c70237c87004b88fc68d1103155",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/predictive-search.liquid": {
+        "size": "6511",
+        "checksum": "99b1a0246361fccaf2585bf5aba629d4",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/product-hotspots.liquid": {
+        "size": "19698",
+        "checksum": "c03620c8d7503a11a4dc5490ca682fa9",
+        "updatedAt": "2026-09-02T15:29:11Z"
+      },
+      "sections/product-information.liquid": {
+        "size": "12729",
+        "checksum": "48a0a158f2d4812d7110bd79430181d0",
+        "updatedAt": "2026-09-02T15:29:11Z"
+      },
+      "sections/product-list.liquid": {
+        "size": "26680",
+        "checksum": "15521ae8fbed587446acef5f8534d613",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/product-recommendations.liquid": {
+        "size": "16033",
+        "checksum": "7df4ca919909c63cff288c90767036fb",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/quick-order-list.liquid": {
+        "size": "37822",
+        "checksum": "68bf9741e395476e176521d1104e1b9c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/search-header.liquid": {
+        "size": "2192",
+        "checksum": "c71fcd1130839f28955ef26e70088339",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/search-results.liquid": {
+        "size": "6774",
+        "checksum": "fdf24ff34b5764cc4e2181218ef013b0",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/section-rendering-product-card.liquid": {
+        "size": "2459",
+        "checksum": "e72fdaee2d403f3b6a70e43c77587929",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/section.liquid": {
+        "size": "54160",
+        "checksum": "d18bfa2b959ca1e9c558a5ad0c863129",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/slideshow.liquid": {
+        "size": "16561",
+        "checksum": "da00b7d1a684d27f3d03aadeed56a180",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "sections/_blocks.liquid": {
+        "size": "10429",
+        "checksum": "719bafc39009b6bff7d9dabaad9da861",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/accordion-custom-component.liquid": {
+        "size": "3648",
+        "checksum": "4c6df600d897ee748151dd90aea12877",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/accordion-styles.liquid": {
+        "size": "2037",
+        "checksum": "a275664a3b9e8efab56e4150a89fe845",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/add-to-cart-button-styles.liquid": {
+        "size": "4930",
+        "checksum": "c90f0ee5f862a5e888a8c16f69778dec",
+        "updatedAt": "2026-09-02T15:29:12Z"
+      },
+      "snippets/add-to-cart-button.liquid": {
+        "size": "2197",
+        "checksum": "003ded1fc56ef860c9dbbca2a6589fee",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/background-media.liquid": {
+        "size": "5029",
+        "checksum": "292e2f3746c226498378b73d939505f1",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/bento-grid.liquid": {
+        "size": "5027",
+        "checksum": "24a9c789775237682fa9a8aca72044c6",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/blog-comment-form.liquid": {
+        "size": "5982",
+        "checksum": "f817281d5f38d81c6eb2d0ddff560e3a",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/border-override.liquid": {
+        "size": "490",
+        "checksum": "7163484869f9179611ead13ead16bd09",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/brightness-opacities.liquid": {
+        "size": "1021",
+        "checksum": "7a956c2d35174c3294606dbfcb38e60f",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/button-custom-styles.liquid": {
+        "size": "2674",
+        "checksum": "729acd4774fa7cac866c0654274119c8",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/button.liquid": {
+        "size": "840",
+        "checksum": "80c54884187607f9e01f3ed7530937c4",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/buy-buttons-styles.liquid": {
+        "size": "7643",
+        "checksum": "4c20a11c3e60c1738387b3ce90604091",
+        "updatedAt": "2026-09-02T15:29:12Z"
+      },
+      "snippets/card-gallery.liquid": {
+        "size": "16267",
+        "checksum": "f4940fca92d7cce4f5240d41dc3f9007",
+        "updatedAt": "2026-09-02T15:29:12Z"
+      },
+      "snippets/card-hover-effect-styles.liquid": {
+        "size": "2432",
+        "checksum": "2bb6add95881cec8a16470549f470124",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/cart-bubble.liquid": {
+        "size": "2212",
+        "checksum": "2525d01fd5d70782d8cc869738778921",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/cart-disclosure-tooltip.liquid": {
+        "size": "20025",
+        "checksum": "30e86f5dd41c664e3a1830c5d0fa1199",
+        "updatedAt": "2026-09-02T15:29:12Z"
+      },
+      "snippets/cart-drawer.liquid": {
+        "size": "7798",
+        "checksum": "dfd8749128e0df636aa672ac91b39358",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/cart-items-component.liquid": {
+        "size": "2379",
+        "checksum": "66d5b84f4e673d41b7ce8e863ff1167d",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/cart-products.liquid": {
+        "size": "31623",
+        "checksum": "dfaa07b52dcbf5e050fa121c6d2845c3",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/cart-summary.liquid": {
+        "size": "18361",
+        "checksum": "ae0e9d3d67621e5d6ffbcc600d05f859",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/cart-typography-styles.liquid": {
+        "size": "562",
+        "checksum": "6f43fb0c349fb0c27c9a4b9a2fda1b97",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/chat-drawer.liquid": {
+        "size": "4751",
+        "checksum": "0474ee8ad6e9f68ed51291f337cfa125",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/checkbox-styles.liquid": {
+        "size": "2386",
+        "checksum": "bee1d096065635c07e8c5a481dd80757",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/checkbox.liquid": {
+        "size": "1724",
+        "checksum": "3e0c5eb78c58f036cc521f5ca12a44fa",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/collection-card.liquid": {
+        "size": "4926",
+        "checksum": "a2f3940ce285dc96e249c1613f3eb9e2",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/collection-wrapper-styles.liquid": {
+        "size": "3894",
+        "checksum": "fbf4c7e97d83fa1223e6ec757bf81aa4",
+        "updatedAt": "2026-09-02T15:29:13Z"
+      },
+      "snippets/color-palette.liquid": {
+        "size": "10724",
+        "checksum": "1b9c815e8ea7ee9a11f5568fe95aa0ad",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/contrast-override.liquid": {
+        "size": "8454",
+        "checksum": "7e9411582ba1c28431df1ab85a93121e",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/deferred-media-product-model-styles.liquid": {
+        "size": "5567",
+        "checksum": "ba1bc9faf94db1da629ccd4b6f5ae56e",
+        "updatedAt": "2026-09-02T15:29:13Z"
+      },
+      "snippets/deferred-media-video-styles.liquid": {
+        "size": "3667",
+        "checksum": "9b70385c16041ec4a7bd5dc3fe150ac9",
+        "updatedAt": "2026-09-02T15:29:13Z"
+      },
+      "snippets/dialog-styles.liquid": {
+        "size": "2296",
+        "checksum": "f791aeadfe0e5e3baa6a116cf95b9cdb",
+        "updatedAt": "2026-09-02T15:29:13Z"
+      },
+      "snippets/divider.liquid": {
+        "size": "2391",
+        "checksum": "5f1fa11325b6b07e419bbfec597012fc",
+        "updatedAt": "2026-09-02T15:29:13Z"
+      },
+      "snippets/editorial-blog-grid.liquid": {
+        "size": "3078",
+        "checksum": "53b34706bb2e3ac75a12b18be783c14c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/editorial-collection-grid.liquid": {
+        "size": "2934",
+        "checksum": "22d25f31eb46b35273f33b64e2ed6834",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/editorial-product-grid.liquid": {
+        "size": "3525",
+        "checksum": "f303b9a073245caa8d06c41961ff7fe7",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/filter-remove-buttons.liquid": {
+        "size": "4494",
+        "checksum": "ecbef65ba8b7c53617f6fa4516b89146",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/fly-to-cart-styles.liquid": {
+        "size": "2285",
+        "checksum": "1e8a604aad1ca90669bb9f40dc493980",
+        "updatedAt": "2026-09-02T15:29:13Z"
+      },
+      "snippets/fonts.liquid": {
+        "size": "726",
+        "checksum": "2cd0a8aafb82cd2377799df7f1eebd6b",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/format-price.liquid": {
+        "size": "1003",
+        "checksum": "8240542d7c4656f2b53456522d5c21b8",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/gap-style.liquid": {
+        "size": "927",
+        "checksum": "183f35396f4b7fe54eceecc8270271bd",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/gift-card-recipient-button-custom-styles.liquid": {
+        "size": "2934",
+        "checksum": "eae5dc2b8885e89afd1126d86f76408d",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/gift-card-recipient-form-styles.liquid": {
+        "size": "5905",
+        "checksum": "1d4881c5ba9cf01c539a7ad6d4dfe267",
+        "updatedAt": "2026-09-02T15:29:14Z"
+      },
+      "snippets/gift-card-recipient-form.liquid": {
+        "size": "7747",
+        "checksum": "a8d259df9c3fd11882ce7a7f467bd55e",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/grid-density-controls.liquid": {
+        "size": "5756",
+        "checksum": "68249bf96f0af2f38d71c5f25e279687",
+        "updatedAt": "2026-09-02T15:29:14Z"
+      },
+      "snippets/group.liquid": {
+        "size": "3126",
+        "checksum": "fa461ecee498323636a4195975a50058",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/header-actions.liquid": {
+        "size": "10071",
+        "checksum": "ecac55b72448e0df30e466557b2410f3",
+        "updatedAt": "2026-09-14T14:01:56Z"
+      },
+      "snippets/header-drawer.liquid": {
+        "size": "59322",
+        "checksum": "416447a3ae3c17df04c3f9443ab98dff",
+        "updatedAt": "2026-09-02T15:29:15Z"
+      },
+      "snippets/header-row.liquid": {
+        "size": "2962",
+        "checksum": "585d2adb5f70a0eead98502639af1a31",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/icon-or-image.liquid": {
+        "size": "1396",
+        "checksum": "b812a996f71059b206718dae4edddbb8",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/icon.liquid": {
+        "size": "133281",
+        "checksum": "bae5a7489642235f437f8072be3b7c56",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/image.liquid": {
+        "size": "1523",
+        "checksum": "e6e159595a30e79d5a6177a72a28f544",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/input-custom-styles.liquid": {
+        "size": "1858",
+        "checksum": "e4695ee314c2bb399701539703d59733",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/jumbo-text.liquid": {
+        "size": "5280",
+        "checksum": "e1cc0526ed1795c23acda7c3d220c54d",
+        "updatedAt": "2026-09-03T11:24:34Z"
+      },
+      "snippets/layout-panel-style.liquid": {
+        "size": "1186",
+        "checksum": "f848fa18ac93d053be9a93faa65f0562",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/link-featured-image.liquid": {
+        "size": "1558",
+        "checksum": "d4fcae26294d36f21e1fe844b85e65c0",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/list-filter.liquid": {
+        "size": "31985",
+        "checksum": "8ab696fbc1eb17b8cdda53f2113ba095",
+        "updatedAt": "2026-09-02T15:29:15Z"
+      },
+      "snippets/localization-form.liquid": {
+        "size": "17633",
+        "checksum": "7c43acb0efd0e89c33b784c923abc9c3",
+        "updatedAt": "2026-09-02T15:29:15Z"
+      },
+      "snippets/measure-header-heights.liquid": {
+        "size": "1394",
+        "checksum": "96d661ae5f65af63406d26e2e2de2ad2",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/media.liquid": {
+        "size": "3531",
+        "checksum": "6955c25fee6138974a3d7f7fe2c2e073",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/mega-menu-list.liquid": {
+        "size": "14004",
+        "checksum": "08f67f8291b82b678ef431563b4686b7",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/menu-font-styles.liquid": {
+        "size": "1173",
+        "checksum": "4b7cf5feb174bf9ac1324000c1ddb283",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/meta-tags.liquid": {
+        "size": "2689",
+        "checksum": "9373d964b98dbb595da2bd46ffb01d8d",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/nully-anatomy-icon.liquid": {
+        "size": "5909",
+        "checksum": "c8f2b7136f44d0492c11d11056bd590e",
+        "updatedAt": "2026-09-13T13:13:05Z"
+      },
+      "snippets/nully-compare-cell.liquid": {
+        "size": "2070",
+        "checksum": "f069c6c81c1c058872b23eae5536388c",
+        "updatedAt": "2026-09-13T13:13:05Z"
+      },
+      "snippets/nully-direction.liquid": {
+        "size": "812",
+        "checksum": "e11756404bb51237ece70cdbcddf8b28",
+        "updatedAt": "2026-09-02T15:29:16Z"
+      },
+      "snippets/nully-offer-note.liquid": {
+        "size": "1009",
+        "checksum": "ce1b50baffc58363e056b1ec7081c076",
+        "updatedAt": "2026-09-07T06:38:26Z"
+      },
+      "snippets/nully-shop-cta.liquid": {
+        "size": "297",
+        "checksum": "c03731f724d9bb1e7a453383e100d779",
+        "updatedAt": "2026-09-14T14:22:18Z"
+      },
+      "snippets/nully-tokens.liquid": {
+        "size": "28742",
+        "checksum": "d0ab465c0b7b35435280568b0dc439d8",
+        "updatedAt": "2026-10-04T09:45:15Z"
+      },
+      "snippets/nully-trust-icon.liquid": {
+        "size": "6834",
+        "checksum": "1b43996dc01690d4ba5430b3ca7ac32c",
+        "updatedAt": "2026-09-16T11:54:16Z"
+      },
+      "snippets/overflow-list.liquid": {
+        "size": "1970",
+        "checksum": "c136517f488a102a20acda832c064513",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/overlay.liquid": {
+        "size": "1360",
+        "checksum": "72cac4e3a191df0ca4dfc011c097135d",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/pagination-controls.liquid": {
+        "size": "11675",
+        "checksum": "ec377cc7ca290bb938f74303b2eb26b9",
+        "updatedAt": "2026-09-02T15:29:16Z"
+      },
+      "snippets/password-layout-styles.liquid": {
+        "size": "2195",
+        "checksum": "49f921e184c44a06c9736a99fe391b6b",
+        "updatedAt": "2026-09-02T15:29:16Z"
+      },
+      "snippets/payment-terms-styles.liquid": {
+        "size": "625",
+        "checksum": "c8c6e28a601f827e1c295a64e000e15b",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/pills-styles.liquid": {
+        "size": "1426",
+        "checksum": "a8c74825f479f0181e54e1c53b51b71c",
+        "updatedAt": "2026-09-02T15:29:16Z"
+      },
+      "snippets/predictive-search-empty-state.liquid": {
+        "size": "1670",
+        "checksum": "b09b2c0b2de7eafd0f5a8db85547f022",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/predictive-search-products-list.liquid": {
+        "size": "3768",
+        "checksum": "a6bf88f90e1d9e30eb9a14c31a4f7e6e",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/predictive-search-resource-carousel.liquid": {
+        "size": "1596",
+        "checksum": "25b94f0cb923a7adcea358d7815750e5",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/predictive-search-styles.liquid": {
+        "size": "17145",
+        "checksum": "96bba987ea30ba665a51f9e463521a3d",
+        "updatedAt": "2026-09-02T15:29:16Z"
+      },
+      "snippets/price-filter.liquid": {
+        "size": "8398",
+        "checksum": "c16b948d808b3a2dbb725caf01a8659c",
+        "updatedAt": "2026-09-02T15:29:16Z"
+      },
+      "snippets/price-styles.liquid": {
+        "size": "2025",
+        "checksum": "357de9e03ddc6c0d58f9c64e3974e7a2",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/price.liquid": {
+        "size": "4830",
+        "checksum": "e41113f1ceb9d737c208e8d0a8388488",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/product-badges-styles.liquid": {
+        "size": "1542",
+        "checksum": "63d96d8d79a11d5bc2242d1e2cb75768",
+        "updatedAt": "2026-09-02T15:29:16Z"
+      },
+      "snippets/product-card-gallery-zoom-details-styles.liquid": {
+        "size": "978",
+        "checksum": "41856eb280f3173b104fcd86499eef9d",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/product-card-styles.liquid": {
+        "size": "1595",
+        "checksum": "7984d00052c8cdbc3d2905c925dcf3f3",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/product-card.liquid": {
+        "size": "4742",
+        "checksum": "8809065118a76ee45bb23bb2270a80a6",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/product-grid.liquid": {
+        "size": "12766",
+        "checksum": "b9aa43e6a4af69d68f7c370e06284bf9",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/product-information-content.liquid": {
+        "size": "9529",
+        "checksum": "6f890b8eabc7cb1fff1cd73a42ae5b23",
+        "updatedAt": "2026-09-02T15:29:17Z"
+      },
+      "snippets/product-media-container-styles.liquid": {
+        "size": "1899",
+        "checksum": "dd0383d0fb5ae21027fcc8869e78e283",
+        "updatedAt": "2026-09-02T15:29:18Z"
+      },
+      "snippets/product-media-gallery-content-styles.liquid": {
+        "size": "2508",
+        "checksum": "0add5f9395d68ddd57cbe8fca356a8ac",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/product-media-gallery-content.liquid": {
+        "size": "37111",
+        "checksum": "c3bf2665edaa46dea784227cd9f22333",
+        "updatedAt": "2026-09-02T15:29:18Z"
+      },
+      "snippets/product-media.liquid": {
+        "size": "4556",
+        "checksum": "d484ce619b651afeaa86031efe0c016c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/product-recommendations-styles.liquid": {
+        "size": "661",
+        "checksum": "6f3f06a6057aa212c62d5aacc674bacb",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/quantity-selector-styles.liquid": {
+        "size": "3210",
+        "checksum": "632fee6a1289b9e2b36c7f38af2cdd95",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/quantity-selector.liquid": {
+        "size": "6857",
+        "checksum": "e19f72fd6bab1834ab5d438c3d018db8",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/quick-add-modal-styles.liquid": {
+        "size": "16516",
+        "checksum": "5780ad26ccd0da05d69bb74489e9175e",
+        "updatedAt": "2026-09-02T15:29:18Z"
+      },
+      "snippets/quick-add-modal.liquid": {
+        "size": "928",
+        "checksum": "d40cb8934ce23f318ea9d41cda68a2e2",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/quick-add-styles.liquid": {
+        "size": "4751",
+        "checksum": "d8b9b5db671b0048f06ebeca25998224",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/quick-add.liquid": {
+        "size": "5723",
+        "checksum": "cdbed60ebac7dd1a39e0e1fefd3829a4",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/resolve-custom-hover.liquid": {
+        "size": "2786",
+        "checksum": "c1fa43ddae4322073c1cfca65f044a5c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/resource-card.liquid": {
+        "size": "11078",
+        "checksum": "a42a961d30c3554cba885afe6f91200f",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/resource-image.liquid": {
+        "size": "6929",
+        "checksum": "526d04b4d09cc685d0ca79c288f99869",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/resource-list-carousel.liquid": {
+        "size": "3938",
+        "checksum": "bbd2e6a863e72fef15d86453efeb018e",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/resource-list-styles.liquid": {
+        "size": "2709",
+        "checksum": "ccd7b3fd3caf943f89da49a0770f844a",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/resource-list.liquid": {
+        "size": "6386",
+        "checksum": "0265ba997309b9626f02da13b10a8b7b",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/scripts.liquid": {
+        "size": "9364",
+        "checksum": "ced2f9d31de73672b805edacd8494e10",
+        "updatedAt": "2026-09-14T15:30:48Z"
+      },
+      "snippets/search-modal.liquid": {
+        "size": "15048",
+        "checksum": "7af1102be3113973f347568df358e519",
+        "updatedAt": "2026-09-02T15:29:18Z"
+      },
+      "snippets/search.liquid": {
+        "size": "2301",
+        "checksum": "b46551a97ccd3d59867591fd9e51782f",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/section.liquid": {
+        "size": "3268",
+        "checksum": "934b2c812a65cb462ef62c0d5f48a5eb",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/size-style.liquid": {
+        "size": "1144",
+        "checksum": "c0fbd03d4efa1c4436ef53bf7e205d41",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/skip-to-content-link.liquid": {
+        "size": "1034",
+        "checksum": "3b3514de6eb1ad5d3f8ea3fe0990535b",
+        "updatedAt": "2026-09-02T15:29:19Z"
+      },
+      "snippets/sku.liquid": {
+        "size": "386",
+        "checksum": "f37550b1a33d72e7b6f332294767ee49",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/slideshow-arrow.liquid": {
+        "size": "2592",
+        "checksum": "54ced2fcb94f059fe530363af9e615fa",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/slideshow-arrows.liquid": {
+        "size": "2257",
+        "checksum": "7ad3f957e4564d18ee9418db74d6780c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/slideshow-controls.liquid": {
+        "size": "16155",
+        "checksum": "5c0c4d37a1ce5c8c0838ed0f0dad258d",
+        "updatedAt": "2026-09-02T15:29:19Z"
+      },
+      "snippets/slideshow-slide.liquid": {
+        "size": "2612",
+        "checksum": "6aa233e5c095b441f4f1cfa7778a37da",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/slideshow-styles.liquid": {
+        "size": "4979",
+        "checksum": "434a8f846df76b35a429a7a857ecb0b4",
+        "updatedAt": "2026-09-02T15:29:19Z"
+      },
+      "snippets/slideshow.liquid": {
+        "size": "4842",
+        "checksum": "c85fb0ceb4f7b9d5e59d9f26ff662365",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/sorting.liquid": {
+        "size": "10145",
+        "checksum": "d7e9c3e8a1d9b93c270d25ec5506a8c4",
+        "updatedAt": "2026-09-02T15:29:19Z"
+      },
+      "snippets/spacing-padding.liquid": {
+        "size": "576",
+        "checksum": "4968ba0834938346c7d60b4565367086",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/spacing-style.liquid": {
+        "size": "927",
+        "checksum": "786f80211926b582b2761a7658089c9a",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/strikethrough-variant.liquid": {
+        "size": "648",
+        "checksum": "8b2c63c020bf0d1ceabcfbd69a321428",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/stylesheets.liquid": {
+        "size": "126",
+        "checksum": "225482ed969debae3891c08113a254be",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/submenu-font-styles.liquid": {
+        "size": "2634",
+        "checksum": "4f714050ef9801c55854b02f2759ccf8",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/summary-icon-styles.liquid": {
+        "size": "1032",
+        "checksum": "cf01cc0d1a35b37cee48f28503251c0c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/swatch-styles.liquid": {
+        "size": "4277",
+        "checksum": "6db9876ccf04ee7cb08957cb34bb33a3",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/swatch.liquid": {
+        "size": "1925",
+        "checksum": "0a58fdd65cddb87d312c714c5204f8a8",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/tax-info.liquid": {
+        "size": "3565",
+        "checksum": "35280b09225478d2c0e61856166fe863",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/text-block-styles.liquid": {
+        "size": "3357",
+        "checksum": "1f99f7c7f683140d7dc0b858de34eaaa",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/text-component-shimmer-styles.liquid": {
+        "size": "1594",
+        "checksum": "c9305d7a7410104d906dcde2bb073d39",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/text.liquid": {
+        "size": "4564",
+        "checksum": "d35094c843bc12d5080e43d86abfbd82",
+        "updatedAt": "2026-09-03T11:24:34Z"
+      },
+      "snippets/theme-drawer-header.liquid": {
+        "size": "1136",
+        "checksum": "033316b26c556ac2bed04fb5bb17cc61",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/theme-drawer-styles.liquid": {
+        "size": "5616",
+        "checksum": "2c57898f4ed8a7837f7da4c82cbcb1e4",
+        "updatedAt": "2026-09-02T15:29:20Z"
+      },
+      "snippets/theme-drawer.liquid": {
+        "size": "4924",
+        "checksum": "003a4c2e15b5e2ee147c87ed3bac2293",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/theme-editor.liquid": {
+        "size": "95",
+        "checksum": "41f2f32fb706a477465ee1a6f3a662e2",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/theme-styles-variables.liquid": {
+        "size": "32591",
+        "checksum": "904b2dd3fa0910067a812d779a6ce767",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/typography-style.liquid": {
+        "size": "3148",
+        "checksum": "8eabb9e03295dd257ac1e8257c0540b0",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/unit-price.liquid": {
+        "size": "655",
+        "checksum": "456f3529f621e4c572b891644a3463ad",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/util-autofill-img-size-attr.liquid": {
+        "size": "2219",
+        "checksum": "203693e6ff7bc1207bd9ded0b52d877d",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/util-mega-menu-img-sizes-attr.liquid": {
+        "size": "3352",
+        "checksum": "3f28cdbf257160e748c4a309df5e9f43",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/util-palette-hover-shift.liquid": {
+        "size": "1095",
+        "checksum": "36c87ba028a2b4d000a9a755caedf7d9",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/util-product-grid-card-size.liquid": {
+        "size": "1432",
+        "checksum": "1163abe791719bdb1a88f8d5aa46a380",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/util-product-media-sizes-attr.liquid": {
+        "size": "6980",
+        "checksum": "727e3fef09c35eccfbf1276a86ee128c",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/variant-button-custom-styles.liquid": {
+        "size": "3996",
+        "checksum": "7f73812e33b47884b11fb7c236693caa",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/variant-main-picker.liquid": {
+        "size": "12387",
+        "checksum": "ee75c8751b0bedc4bceefec7bd7141b8",
+        "updatedAt": "2026-09-16T12:23:50Z"
+      },
+      "snippets/variant-picker-styles.liquid": {
+        "size": "16598",
+        "checksum": "fa506f04a32566bd2b128e6b49bc5010",
+        "updatedAt": "2026-09-02T15:29:20Z"
+      },
+      "snippets/variant-swatches.liquid": {
+        "size": "9742",
+        "checksum": "ceb2402000f9c55aca3d9f9db391e9ee",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/video-background-styles.liquid": {
+        "size": "691",
+        "checksum": "40caed0c50733b8b0a463956e02b3753",
+        "updatedAt": "2026-09-02T15:29:21Z"
+      },
+      "snippets/video-placeholder-styles.liquid": {
+        "size": "1387",
+        "checksum": "6085b406f313fae1fdd903cff175a702",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/video.liquid": {
+        "size": "7478",
+        "checksum": "2829ed6d8101867ba40fc03c9e97254e",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "snippets/volume-pricing-info.liquid": {
+        "size": "10469",
+        "checksum": "dbb01aed5ce1fea1ec50ddb56e389540",
+        "updatedAt": "2026-09-02T15:29:21Z"
+      },
+      "templates/404.json": {
+        "size": "8894",
+        "checksum": "406c8f335f05cac9519b9cb812322c7d",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "templates/article.json": {
+        "size": "2832",
+        "checksum": "1d9aa8ef697cb9e95be61bfb9ee501a7",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "templates/blog.json": {
+        "size": "3294",
+        "checksum": "0572b4b3b443eab9ffaa4739b2b74f70",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "templates/cart.json": {
+        "size": "8385",
+        "checksum": "4f56d03eca7c2a5448d65832c8adfeb1",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "templates/collection.json": {
+        "size": "7215",
+        "checksum": "8e13fee61e52776e61deadd4f7c215a1",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "templates/gift_card.liquid": {
+        "size": "6455",
+        "checksum": "cb04d5ba1c0cb6296684ba9857cd4c6a",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "templates/index.json": {
+        "size": "100376",
+        "checksum": "df68b619be63f91fdb74b1f8bcdaab04",
+        "updatedAt": "2026-10-04T09:23:45Z"
+      },
+      "templates/list-collections.json": {
+        "size": "5571",
+        "checksum": "c4de05458cb4e725ab24f1911a00b948",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "templates/page.contact.json": {
+        "size": "4426",
+        "checksum": "f88c7b7186bb52ff56210c2a5d08066a",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "templates/page.json": {
+        "size": "1687",
+        "checksum": "eb9984ce584bd0df3a0af0a16abd22fd",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "templates/password.json": {
+        "size": "4508",
+        "checksum": "13a0d16e133abfd30b4b0a467ffab769",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      },
+      "templates/product.json": {
+        "size": "30234",
+        "checksum": "8fd1a69ba4bedf8d3f43da35c55e3f4c",
+        "updatedAt": "2026-09-16T12:24:02Z"
+      },
+      "templates/search.json": {
+        "size": "5711",
+        "checksum": "08a8eceaab19e487282dd80e30e4518f",
+        "updatedAt": "2026-09-02T15:21:06Z"
+      }
+    }
+  }
+}

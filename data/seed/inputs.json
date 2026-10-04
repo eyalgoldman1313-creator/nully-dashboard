@@ -1,0 +1,235 @@
+[
+ {
+  "id": "A1",
+  "title": "קובץ הביקורות (CSV)",
+  "fmt": "להעתיק ל-`/workspace/uploads/nully-reviews.csv` בתיבה המשותפת",
+  "kind": "asset",
+  "tasks": [
+   "T0.3",
+   "T2.3",
+   "T3.8"
+  ],
+  "status": "needed",
+  "note": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "A2",
+  "title": "קישורי פרופילים: Instagram, TikTok, Facebook, YouTube (אם יש)",
+  "fmt": "URL מלא",
+  "kind": "asset",
+  "tasks": [
+   "T3.3"
+  ],
+  "status": "needed",
+  "note": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "A3",
+  "title": "מספר WhatsApp (וטלפון לשירות ושעות מענה, אם רלוונטי)",
+  "fmt": "מספר בינלאומי",
+  "kind": "asset",
+  "tasks": [
+   "T3.3",
+   "T3.2",
+   "T3.4"
+  ],
+  "status": "needed",
+  "note": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "A4",
+  "title": "תמונות המוצר ברזולוציה מלאה, כולל גב המארז/התווית (מקור לעובדות: רכיבים, כמויות, גיל, אלרגנים, ימי שימוש)",
+  "fmt": "JPG/PNG",
+  "kind": "asset",
+  "tasks": [
+   "T2.6",
+   "T2.10",
+   "T3.7"
+  ],
+  "status": "needed",
+  "note": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "A5",
+  "title": "תמונות לייפסטייל עם הורים וילדים (hero, בוקר/תיק/שיעורי בית)",
+  "fmt": "JPG, רוחב ≥2000px",
+  "kind": "asset",
+  "tasks": [
+   "T2.7",
+   "T3.9"
+  ],
+  "status": "needed",
+  "note": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "A6",
+  "title": "3 תמונות \"איך זה עובד\" (פותחים · מוצצים · ממוקדים)",
+  "fmt": "JPG/PNG",
+  "kind": "asset",
+  "tasks": [
+   "T2.8"
+  ],
+  "status": "needed",
+  "note": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "A7",
+  "title": "לוגו SVG (צבעוני + לבן) + favicon",
+  "fmt": "SVG/PNG",
+  "kind": "asset",
+  "tasks": [
+   "T3.8"
+  ],
+  "status": "needed",
+  "note": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "A8",
+  "title": "תמונת שיתוף (og)",
+  "fmt": "1200×630",
+  "kind": "asset",
+  "tasks": [
+   "T3.8"
+  ],
+  "status": "needed",
+  "note": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "A9",
+  "title": "וידאו קצר של 10–20 שניות שמציג את הפורמט",
+  "fmt": "MP4",
+  "kind": "asset",
+  "tasks": [
+   "T5.2"
+  ],
+  "status": "needed",
+  "note": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "A10",
+  "title": "מחירי מנוי וחד-פעמי סופיים. אייל קובע אותם ב-Admin; המנוי \"זול משמעותית\" (E6)",
+  "fmt": "מספרים",
+  "kind": "asset",
+  "tasks": [
+   "T1.2",
+   "T2.1"
+  ],
+  "status": "needed",
+  "note": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "A11",
+  "title": "אישור כמות מארזים לכל וריאנט (1/2/3), ומחיר/ימים לסוכרייה רק אם מופיע בתמונות",
+  "fmt": "טקסט",
+  "kind": "asset",
+  "tasks": [
+   "T2.1"
+  ],
+  "status": "needed",
+  "note": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "A12",
+  "title": "בחירת כלי מייל + קוד הנחת 10%",
+  "fmt": "שם קוד",
+  "kind": "asset",
+  "tasks": [
+   "T2.9",
+   "T3.2"
+  ],
+  "status": "needed",
+  "note": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "A13",
+  "title": "גישות לאינטגרציות (Google, Meta BM, TikTok, Clarity)",
+  "fmt": "אייל מחבר",
+  "kind": "asset",
+  "tasks": [
+   "T3.1"
+  ],
+  "status": "needed",
+  "note": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "A14",
+  "title": "קישור preview פתוח / HTML שמור לבדיקות ולמדידה",
+  "fmt": "—",
+  "kind": "asset",
+  "tasks": [
+   "T0.2",
+   "T1.4"
+  ],
+  "status": "needed",
+  "note": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "A15",
+  "title": "התחברות ל-Shopify CLI (על ידי אייל)",
+  "fmt": "—",
+  "kind": "asset",
+  "tasks": [
+   "T0.1"
+  ],
+  "status": "needed",
+  "note": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "A16",
+  "title": "סיפור מייסד (בהמשך)",
+  "fmt": "טקסט + תמונה",
+  "kind": "asset",
+  "tasks": [
+   "T2.11"
+  ],
+  "status": "needed",
+  "note": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "E1",
+  "title": "צעדי Admin לעברית ול-₪ (אייל מבצע; משפיע גם על הערכה החיה)",
+  "fmt": "1. **Settings › Languages › Add language › עברית (Hebrew)** › Save.\n2. ליד עברית: **Publish**.\n3. **Change default** › עברית. מאותו רגע הטיוטה תטען `locales/he.json` (קיים ב-Horizon), ו-`lang=\"he\"` יוגדר אוטומטית דרך `request.locale.iso_code`.\n4. לוודא שתוכן המוצר והעמודים (שהוזן כשהשפה הראשית הייתה `en`) מוצג כרגיל אחרי ההחלפה. אם לא, להעביר דרך Translate & Adapt.\n5. **Settings › Markets › Israel**: לוודא שהמטבע הוא ILS (מטבע החנות כבר ILS לפי הביקורת).\n6. **Settings › General › Store defaults › Currency display › Change formatting**: להחליף את `{{amount}} NIS` ב-`{{amount_no_decimals}} ₪`, בהתאם לפורמט שבטקסטים בעיצוב («300 ₪»), בשדות HTML with/without currency ו-Email. אם יש מחירים עם אגורות, להשתמש ב-`{{amount}} ₪`.\n7. **Content › Menus**: לתרגם `Home / Catalog / Contact` לעברית (משפיע על כל הערכות), או ליצור תפריט חדש לטיוטה (T3.8).\n8. **Settings › Notifications**: לבדוק שהתבניות מוצגות בעברית.\n9. בדיקה: preview של הטיוטה (`lang=\"he\"`, ₪) וצ'קאאוט עד שלב התשלום בעברית.",
+  "kind": "admin_action",
+  "tasks": [
+   "T1.3",
+   "T2.9",
+   "T3.8"
+  ],
+  "status": "needed",
+  "note": "אחרי שאייל מאשר שבוצע, המשימות שמסומנות ⏸ E1 משתחררות: T1.3 (החלק של ה-locale), T2.9 (כותרות העגלה), T3.8 (תפריט).",
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ }
+]

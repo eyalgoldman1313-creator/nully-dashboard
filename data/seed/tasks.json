@@ -1,0 +1,1327 @@
+[
+ {
+  "id": "T0.1",
+  "wave": 0,
+  "title": "סביבת עבודה ומיפוי",
+  "source": "—",
+  "finding_ids": [],
+  "idea_ids": [],
+  "impact": "תשתית",
+  "impact_level": 0,
+  "kind": "🤖",
+  "status": "open",
+  "status_raw": "✅",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [],
+  "needs_inputs": [
+   "A15"
+  ],
+  "effort": "1–2 ש'",
+  "effort_min_h": 1.0,
+  "effort_max_h": 2.0,
+  "details": "- **שלבים:** אייל מתחבר ל-CLI. אחר כך `shopify theme pull --theme 154899021876`, `git init` (לצורך diff), `shopify theme check`, ספירת `⟨`, ומפת סקשן ← קובץ.\n- **הצלחה:** `MAP.md`; theme id מאומת; אפס push. **בדיקה:** `git status` נקי.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## מטרה\nעותק מקומי ומפה של הקבצים.\n## שלבים\n1. אייל מתחבר ל-Shopify CLI בעצמו. אל תבקש סיסמאות או טוקנים.\n2. `shopify theme list --store cfam0j-2j.myshopify.com`: ודא ש-`154899021876` הוא \"Nully Horizon RTL\" ו-unpublished. אם לא: עצור.\n3. `shopify theme pull --store cfam0j-2j.myshopify.com --theme 154899021876 --path ./nully-horizon-rtl`\n4. `git init` + commit (לצורך diff).\n5. הרץ `shopify theme check` ותעד בלי לתקן. ספור `⟨`.\n6. מפה כל סקשן ב-`templates/index.json` וב-`templates/product.json`: מזהה, `type` וקובץ. מפה גם את `layout/theme.liquid`, `snippets/scripts.liquid`, `snippets/meta-tags.liquid`, `sections/header-group.json`, `sections/footer-group.json`, `config/settings_schema.json`, `locales/he.json`, `locales/en.default.json`.\n## הצלחה ובדיקה\n`../MAP.md` מחוץ לתיקיית הערכה; theme id מאומת; אפס push; `git status` נקי.",
+  "sort": 0,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T0.2",
+  "wave": 0,
+  "title": "שער פרסום",
+  "source": "F3",
+  "finding_ids": [
+   "F3"
+  ],
+  "idea_ids": [],
+  "impact": "תשתית",
+  "impact_level": 0,
+  "kind": "🤖",
+  "status": "open",
+  "status_raw": "✅",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T0.1"
+  ],
+  "needs_inputs": [],
+  "effort": "1 ש'",
+  "effort_min_h": 1.0,
+  "effort_max_h": 1.0,
+  "details": "- **מה:** סקריפט שמזהה placeholders גלויים (`⟨`, `[[להשלמה`, `TODO`) ומבין `\"disabled\": true` ומתגי הצגה.\n- **הצלחה:** נכשל על המצב הנוכחי ועובר רק כשאין placeholder גלוי.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## מטרה\nסקריפט מקומי `../tools/publish-gate.(sh|py)` שמוודא שאף placeholder לא מוצג.\n## שלבים\n1. סורק את `templates/`, `sections/`, `blocks/`, `snippets/`, `locales/` ו-`config/settings_data.json` ומחפש `⟨`, `⟩`, `[[להשלמה`, `TODO`, `lorem`.\n2. מפרסר JSON: בלוק או סקשן עם `\"disabled\": true`, או אזור שהמתג `show_*` שלו `false`, נחשב INFO ולא FAIL.\n3. מצב `--html <file>` לסריקת HTML שנשמר מה-preview.\n4. עוד בדיקה: חיפוש «ערבות», «ימי ניסיון», «החזר כספי», «מארז התנסות». כל מופע = FAIL (החלטות D2/E6).\n## הצלחה\nנכשל על המצב הנוכחי ומפרט קובץ:שורה. מגיע עם README.",
+  "sort": 1,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T0.3",
+  "wave": 0,
+  "title": "קליטת CSV ונכסים ובדיקת עמודות",
+  "source": "D5, A1–A9",
+  "finding_ids": [],
+  "idea_ids": [],
+  "impact": "תשתית",
+  "impact_level": 0,
+  "kind": "🤖",
+  "status": "blocked",
+  "status_raw": "⏸ A1",
+  "blockers": [
+   "A1"
+  ],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [],
+  "needs_inputs": [
+   "A1"
+  ],
+  "effort": "1 ש'",
+  "effort_min_h": 1.0,
+  "effort_max_h": 1.0,
+  "details": "- **מה:** אייל מעתיק את ה-CSV ל-`/workspace/uploads/nully-reviews.csv` (ואת הנכסים ל-`/workspace/uploads/nully-assets/`). Claude Code מפיק דוח: עמודות, מספר שורות, קידוד (UTF-8 / עברית), ערכים חסרים, טווח הדירוג, תאריכים, האם יש תמונות, כפילויות, ודירוג ממוצע וספירה **מחושבים**.\n- **הצלחה:** `reviews-profile.md` + הצעת מיפוי עמודות ← שדות הסקשן. אין שינוי בערכה.\n- **בדיקה:** הספירה בדוח זהה למספר השורות בקובץ.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## מטרה\nלהבין את קובץ הביקורות לפני השילוב (D5). **אין שינוי בערכה.**\n## שלבים\n1. ודא שהקובץ קיים ב-`/workspace/uploads/nully-reviews.csv`. אם לא: עצור ובקש מאייל להעתיק אותו (ואת הנכסים ל-`/workspace/uploads/nully-assets/`).\n2. זהה קידוד (UTF-8 / Windows-1255) ומפריד, וקרא עם pandas.\n3. דוח `../reviews-profile.md`: שמות העמודות, מספר שורות, ערכים חסרים לכל עמודה, טווח והתפלגות דירוג, טווח תאריכים, אורך טקסט (חציון, מינימום, מקסימום), עמודות תמונה/URL, כפילויות, ושדות שעשויים להתאים ל\"תרחיש\" (עבודה/מבחן/שיעורי בית/הורה).\n4. חשב **דירוג ממוצע** ו**מספר ביקורות** מכל הקובץ. אלה המספרים היחידים שמותר להציג.\n5. הצע מיפוי עמודות ← שדות הסקשן (שם, דירוג, טקסט, תאריך, תמונה, תרחיש), וקריטריונים לבחירת נבחרות: אורך, אזכור של ילדים/הורים, תמונה.\n6. אל תציג בדוח פרטים מזהים מלבד שם תצוגה (למשל שם פרטי + אות).\n## הצלחה ובדיקה\nהספירה בדוח זהה למספר השורות; הממוצע מחושב מחדש בבדיקה עצמאית.",
+  "sort": 2,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T1.1",
+  "wave": 1,
+  "title": "הסתרת placeholders גלויים",
+  "source": "F3",
+  "finding_ids": [
+   "F3"
+  ],
+  "idea_ids": [],
+  "impact": "קריטית",
+  "impact_level": 4,
+  "kind": "🤖",
+  "status": "open",
+  "status_raw": "✅",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T0.2"
+  ],
+  "needs_inputs": [],
+  "effort": "2–3 ש'",
+  "effort_min_h": 2.0,
+  "effort_max_h": 3.0,
+  "details": "- **מה:** eyebrow הדירוג (בבית וב-PDP), צעדי סיפור 3–4, 6 תשובות FAQ, «⟨טקסט הכפתור⟩», ציטוטי `nully_scenarios`. מסתירים ולא מוחקים; המיקומים יחזרו ב-T2.2, T2.3 ו-T2.6.\n- **הצלחה:** אפס `⟨` גלוי, אין סקשן \"יתום\", העוגן `#nully-offer` נשמר. **בדיקה:** השער; preview ב-390px וב-1440px.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## מה\n- eyebrow «★★★★★ ⟨דירוג⟩ · ⟨מספר⟩ לקוחות» ב-`nully_hero` וב-PDP. יחזור עם נתונים מה-CSV ב-T2.2/T2.3.\n- `nully_story` צעדים 3–4.\n- 6 תשובות «⟨תוכן⟩» ב-`nully_faq`.\n- «⟨טקסט הכפתור⟩» ב-`nully_cta`. הצע לאייל טקסט פעולה, למשל «להצטרפות למנוי».\n- «⟨ביקורת מהעסק הקיים⟩ ⟨שם⟩» ב-`nully_scenarios`.\n## אופן\nמסתירים (`\"disabled\": true`) ולא מוחקים. אם ה-placeholder הוא ברירת מחדל ב-schema: משנים את ה-JSON ולא את ה-schema. סקשן שנשאר רק עם כותרת: מסתירים את כולו. העוגן `#nully-offer` נשמר.\n## הצלחה ובדיקה\nאפס `⟨` גלוי; publish-gate עובר; preview ב-390px וב-1440px; theme check בלי שגיאות חדשות.",
+  "sort": 3,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T1.2",
+  "wave": 1,
+  "title": "מנוי אמיתי + מחיר חד-פעמי שנאכף",
+  "source": "F1",
+  "finding_ids": [
+   "F1"
+  ],
+  "idea_ids": [],
+  "impact": "קריטית",
+  "impact_level": 4,
+  "kind": "🏪+🤖",
+  "status": "blocked",
+  "status_raw": "🔒 **D3**",
+  "blockers": [
+   "D3"
+  ],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T0.1"
+  ],
+  "needs_inputs": [
+   "A10"
+  ],
+  "effort": "6–12 ש'",
+  "effort_min_h": 6.0,
+  "effort_max_h": 12.0,
+  "details": "- **הבעיה:** `sellingPlanGroups = []`. החד-פעמי (290) מוצג, אבל לפי הקוד מחויב מחיר הווריאנט (220; הסקה, לא נבדק). אין חיוב חוזר.\n- **🏪 אייל:** התקנת האפליקציה שנבחרה ב-D3, הפעלת Customer accounts, selling plan ומחירים סופיים (A10: המנוי זול משמעותית).\n- **🤖:** ב-`assets/nully-offer-cards.js`, הפונקציה `#select` קובעת `selling_plan` חבוי (לפי הערת הקוד). מחברים ל-form, ל-Sticky ATC ולבלוק בבית.\n- **הצלחה:** מנוי ← `selling_plan_allocation` במחיר המנוי; חד-פעמי ← בלי plan ובמחיר החד-פעמי; הצ'קאאוט = המחיר המוצג; פורטל בעברית.\n- **בדיקה:** `/cart/add` ו-`/cart.js`; צ'קאאוט בלי להשלים הזמנה; Lighthouse חוזר.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## תנאי פתיחה\nאייל התקין את האפליקציה, הפעיל Customer accounts, יצר selling plan group וקבע מחירים סופיים (A10). Claude Code לא מתקין ולא יוצר selling plans.\n## הבעיה\n`sellingPlanGroups = []`. ב-`assets/nully-offer-cards.js` כתוב: «When selling plans arrive, `#select` is the single place that also needs to set a hidden `selling_plan` value». היום הלחיצה רק מחליפה את ה-UI ומשדרת `nully:purchase-mode`. הסקה (לא נבדקה): מחויב תמיד מחיר הווריאנט.\n## שלבים\n1. קרא את התיעוד של האפליקציה. **אל תוסיף את הווידג'ט שלה** אם אפשר לעבוד עם הכרטיסים הקיימים (שומר על מהירות ועיצוב).\n2. ב-form (אתר אותו: `nully_offer`, `blocks/buy-buttons.liquid` או `snippets/add-to-cart-button.liquid`): `<input type=\"hidden\" name=\"selling_plan\">`. `#select` ממלא אותו במצב מנוי ומשבית אותו במצב חד-פעמי.\n3. מחירים: מנוי מ-`variant.selling_plan_allocations` (או מחיר הווריאנט, לפי המבנה שאייל קבע); חד-פעמי מ-`variant.price` או מ-`nully.onetime_price`. תאם עם אייל ואל תשנה מחירים ב-Admin.\n4. Sticky ATC ובלוק ההצעה בבית: אותה התנהגות.\n5. «אפשר לבטל, לעצור או לשנות»: קישור לפורטל של האפליקציה / Customer accounts.\n## הצלחה\nבמצב מנוי, `/cart.js` מכיל `selling_plan_allocation` במחיר המנוי. במצב חד-פעמי אין plan, והמחיר הוא המחיר החד-פעמי. הצ'קאאוט = המחיר המוצג. הפורטל בעברית.\n## בדיקה\nNetwork ל-`/cart/add`; צ'קאאוט עד שלב התשלום בלי הזמנה; מקלדת RTL; Lighthouse חוזר.",
+  "sort": 4,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T1.3",
+  "wave": 1,
+  "title": "עברית ו-₪ בכל המשפך",
+  "source": "F8, E1",
+  "finding_ids": [
+   "F8"
+  ],
+  "idea_ids": [],
+  "impact": "גבוהה",
+  "impact_level": 3,
+  "kind": "🤖+🏪",
+  "status": "open",
+  "status_raw": "✅ (החלק של ה-locale ⏸ E1)",
+  "blockers": [],
+  "partial_blockers": [
+   "E1"
+  ],
+  "wait_note": null,
+  "depends_on": [
+   "T0.1"
+  ],
+  "needs_inputs": [
+   "E1"
+  ],
+  "effort": "2–4 ש'",
+  "effort_min_h": 2.0,
+  "effort_max_h": 4.0,
+  "details": "- **מה:** «Cart / You may also like / View all», 404, «Products», «220.00 NIS». טקסט שמוגדר בסקשנים מתרגמים עכשיו. מחרוזות locale מגיעות מ-`locales/he.json` אחרי צעדי E1; Claude Code משלים מפתחות חסרים ב-`he.json` אם יש.\n- **הצלחה:** אפס ממשק באנגלית; ₪ בכל מקום; `lang=\"he\"`. **בדיקה:** סריקת מילים לטיניות; drawer; 404; צ'קאאוט.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## מצב\n«Cart / You may also like / View all», 404 «Page not found / Continue shopping», «Products», «220.00 NIS», `<html lang=\"en\">`. ב-Horizon, `layout/theme.liquid` מגדיר `lang=\"{{ request.locale.iso_code }}\"`, ו-`locales/he.json` נטען כשעברית היא שפת החנות.\n## שלבים\n1. לכל מחרוזת באנגלית: מצא את המקור (`| t` מ-locale, או טקסט בסקשן/template).\n2. טקסט בסקשנים/templates: תרגם עכשיו (`sections/main-cart.liquid`, `templates/cart.json`, `blocks/_cart-title.liquid`, `sections/main-404.liquid`, `templates/404.json`, `sections/main-collection.liquid`; אמת שמות).\n3. מחרוזות locale: בדוק ש-`locales/he.json` מכסה את כל המפתחות שבשימוש, והשלם מפתחות חסרים בעברית. אל תערוך את `en.default.json`.\n4. אחרי שאייל מאשר שביצע את E1 (עברית שפה ראשית, פורמט `{{amount_no_decimals}} ₪`): בדוק `lang=\"he\"` ופורמט המחיר בכל העמודים.\n5. ודא שהטקסטים הידניים משתמשים באותו פורמט (\"300 ₪\").\n## הצלחה ובדיקה\nאפס ממשק באנגלית (מלבד המותג ושמות הרכיבים) בבית, ב-PDP, בעגלה (drawer ועמוד), ב-404 ובקולקציה; ₪ בכל מקום. סריקת מילים לטיניות ב-HTML; צ'קאאוט בעברית.",
+  "sort": 5,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T1.4",
+  "wave": 1,
+  "title": "baseline ביצועים + hero מהיר + בדיקת מובייל",
+  "source": "F14",
+  "finding_ids": [
+   "F14"
+  ],
+  "idea_ids": [],
+  "impact": "גבוהה",
+  "impact_level": 3,
+  "kind": "🤖",
+  "status": "open",
+  "status_raw": "✅",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T0.1"
+  ],
+  "needs_inputs": [],
+  "effort": "2–4 ש'",
+  "effort_min_h": 2.0,
+  "effort_max_h": 4.0,
+  "details": "- **מה:** Lighthouse ×3 לבית ול-PDP (LCP, INP ו-CLS עדיין לא נמדדו); `fetchpriority=\"high\"` ל-`nully-hero-jacket-pocket.jpg`; בדיקה ידנית ב-iOS וב-Android של `nully_unwrap` (`scroll_length: 170`).\n- **הצלחה:** `PERF-BASELINE.md`. **בדיקה:** לפני ואחרי.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## עובדות\n6 קבצי GSAP (כ-206KB) נטענים ב-`snippets/scripts.liquid` שורות 7–12 בכל עמוד; הבית: 392KB HTML ו-59 תמונות; ה-hero `nully-hero-jacket-pocket.jpg` בלי `fetchpriority`; `nully_unwrap` עם `scroll_length: 170`. LCP, INP ו-CLS לא ידועים.\n## שלבים\n1. Lighthouse מקומי במובייל ובדסקטופ, ×3 לבית ול-PDP (קישור preview שאייל פתח, A14; לא עוקפים). חציון ל-`../PERF-BASELINE.md`.\n2. `fetchpriority=\"high\"` ובלי `loading=\"lazy\"` לתמונת ה-hero (בדוק את הרינדור, למשל `snippets/image.liquid`).\n3. צ'קליסט ידני לאייל ב-iOS Safari וב-Android Chrome: `nully_unwrap`, marquee, bubbles, Sticky ATC. האם הגלילה נתקעת.\n## הצלחה\nהמספרים מתועדים, ל-hero יש `fetchpriority`, ויש רשימת בעיות מובייל. לא מסירים GSAP כאן (T3.6).",
+  "sort": 6,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T1.5",
+  "wave": 1,
+  "title": "כפתור \"לרכישה\" מכל עמוד",
+  "source": "F16",
+  "finding_ids": [
+   "F16"
+  ],
+  "idea_ids": [],
+  "impact": "בינונית-גבוהה",
+  "impact_level": 2.5,
+  "kind": "🤖",
+  "status": "open",
+  "status_raw": "✅",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T0.1"
+  ],
+  "needs_inputs": [],
+  "effort": "1 ש'",
+  "effort_min_h": 1.0,
+  "effort_max_h": 1.0,
+  "details": "- **מה:** בעמודים בלי עוגן, הקישור מוביל ל-`/products/nully-brainy#nully-offer`, עם היסט לגובה ההדר. **בדיקה:** לחיצה מכל סוג עמוד.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## שלבים\n1. אתר את המקור של `href=\"#nully-offer\"`: `sections/header.liquid`, `snippets/header-actions.liquid`, `sections/header-group.json` או `assets/nully-header.js`.\n2. ב-Liquid לפי `template.name`: בבית וב-PDP `#nully-offer`; בכל השאר `/products/nully-brainy#nully-offer`.\n3. היסט לגובה ההדר הדביק (`snippets/measure-header-heights.liquid` קיים ב-Horizon).\n## הצלחה ובדיקה\nלחיצה מבית, PDP, /cart, /pages/contact, /policies/privacy-policy, /collections/all ו-404 מגיעה לכרטיסי ההצעה, בלי שההדר יסתיר אותם.",
+  "sort": 7,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T1.6",
+  "wave": 1,
+  "title": "אחידות טקסטי משלוח לפי העיצוב",
+  "source": "F7, D1",
+  "finding_ids": [
+   "F7"
+  ],
+  "idea_ids": [],
+  "impact": "בינונית-גבוהה",
+  "impact_level": 2.5,
+  "kind": "🤖",
+  "status": "open",
+  "status_raw": "✅",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T0.1"
+  ],
+  "needs_inputs": [],
+  "effort": "1–2 ש'",
+  "effort_min_h": 1.0,
+  "effort_max_h": 2.0,
+  "details": "- **מה:** מקור אמת = העיצוב: חינם לנקודת איסוף מעל 300 ₪, 19 ₪ לנקודת איסוף, 35 ₪ עד הדלת, 20 ₪ שדרוג במנוי. מוסיפים הגדרות ערכה (סף ומחירים) ב-`config/settings_schema.json`, ומשתמשים בהן ב-announcement, בכרטיסים, ב-FAQ, בכפתור ה-hero ובעגלה (T2.9). מסתירים את «איסוף לא זמין כרגע» (`show_pickup_availability`), שסותר את הבטחת נקודות האיסוף. **הגדרות הספק/Shopify מחוץ לתחום.**\n- **הצלחה:** כל טקסט משלוח מגיע מהגדרה אחת וזהה בכל המקומות. **בדיקה:** `rg \"₪|משלוח|איסוף\"` וטבלת עקביות.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## מקור האמת\n«משלוח חינם לנקודת איסוף בהזמנה מעל 300 ₪», «19 ₪ לנקודת איסוף», «35 ₪ עד הדלת», «במנוי — משלוח חינם לנקודת איסוף, תמיד», «שדרוג עד הבית ב-20 ₪» (במנוי).\n## שלבים\n1. ב-`config/settings_schema.json` הוסף הגדרות: `shipping_free_threshold` (300), `shipping_pickup_price` (19), `shipping_door_price` (35), `shipping_sub_door_upgrade` (20).\n2. `rg \"₪|משלוח|איסוף|עד הדלת|עד הבית\"` ב-`sections/header-group.json`, `templates/*.json`, `sections/`, `assets/nully-offer-cards.js` ו-`locales/`. החלף ערכים קשיחים בהפניה להגדרות במקומות שאפשר (Liquid). טקסט ב-JSON שאינו Liquid: ודא שהוא זהה.\n3. תשובת ה-FAQ «משלוחים והחזרות»: שנה את הכותרת ל«משלוחים» (התשובה עוסקת רק במשלוחים).\n4. הסתר את «איסוף לא זמין כרגע / צפייה בפרטי החנות» (`show_pickup_availability: false` בבלוק המתאים ב-`templates/product.json`), שסותר את הבטחת נקודות האיסוף.\n5. אל תיגע בהגדרות המשלוח ב-Admin.\n## הצלחה ובדיקה\nטבלת עקביות: כל מופע = ערך ההגדרה. preview בבית, ב-PDP ובעגלה.",
+  "sort": 8,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T2.1",
+  "wave": 2,
+  "title": "מנוי כאפשרות הכי אטרקטיבית: עוגן מחיר, חיסכון, תג, שמות חבילות",
+  "source": "F10, E6, 💡1, 💡5",
+  "finding_ids": [
+   "F10"
+  ],
+  "idea_ids": [
+   "1",
+   "5"
+  ],
+  "impact": "גבוהה",
+  "impact_level": 3,
+  "kind": "🤖",
+  "status": "open",
+  "status_raw": "🔒* **D3** (מספרים סופיים)",
+  "blockers": [],
+  "partial_blockers": [
+   "D3"
+  ],
+  "wait_note": null,
+  "depends_on": [
+   "T1.2"
+  ],
+  "needs_inputs": [
+   "A10",
+   "A11"
+  ],
+  "effort": "3–5 ש'",
+  "effort_min_h": 3.0,
+  "effort_max_h": 5.0,
+  "details": "- **מה (E6):** כרטיס המנוי נבחר כברירת מחדל ומודגש (תג «הכי משתלם» / «הכי פופולרי» לפי בחירת אייל). המחיר החד-פעמי מוצג כעוגן ליד המנוי. החיסכון של המנוי מול החד-פעמי מוצג ב-₪ וב-% (מחושב). שמות החבילות כוללים כמות («1 מארז / 2 / 3», 💡5, A11). כפתור ה-hero תואם להצעה (היום «50%», בעוד שהכרטיסים מראים 40/45/51). **אין מארז התנסות.** **מחיר ליום** (💡1): **רק** אם הנתון מופיע בתמונות (A11); אחרת לא מוצג.\n- **אפשר כבר עכשיו:** העיצוב, העוגן והחישובים על המחירים הקיימים (מחיר הווריאנט + `nully.onetime_price`). המספרים הסופיים אחרי D3/A10.\n- **הצלחה:** כל מספר מחושב; המנוי בולט ויזואלית כבחירה הטבעית. **בדיקה:** החלפת וריאנט ומצב; Sticky ATC מסונכרן.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## מטרה (E6)\nלדחוף לרכישת מנוי: המנוי זול משמעותית ומוצג כבחירה הטבעית. **אין מארז התנסות.**\n## שלבים\n1. כרטיס המנוי נבחר כברירת מחדל (כבר כך; ודא) ומודגש ויזואלית: מסגרת בצבע המותג, ותג מהגדרה (`offer_sub_badge`, למשל «הכי משתלם»; הטקסט לבחירת אייל).\n2. **עוגן:** בכרטיס המנוי מוצג המחיר החד-פעמי מחוק לצד מחיר המנוי, וגם \"חוסכים ₪X (Y%) לעומת רכישה חד-פעמית\", **מחושב** מ-`nully.onetime_price` מול מחיר המנוי. הדגש חיסכון גם מול compare-at, אם אייל רוצה (היום 40/45/51%).\n3. בכרטיס החד-פעמי: ניסוח עוגן שמזכיר מה מפסידים («בלי משלוח חינם לנקודת איסוף», לפי T1.6).\n4. **שמות החבילות:** תת-כותרת עם כמות («1 מארז» / «2 מארזים» / «3 מארזים») לפי A11 (אייל מאשר כמות לכל וריאנט; היחס compare-at = 365×n רומז על 1/2/3, אבל זו הסקה).\n5. **כפתור ה-hero** «לחסוך 50% + משלוח חינם»: הצע ניסוח שמחושב מהמקסימום בפועל (למשל \"עד {max}%\"), לבחירת אייל.\n6. **מחיר ליום** (אופציונלי): מציגים **רק** אם אייל מאשר שהנתון מופיע בתמונות המוצר (A11). אחרת לא מחשבים ולא מציגים.\n7. סנכרון עם Sticky ATC ובלוק ההצעה בבית.\n## הצלחה\nאין מספר מוקלד ידנית; המנוי בולט; ה-hero תואם לכרטיסים.\n## בדיקה\nהחלפת וריאנט ומצב; RTL של ₪; מובייל 390px.",
+  "sort": 9,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T2.2",
+  "wave": 2,
+  "title": "עיצוב והצבת אזורי הוכחה חברתית",
+  "source": "F2",
+  "finding_ids": [
+   "F2"
+  ],
+  "idea_ids": [],
+  "impact": "גבוהה",
+  "impact_level": 3,
+  "kind": "🤖",
+  "status": "open",
+  "status_raw": "✅",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T1.1"
+  ],
+  "needs_inputs": [],
+  "effort": "3–5 ש'",
+  "effort_min_h": 3.0,
+  "effort_max_h": 5.0,
+  "details": "- **מה:** שורת דירוג ב-hero ומתחת לכותרת המוצר ב-PDP; ציטוט מוביל מעל ה-fold; סקשן ביקורות (מבוסס על `nully_scenarios`, עם התרחישים עבודה/מבחן/שיעורי בית/נסיעה/בדרך/הורה) לפני ה-FAQ; פס תמונות לקוחות; שורת נתון ליד ההצעה (היום «פחות מ2%…»; הופך לשדה שאייל ממלא). כל אזור עם מתג הצגה ותוכן `[[להשלמה]]` עד T2.3. המבנה מוכן גם למקור metaobjects (D5-B).\n- **הצלחה:** כל האזורים מעוצבים ו-RTL, ולא מוצגים בלי תוכן.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## אזורים\n1. שורת דירוג (כוכבים + ממוצע + מספר) ב-`nully_hero` ומתחת לכותרת המוצר ב-PDP.\n2. ציטוט מוביל מעל ה-fold ב-PDP, ליד ההצעה.\n3. סקשן ביקורות: הסבת `nully_scenarios` («אתם משתפים אותנו», תרחישים: עבודה / מבחן / שיעורי בית / נסיעה / בדרך / הורה) לכרטיסים עם שם, תרחיש, טקסט, כוכבים ותמונה אופציונלית. בבית וב-PDP, לפני ה-FAQ. העדפה לביקורות של הורים.\n4. פס תמונות לקוחות (אופציונלי).\n5. שורת נתון ליד ההצעה (היום «פחות מ2%…»): הופכת לשדה שאייל ממלא.\n## כללים\n- כל תוכן מגיע מ-schema, וברירת המחדל היא `[[להשלמה: …]]`. מתג `show_*` כבוי כברירת מחדל.\n- המבנה תומך בשני מקורות: בלוקים (D5-A) או metaobject `review` (D5-B). הכן snippet `snippets/nully-review-card.liquid` שמקבל אובייקט אחיד.\n- RTL: כוכבים, מירכאות עבריות, כיוון קרוסלה.\n## קבצים\nסקשני `nully_scenarios` ו-`nully_hero` (אתר אותם), `templates/index.json`, `templates/product.json`, `snippets/nully-tokens.liquid`.\n## הצלחה ובדיקה\nכל האזורים ניתנים להפעלה ב-Theme editor ולא מוצגים בלי תוכן. בדיקת עיצוב זמנית עם placeholders מקומית, ואז כיבוי; publish-gate עובר.",
+  "sort": 10,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T2.3",
+  "wave": 2,
+  "title": "שילוב הביקורות מה-CSV",
+  "source": "F2, D5",
+  "finding_ids": [
+   "F2"
+  ],
+  "idea_ids": [],
+  "impact": "גבוהה",
+  "impact_level": 3,
+  "kind": "🤖 (+🏪 ב-B)",
+  "status": "blocked",
+  "status_raw": "🔒 **D5**",
+  "blockers": [
+   "D5"
+  ],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T0.3",
+   "T2.2"
+  ],
+  "needs_inputs": [],
+  "effort": "2–5 ש'",
+  "effort_min_h": 2.0,
+  "effort_max_h": 5.0,
+  "details": "- **מה:** לפי הבחירה. **A:** סקריפט מקומי ממיר את ה-CSV לבלוקים ב-`templates/index.json`/`product.json`, ומחשב דירוג ממוצע וספירה. **B:** 🏪 הגדרת metaobject ויבוא; הערכה קוראת ממנו.\n- **הצלחה:** כל ביקורת מוצגת = שורה ב-CSV (אפשר להצביע עליה); הדירוג והספירה מחושבים מהקובץ. **בדיקה:** השוואה מדגמית לקובץ; RTL.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## תנאי פתיחה\n`../reviews-profile.md` (T0.3) קיים, ואייל בחר אפשרות ומספר נבחרות.\n## אפשרות A (מומלצת)\n1. סקריפט מקומי `../tools/csv-to-reviews.py` שממיר שורות נבחרות לבלוקים של סקשן הביקורות ב-`templates/index.json` וב-`templates/product.json` (שמור על מגבלת הבלוקים; בדרך כלל עד 50).\n2. דירוג ממוצע וספירה **מחושבים מכל ה-CSV** נכנסים להגדרות של שורת הדירוג (T2.2).\n3. ציטוט מוביל: הביקורת שאייל בחר.\n4. הפעל את המתגים `show_*`.\n## אפשרות B\n1. רשימת צעדים לאייל (🏪): הגדרת metaobject `review` עם שדות לפי מיפוי T0.3, ויבוא ה-CSV (כלי יבוא או סקריפט שאייל מריץ).\n2. הסקשן קורא מ-`shop.metaobjects.review` דרך `snippets/nully-review-card.liquid`.\n## אילוצים\nאל תשנה טקסט ביקורת מעבר לקיצור מסומן ב-\"…\", ובאישור. בלי שם משפחה מלא.\n## הצלחה ובדיקה\nכל ביקורת מוצגת = שורה ב-CSV (טבלת מעקב). הממוצע והספירה תואמים לחישוב. RTL ומובייל.",
+  "sort": 11,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T2.4",
+  "wave": 2,
+  "title": "Sticky ATC חכם במובייל",
+  "source": "💡2",
+  "finding_ids": [],
+  "idea_ids": [
+   "2"
+  ],
+  "impact": "גבוהה",
+  "impact_level": 3,
+  "kind": "🤖",
+  "status": "open",
+  "status_raw": "✅",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T1.1"
+  ],
+  "needs_inputs": [],
+  "effort": "2–3 ש'",
+  "effort_min_h": 2.0,
+  "effort_max_h": 3.0,
+  "details": "- **מה:** מציג את החבילה שנבחרה, המחיר ומצב הרכישה (מאזין ל-`nully:purchase-mode`). מופיע רק אחרי שהגולש עבר את כרטיסי ההצעה. המנוי מודגש.\n- **הצלחה:** מסונכרן עם הכרטיסים ולא מסתיר תוכן. **בדיקה:** מובייל, מעבר בין מצבים.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## מצב\n`enable_sticky_add_to_cart: true`; `<div class=\"sticky-add-to-cart\">`; ב-Horizon `assets/sticky-add-to-cart.js`.\n## שלבים\n1. ה-Sticky מציג את שם החבילה שנבחרה, את המחיר ואת מצב הרכישה (מאזין ל-`nully:purchase-mode` ולשינוי וריאנט). במנוי: «במנוי · חוסכים ₪X» (מחושב, T2.1).\n2. מופיע רק אחרי שהגולש עבר את כרטיסי ההצעה (IntersectionObserver), ונעלם כשההצעה גלויה.\n3. לחיצה מוסיפה לסל באותו מצב (כולל `selling_plan`, אחרי T1.2), או גוללת להצעה אם צריך בחירה.\n4. לא מסתיר את כפתור ה-WhatsApp (T3.3) ולא מכסה תוכן (padding תחתון).\n## הצלחה ובדיקה\nמסונכרן עם הכרטיסים. מובייל ב-iOS וב-Android, מעבר בין מצבים, מקלדת.",
+  "sort": 12,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T2.5",
+  "wave": 2,
+  "title": "שורת אמון צמודה ל-ATC (בלי ערבות)",
+  "source": "💡3 (מותאם)",
+  "finding_ids": [],
+  "idea_ids": [
+   "3"
+  ],
+  "impact": "גבוהה",
+  "impact_level": 3,
+  "kind": "🤖",
+  "status": "open",
+  "status_raw": "✅",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T1.6"
+  ],
+  "needs_inputs": [],
+  "effort": "1–2 ש'",
+  "effort_min_h": 1.0,
+  "effort_max_h": 2.0,
+  "details": "- **מה:** 3 אייקונים מתחת לכפתור: משלוח (מהגדרות T1.6), «במנוי — ביטול/עצירה בכל רגע» (מהכרטיס הקיים), «ארוזה אישית · 30 מנות». **בלי** ערבות או החזר כספי.\n- **הצלחה:** עקבי עם הכרטיסים; RTL.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## מה\n3 אייקונים קטנים מתחת לכפתור ההוספה לסל (בבלוק ההצעה בבית וב-PDP):\n1. משלוח: מהגדרות T1.6 («חינם לנקודת איסוף מעל 300 ₪» / במנוי «תמיד»).\n2. «במנוי — ביטול, עצירה או שינוי בכל רגע» (מהכרטיס הקיים).\n3. «30 מנות ארוזות אישית».\n## אילוצים\n**בלי** ערבות, החזר או ימי ניסיון. אייקונים מ-`blocks/icon.liquid` / `snippets/icon-or-image.liquid` (Horizon) או מ-SVG קיים.\n## הצלחה ובדיקה\nעקבי עם הכרטיסים; RTL (אייקון מימין לטקסט); מובייל.",
+  "sort": 13,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T2.6",
+  "wave": 2,
+  "title": "FAQ להורים + צעדי סיפור + CTA סוגר",
+  "source": "F3, F11, D4, 💡14",
+  "finding_ids": [
+   "F3",
+   "F11"
+  ],
+  "idea_ids": [
+   "14"
+  ],
+  "impact": "גבוהה",
+  "impact_level": 3,
+  "kind": "🤖",
+  "status": "open",
+  "status_raw": "✅",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T1.1"
+  ],
+  "needs_inputs": [
+   "A4"
+  ],
+  "effort": "3–5 ש'",
+  "effort_min_h": 3.0,
+  "effort_max_h": 5.0,
+  "details": "- **מה:** שאלות לפי ההתנגדויות של הורים (synthesis §4.3 + D4): «ניסיתי הכל — במה זה שונה?», «מאיזה גיל?» (מהתמונות, A4; ליישב «מגיל 5» מול «קטנטנים»), «כמה סוכר יש?» (מהתווית), «איך זה משתלב בשגרת הבוקר/בתיק?», «הילד יאהב את הטעם?», «מה כל רכיב עושה» (`nully_inside`), «איך לוקחים», «מתי מרגישים?», «משלוחים» (T1.6). צעד 3 בסיפור (פי 36, ספיגה דרך רירית הפה) וצעד 4 (עד 8 שעות של פוקוס, בלי קפאין) מהקופי הקיים. טקסט ל-CTA הסוגר. עובדה שלא מופיעה בתמונות → `[[להשלמה]]`.\n- **הצלחה:** אפס placeholder גלוי; אקורדיון נגיש. **בדיקה:** השער; מקלדת; מובייל.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## מטרה\nFAQ שעונה על ההתנגדויות של הורים, וסיפור מלא.\n## שאלות (סדר מוצע)\n1. «ניסיתי כבר הכל — במה NULLY שונה?» (מהבידול ב-`nully_format`: «מוצצים, לא בולעים», «ארוזה אישית», «טעים, לא מטלה»).\n2. «מאיזה גיל מתאים?»: מתמונת התווית. ליישב «מגיל 5» (PDP) מול «מתאים גם לקטנטנים» (בית). אם לא ברור מהתמונה: `[[להשלמה: גיל לפי התווית]]`.\n3. «כמה סוכר יש בסוכרייה?»: מהתווית (ליישב «ללא סוכר» / «ללא סוכר מוסף»).\n4. «איך זה משתלב בשגרה — בוקר, תיק, שיעורי בית?»\n5. «הילדים יאהבו את הטעם?»: «שלושה טעמי פירות» (קיים).\n6. «מה כל רכיב עושה?»: מ-`nully_inside`.\n7. «איך לוקחים?»: 3 צעדים.\n8. «מתי מרגישים?»: «עד 8 שעות של פוקוס» (קופי קיים).\n9. «משלוחים»: מ-T1.6.\n## סיפור\n`nully_story` צעד 3 (המדע): «ספיגה דרך רירית חלל הפה — מהר פי 36 מכדור, ישירות לזרם הדם». צעד 4 (התוצאה): «עד 8 שעות של פוקוס, באופן טבעי, בלי קפאין». תמונה מ-A5, אם יש.\n## CTA סוגר\nטקסט כפתור (הצעה: «להצטרפות למנוי»), שמוביל ל-`#nully-offer`.\n## אופן\nהצע ניסוחים לאישור אייל. עובדה שלא מופיעה בתמונות: `[[להשלמה]]` + `\"disabled\": true`.\n## הצלחה ובדיקה\nאפס placeholder גלוי; publish-gate; Enter/Space ו-`aria-expanded`; קריאה במובייל.",
+  "sort": 14,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T2.7",
+  "wave": 2,
+  "title": "hero, קופי ו-announcement להורים",
+  "source": "F11, D4, 💡14",
+  "finding_ids": [
+   "F11"
+  ],
+  "idea_ids": [
+   "14"
+  ],
+  "impact": "בינונית-גבוהה",
+  "impact_level": 2.5,
+  "kind": "🤖",
+  "status": "open",
+  "status_raw": "✅",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T2.6"
+  ],
+  "needs_inputs": [
+   "A5"
+  ],
+  "effort": "2–4 ש'",
+  "effort_min_h": 2.0,
+  "effort_max_h": 4.0,
+  "details": "- **מה:** 3 חלופות לכותרת ולתת-כותרת שמדברות להורים (כאב אחד + תוצאה אחת, למשל סביב שיעורי בית ובוקר רגוע; ניסוח סופי לאישור אייל). בלוק \"מה זה / מה זה לא\". announcement 3 עם מסר להורים (במקום «30 סוכריות…»). תמונת hero עם הורה וילד (A5). תיקון \"מינרלים\" ו\"ויטמין C\" לפי התווית (A4). החלופות נשמרות ל-T5.1.\n- **הצלחה:** hero אחד ממוקד הורים, CTA אחד. **בדיקה:** אורך שורות ב-390px.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## שלבים\n1. 3 חלופות לכותרת ולתת-כותרת ב-`nully_hero`, שמדברות להורים: כאב אחד + תוצאה אחת (למשל סביב שיעורי בית/מבחנים/בוקר בלי ויכוחים). שמור על «בסוכריה אחת» ועל «זה טעים להתרכז». ההצעות לבחירת אייל, והחלופות נשמרות כהגדרות ל-A/B (T5.1).\n2. תת-הכותרת מזכירה «ויטמינים, מינרלים…» ובועה «B6 B12 C», אבל ב-`nully_inside` אין מינרלים ואין ויטמין C. תקן לפי התווית (A4), או `[[להשלמה]]`.\n3. בלוק \"מה זה / מה זה לא\" (ב-`nully_format` או סקשן חדש).\n4. announcement: הודעה 3 (היום «30 סוכריות…») ← מסר להורים או למנוי. הניסוח לאישור אייל.\n5. תמונת hero עם הורה וילד מ-A5. alt בעברית; `fetchpriority` נשמר (T1.4).\n6. ה-CTA ב-hero מדגיש מנוי («להצטרפות למנוי וחיסכון», תואם ל-T2.1).\n## הצלחה ובדיקה\nhero אחד ממוקד הורים ו-CTA אחד. שורות לא נשברות ב-390px; טקסט מעורב עברית/אנגלית תקין.",
+  "sort": 15,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T2.8",
+  "wave": 2,
+  "title": "\"איך זה עובד ב-3 צעדים\" עם תמונות",
+  "source": "💡4",
+  "finding_ids": [],
+  "idea_ids": [
+   "4"
+  ],
+  "impact": "בינונית-גבוהה",
+  "impact_level": 2.5,
+  "kind": "🤖",
+  "status": "blocked",
+  "status_raw": "⏸ A6",
+  "blockers": [
+   "A6"
+  ],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T1.1"
+  ],
+  "needs_inputs": [
+   "A6"
+  ],
+  "effort": "2–3 ש'",
+  "effort_min_h": 2.0,
+  "effort_max_h": 3.0,
+  "details": "- **מה:** סקשן של 3 צעדים (פותחים · מוצצים · ממוקדים) עם תמונות אמיתיות, בבית וב-PDP.\n- **הצלחה:** מוצג רק עם תמונות.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## שלבים\n1. סקשן `sections/nully-steps.liquid` (או בלוקים בסקשן קיים): 3 צעדים עם תמונה, כותרת קצרה (הצעה: «פותחים · מוצצים · ממוקדים») ושורת הסבר.\n2. בבית: אחרי `nully_format`. ב-PDP: אחרי ההצעה.\n3. תמונות מ-`/workspace/uploads/nully-assets/` (A6). אייל מעלה אותן ל-Files, ובוחרים אותן ב-Theme editor.\n## הצלחה ובדיקה\nמוצג רק עם תמונות; RTL (צעד 1 מימין); מובייל בעמודה אחת.",
+  "sort": 16,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T2.9",
+  "wave": 2,
+  "title": "עגלה: מד משלוח חינם (300 ₪), הודעה אחרי הוספה, 10%, כותרות",
+  "source": "F13, 💡6",
+  "finding_ids": [
+   "F13"
+  ],
+  "idea_ids": [
+   "6"
+  ],
+  "impact": "בינונית-גבוהה",
+  "impact_level": 2.5,
+  "kind": "🤖",
+  "status": "open",
+  "status_raw": "✅ (10% ⏸ A12; כותרות ⏸ E1)",
+  "blockers": [],
+  "partial_blockers": [
+   "A12",
+   "E1"
+  ],
+  "wait_note": null,
+  "depends_on": [
+   "T1.6"
+  ],
+  "needs_inputs": [
+   "A12",
+   "E1"
+  ],
+  "effort": "3–5 ש'",
+  "effort_min_h": 3.0,
+  "effort_max_h": 5.0,
+  "details": "- **מה:** מד \"עוד ₪X למשלוח חינם לנקודת איסוף\" (סף 300 מ-T1.6), שמתמלא מימין לשמאל. אחרי הוספה לסל: הודעה (משלוח חינם / \"שדרגו לזוגי וחסכו ₪Y\", מחושב) והצעה לעבור למנוי אם נבחר חד-פעמי. כותרות בעברית. ה-10% מוצג רק עם קוד שעובד.\n- **קבצים:** `snippets/cart-drawer.liquid`, `sections/cart-drawer-section.liquid`, `snippets/cart-summary.liquid`, `blocks/_cart-summary.liquid`, `sections/main-cart.liquid`, `templates/cart.json`.\n- **הצלחה:** המד מדויק ומתעדכן בלי רענון. **בדיקה:** 3 מצבים, drawer ועמוד, VoiceOver.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## קבצים (Horizon; אמת)\n`snippets/cart-drawer.liquid`, `sections/cart-drawer-section.liquid`, `snippets/cart-summary.liquid`, `blocks/_cart-summary.liquid`, `sections/main-cart.liquid`, `templates/cart.json`, `assets/cart-drawer.js`.\n## שלבים\n1. מד \"עוד ₪X למשלוח חינם לנקודת איסוף\" / \"יש לכם משלוח חינם לנקודת איסוף!\": `cart.total_price` (באגורות) מול `settings.shipping_free_threshold` (T1.6). מתמלא מימין לשמאל, עם `aria-live=\"polite\"`. מתעדכן דרך אירועי העגלה הקיימים של Horizon (אתר אותם; בלי ספריות).\n2. אם יש בסל פריט חד-פעמי: הצעה \"עברו למנוי וחסכו ₪X\" (מחושב; משנה את ה-line item ל-selling plan אחרי T1.2).\n3. הצעת שדרוג: \"שדרגו לזוגי וחסכו ₪Y\" (מחושב מהמחירים).\n4. כותרות בעברית (T1.3).\n5. ה-10% בבלוק הניוזלטר בפוטר: מוצג רק אם אייל אישר שיש קוד/אוטומציה פעילים (A12). אחרת הסתר.\n## אילוצים\nבלי אפליקציות upsell.\n## הצלחה ובדיקה\nהמד מדויק מתחת לסף, בדיוק בו ומעליו; drawer ועמוד; VoiceOver.",
+  "sort": 17,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T2.10",
+  "wave": 2,
+  "title": "PDP מלא + סדר וגודל הגלריה",
+  "source": "F9, 💡15",
+  "finding_ids": [
+   "F9"
+  ],
+  "idea_ids": [
+   "15"
+  ],
+  "impact": "בינונית",
+  "impact_level": 2,
+  "kind": "🤖+🏪",
+  "status": "open",
+  "status_raw": "✅",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [],
+  "needs_inputs": [
+   "A4"
+  ],
+  "effort": "4–6 ש'",
+  "effort_min_h": 4.0,
+  "effort_max_h": 6.0,
+  "details": "- **מה:** אקורדיונים: מה בפנים, מינון, איך לוקחים, למי מתאים (הורים/גיל), אחסון. העובדות מהתמונות (A4); תמונת התווית `nully-pack-label.jpg`; CTA סוגר. 🏪 אייל: להסיר את `meta_ads_1.png` מהגלריה ולסדר אותה (מוצר ← שימוש ← ילד/הורה ← תווית). `srcset` לתמונה של 3712×4928.\n- **הצלחה:** כל עובדה תואמת לתמונה; אין שורה ריקה גלויה.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## שלבים\n1. אקורדיון (`blocks/accordion.liquid` + `blocks/_accordion-row.liquid` מ-Horizon, או הקומפוננטה של `nully_faq`): «מה בפנים ובאיזה מינון», «איך לוקחים», «למי זה מתאים» (הורים/גיל), «אחסון». כל ערך מתמונות התווית (A4, כולל `nully-pack-label.jpg`); אם חסר: `[[להשלמה]]` ומוסתר.\n2. שורה עם תמונת התווית ו-alt בעברית.\n3. CTA סוגר בתחתית ה-PDP אל `#nully-offer`.\n4. גלריה: `srcset`/`sizes` נכונים (קיים קובץ 3712×4928); רשימה לאייל (🏪): להסיר את `meta_ads_1.png`, לסדר מוצר ← שימוש ← ילד/הורה ← תווית, ו-alt בעברית ל-9 המדיות.\n## הצלחה ובדיקה\nכל עובדה תואמת לתמונה; אין שורה ריקה גלויה; מקלדת; מובייל.",
+  "sort": 18,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T2.11",
+  "wave": 2,
+  "title": "סקשן סיפור מייסד (נדחה, כבוי)",
+  "source": "E8",
+  "finding_ids": [],
+  "idea_ids": [],
+  "impact": "בינונית",
+  "impact_level": 2,
+  "kind": "🤖",
+  "status": "blocked",
+  "status_raw": "⏸ נדחה (A16)",
+  "blockers": [
+   "A16"
+  ],
+  "partial_blockers": [],
+  "wait_note": "נדחה: התוכן יגיע בהמשך (A16)",
+  "depends_on": [],
+  "needs_inputs": [
+   "A16"
+  ],
+  "effort": "1–2 ש'",
+  "effort_min_h": 1.0,
+  "effort_max_h": 2.0,
+  "details": "- **מה:** בונים סקשן מעוצב (תמונה, שם, סיפור, ציטוט), כבוי כברירת מחדל, ושמורים לו מקומות בבית וב-PDP. ממלאים כשאייל יספק.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## שלבים\n1. `sections/nully-founder.liquid`: תמונה, שם, כותרת, סיפור (richtext), ציטוט, וקישור אופציונלי. מבוסס על טוקנים מ-`snippets/nully-tokens.liquid`.\n2. מוסיפים ל-`templates/index.json` (אחרי `nully_inside`) ול-`templates/product.json`, עם `\"disabled\": true` ותוכן `[[להשלמה: סיפור מייסד]]`.\n## הצלחה\nהסקשן קיים, כבוי, ו-publish-gate עובר. מוכן למילוי ב-Theme editor.",
+  "sort": 19,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T3.1",
+  "wave": 3,
+  "title": "חיבור אינטגרציות + אירועי אנליטיקה",
+  "source": "E2, 💡8, 💡21",
+  "finding_ids": [],
+  "idea_ids": [
+   "8",
+   "21"
+  ],
+  "impact": "גבוהה (מדידה)",
+  "impact_level": 3,
+  "kind": "🏪+🤖",
+  "status": "open",
+  "status_raw": "✅ (חיבור ⏸ A13)",
+  "blockers": [],
+  "partial_blockers": [
+   "A13"
+  ],
+  "wait_note": null,
+  "depends_on": [],
+  "needs_inputs": [
+   "A13"
+  ],
+  "effort": "2–4 ש'",
+  "effort_min_h": 2.0,
+  "effort_max_h": 4.0,
+  "details": "- **🏪 אייל:** לפי טבלת E2: GA4, Meta + CAPI, כלי מייל, Clarity, Merchant Center, TikTok.\n- **🤖:** custom events דרך Customer Events (`nully:purchase-mode`, בחירת וריאנט, צפייה בהצעה, פתיחת FAQ, פתיחת drawer), ומסמך של שמות האירועים.\n- **הצלחה:** האירועים מופיעים ב-GA4 DebugView / Meta Test Events. **בדיקה:** Lighthouse לפני ואחרי.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## חלוקה\n- 🏪 **אייל** (Claude Code רק מכין צ'קליסט): GA4 + Google Ads דרך Google & YouTube; Meta Pixel + CAPI דרך Facebook & Instagram; Shopify Email או Klaviyo; Clarity; Merchant Center; TikTok; Search Console (אחרי ההשקה).\n- 🤖 **בטיוטה**: אירועים מותאמים.\n## שלבים\n1. הגדר `Shopify.analytics.publish` / `window.Shopify.analytics.publish(...)` (לבדוק את ה-API הנכון לערכות; Custom Pixel ב-Customer Events מאזין ל-`analytics.subscribe`) לאירועים: `nully_purchase_mode` (מתוך `nully:purchase-mode`), `nully_variant_select`, `nully_offer_view` (IntersectionObserver על `#nully-offer`), `nully_faq_open`, `nully_cart_drawer_open`.\n2. כתוב קוד ל-Custom Pixel שאייל ידביק ב-Customer Events, וממפה את האירועים ל-GA4/Meta.\n3. מסמך `../analytics/events.md`: שם, מתי נשלח, פרמטרים.\n4. Lighthouse לפני ואחרי.\n## הצלחה ובדיקה\nהאירועים מופיעים ב-GA4 DebugView / Meta Test Events אחרי החיבור; אין שגיאות JS.",
+  "sort": 20,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T3.2",
+  "wave": 3,
+  "title": "מיילים: welcome + 10% + onboarding",
+  "source": "💡11",
+  "finding_ids": [],
+  "idea_ids": [
+   "11"
+  ],
+  "impact": "בינונית",
+  "impact_level": 2,
+  "kind": "🏪+🤖",
+  "status": "blocked",
+  "status_raw": "⏸ A12",
+  "blockers": [
+   "A12"
+  ],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T3.1"
+  ],
+  "needs_inputs": [
+   "A12"
+  ],
+  "effort": "3–5 ש'",
+  "effort_min_h": 3.0,
+  "effort_max_h": 5.0,
+  "details": "- **מה:** welcome עם קוד ה-10% (מחבר את ההבטחה בפוטר), ורצף onboarding להורים (\"איך מתחילים\", טיפ לשגרה, בקשת ביקורת). Claude Code כותב טיוטות קופי ו-HTML; אייל מגדיר את הכלי.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## שלבים\n1. טיוטות קופי בעברית (Claude Code כותב, אייל מגדיר בכלי): (א) welcome עם קוד ה-10% (מממש את ההבטחה בפוטר); (ב) אחרי רכישה: \"איך מתחילים\" (3 צעדים); (ג) טיפ לשגרה עם הילדים; (ד) בקשת ביקורת. את התזמון קובע אייל.\n2. HTML פשוט ו-RTL (`dir=\"rtl\"`) בצבעי המותג (`#14807c`, `#0e2b2a`).\n3. הקוד בטקסט: `[[להשלמה: קוד הנחה]]` עד שאייל נותן אותו.\n## הצלחה\n4 מיילים מוכנים; תצוגה מקדימה RTL בכלי.",
+  "sort": 21,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T3.3",
+  "wave": 3,
+  "title": "ערוצי קשר: WhatsApp (צף + ליווי אחרי רכישה), רשתות, צור קשר",
+  "source": "F16, 💡13",
+  "finding_ids": [
+   "F16"
+  ],
+  "idea_ids": [
+   "13"
+  ],
+  "impact": "בינונית",
+  "impact_level": 2,
+  "kind": "🤖",
+  "status": "blocked",
+  "status_raw": "⏸ A2, A3",
+  "blockers": [
+   "A2",
+   "A3"
+  ],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [],
+  "needs_inputs": [
+   "A2",
+   "A3"
+  ],
+  "effort": "2–3 ש'",
+  "effort_min_h": 2.0,
+  "effort_max_h": 3.0,
+  "details": "- **מה:** כפתור WhatsApp צף (בצד שלא מתנגש עם Sticky ATC), קישורי רשתות בפוטר (`blocks/social-links.liquid`), תוכן לעמוד צור קשר (`templates/page.contact.json`), ותסריט הודעת \"ליווי\" ל-WhatsApp אחרי רכישה (שאייל שולח).",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## קבצים\n`sections/footer-group.json`, `sections/footer.liquid`, `blocks/social-links.liquid`, `blocks/_social-link.liquid`, `blocks/_footer-social-icons.liquid`, `templates/page.contact.json`, `config/settings_data.json` (קישורי רשתות). אמת.\n## שלבים\n1. כפתור WhatsApp צף: `snippets/nully-whatsapp.liquid` עם `https://wa.me/<מספר>?text=...`. בלי סקריפט צד-ג'. מיקום שלא מתנגש עם Sticky ATC (T2.4).\n2. קישורי רשתות: רק מ-A2.\n3. עמוד צור קשר: פתיח, WhatsApp, מייל `support@nully-shop.com` (קיים), טופס.\n4. תסריט הודעת \"ליווי\" אחרי רכישה (מסמך לאייל).\n5. «Powered by Shopify»: להסתיר רק אם אייל רוצה.\n## הצלחה ובדיקה\nכל קישור עובד; אין אייקון ריק; מובייל.",
+  "sort": 22,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T3.4",
+  "wave": 3,
+  "title": "דף תודה מותאם",
+  "source": "💡16",
+  "finding_ids": [],
+  "idea_ids": [
+   "16"
+  ],
+  "impact": "בינונית",
+  "impact_level": 2,
+  "kind": "🏪+🤖",
+  "status": "open",
+  "status_raw": "✅",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T3.3"
+  ],
+  "needs_inputs": [],
+  "effort": "2–3 ש'",
+  "effort_min_h": 2.0,
+  "effort_max_h": 3.0,
+  "details": "- **מה:** \"מה עכשיו\" (איך מתחילים, WhatsApp) ושאלה \"איך שמעתם עלינו\". 🏪 דרך עורך הצ'קאאוט של Shopify. היכולות בתוכנית Basic לא נבדקו, ולכן מתחילים בבדיקת היכולת.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## שלבים\n1. בדוק בתיעוד Shopify אילו התאמות לדף התודה / Order status זמינות בתוכנית Basic, ודווח.\n2. תוכן מוצע: \"מה עכשיו\" (מתי צפוי משלוח, לפי הטקסטים הקיימים; איך מתחילים ב-3 צעדים), כפתור WhatsApp (A3), ושאלה אחת \"איך שמעתם עלינו\".\n3. צעדים מדויקים לאייל להגדרה בעורך.\n## הצלחה\nמסמך יכולות + תוכן + צעדים. אין שינוי בחנות על ידי Claude Code.",
+  "sort": 23,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T3.5",
+  "wave": 3,
+  "title": "תזכורת לפני חידוש מנוי + דילוג/השהיה",
+  "source": "💡12",
+  "finding_ids": [],
+  "idea_ids": [
+   "12"
+  ],
+  "impact": "בינונית (שימור)",
+  "impact_level": 2,
+  "kind": "🏪",
+  "status": "blocked",
+  "status_raw": "🔒 **D3**",
+  "blockers": [
+   "D3"
+  ],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T1.2"
+  ],
+  "needs_inputs": [],
+  "effort": "1–2 ש'",
+  "effort_min_h": 1.0,
+  "effort_max_h": 2.0,
+  "details": "- **מה:** 🏪 הגדרה באפליקציה שנבחרה. Claude Code כותב את הקופי בעברית.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## שלבים\n1. בדוק בתיעוד האפליקציה שנבחרה: התראה לפני חיוב, ודילוג/השהיה בפורטל.\n2. קופי בעברית להודעת התזכורת (מייל/SMS), עם קישור לדילוג/השהיה.\n3. צעדים לאייל להפעלה.\n## הצלחה\nהתזכורת מוגדרת (על ידי אייל) והקופי מוכן.",
+  "sort": 24,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T3.6",
+  "wave": 3,
+  "title": "אופטימיזציית ביצועים",
+  "source": "F14",
+  "finding_ids": [
+   "F14"
+  ],
+  "idea_ids": [],
+  "impact": "בינונית",
+  "impact_level": 2,
+  "kind": "🤖",
+  "status": "open",
+  "status_raw": "✅",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T1.4"
+  ],
+  "needs_inputs": [],
+  "effort": "3–6 ש'",
+  "effort_min_h": 3.0,
+  "effort_max_h": 6.0,
+  "details": "- **מה:** GSAP (כ-206KB, `snippets/scripts.liquid` שורות 7–12) רק בעמודים שצריכים; הסרת פלאגינים שלא בשימוש; `prefers-reduced-motion`; `srcset`. מדידה חוזרת אחרי חיבור האינטגרציות והאפליקציה.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## שלבים\n1. `rg \"Draggable|Flip|MotionPath|SplitText|ScrollTrigger\"` על `assets/nully-*.js` כדי למפות שימוש; פלאגין בלי שימוש מסירים מ-`snippets/scripts.liquid` (שורות 7–12).\n2. טוענים GSAP רק ב-`template.name` שצריך; לא בעגלה, צור קשר, מדיניות ו-404.\n3. `prefers-reduced-motion: reduce`: מבטלים scroll-jacking של `nully_unwrap` ומרככים bubbles/marquee.\n4. `srcset`/`sizes` לתמונות גדולות.\n5. מדידה חוזרת (גם אחרי T1.2 ו-T3.1) מול `PERF-BASELINE.md`.\n## הצלחה ובדיקה\nאין GSAP בעמודים שלא צריכים, אין שגיאות JS, LCP לא מחמיר, והאנימציות עובדות. Lighthouse ×3; בדיקה ידנית ב-iOS וב-Android.",
+  "sort": 25,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T3.7",
+  "wave": 3,
+  "title": "ליטוש RTL/bidi, קונטרסט, alt, אחידות כתיב",
+  "source": "F17, F12, 💡9, 💡10",
+  "finding_ids": [
+   "F12",
+   "F17"
+  ],
+  "idea_ids": [
+   "9",
+   "10"
+  ],
+  "impact": "בינונית",
+  "impact_level": 2,
+  "kind": "🤖",
+  "status": "open",
+  "status_raw": "✅",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [],
+  "needs_inputs": [
+   "A4"
+  ],
+  "effort": "3–4 ש'",
+  "effort_min_h": 3.0,
+  "effort_max_h": 4.0,
+  "details": "- **מה:**\n  - `<bdi>` / `unicode-bidi: isolate` למונחים כמו «®ALPHA‑GPC», «B6&B12», «+4», «125 מ״ג».\n  - חיצים וקרוסלות הפוכים; שדות טלפון ומייל ב-`ltr`.\n  - קונטרסט: `#20afaa`, `#ff6b8a` ו-`#faca41` לא עוברים AA כטקסט על רקע בהיר (חישוב שלי), ו-`#14807c` על `#faf8f9` על הגבול (≈4.5). מתקנים רק היכן שהם משמשים כטקסט.\n  - `alt=\"\"` ל-unwrap; כתיב אחיד (סוכרייה, ALPHA‑GPC, ®).\n  - עקביות עם התווית (A4): ללא סוכר / סוכר מוסף, צבעי מאכל, גיל, 30/28.\n- **בדיקה:** Lighthouse/axe, ובדיקה ויזואלית.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## שלבים\n1. **bidi:** `<bdi>` או `unicode-bidi: isolate` (class `nully-ltr`) למונחים לטיניים ומספרים: «®ALPHA‑GPC», «B6&B12», «+4», «125 מ״ג». חיצי קרוסלה וגלריה הפוכים; שדות טלפון ומייל עם `dir=\"ltr\"`; גרשיים עבריים (״/׳) עקביים.\n2. **קונטרסט:** מפה איפה `#20afaa`, `#ff6b8a` ו-`#faca41` משמשים **כטקסט** על רקע בהיר (בחישוב, יחס 2.7, 2.7 ו-1.55 מול לבן), ואיפה `#14807c` על `#faf8f9` (≈4.5). תקן רק טקסט, בטוקנים של `snippets/nully-tokens.liquid`, עם הצעת גוון לאישור אייל.\n3. **alt:** `alt=\"\"` ל-6 התמונות של `nully_unwrap`; רשימת alt בעברית ל-9 מדיות המוצר לאייל (🏪).\n4. **כתיב:** מילון לאישור אייל (סוכרייה/סוכריה; ALPHA‑GPC עם U+2011; מיקום ®), ואז החלה.\n5. **עקביות לפי התווית (A4):** «ללא סוכר» / «ללא סוכר מוסף»; «צבעי מאכל טבעיים» / «ללא צבעי מאכל»; «קטנטנים» / «מגיל 5»; «30 סוכריות» / «28 ימים».\n## הצלחה ובדיקה\nLighthouse Accessibility / axe בלי שגיאות קונטרסט בטקסט; אפס `<img>` בלי alt; חיפוש מראה כתיב אחיד.",
+  "sort": 26,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T3.8",
+  "wave": 3,
+  "title": "SEO, תפריט עברי, פירורי לחם, JSON-LD",
+  "source": "F8, 💡17",
+  "finding_ids": [
+   "F8"
+  ],
+  "idea_ids": [
+   "17"
+  ],
+  "impact": "נמוכה-בינונית",
+  "impact_level": 1.5,
+  "kind": "🤖+🏪",
+  "status": "open",
+  "status_raw": "🔒* **D5** (AggregateRating)",
+  "blockers": [],
+  "partial_blockers": [
+   "D5"
+  ],
+  "wait_note": null,
+  "depends_on": [
+   "T2.3",
+   "T2.6"
+  ],
+  "needs_inputs": [
+   "E1"
+  ],
+  "effort": "3–5 ש'",
+  "effort_min_h": 3.0,
+  "effort_max_h": 5.0,
+  "details": "- **מה:**\n  - H1 יחיד ב-PDP ובבית.\n  - og:image (A8); 🏪 meta description, SEO של המוצר ותפריט עברי קצר (המוצר · איך זה עובד · שאלות · צור קשר).\n  - פירורי לחם ב-PDP.\n  - JSON-LD: `WebSite`, `BreadcrumbList`, `FAQPage` (מ-T2.6), ו-`AggregateRating` מנתוני ה-CSV (אחרי T2.3).\n- **בדיקה:** Rich Results Test.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## שלבים\n1. H1 יחיד: ב-PDP, כותרת המוצר (Horizon `blocks/product-title.liquid`, או בתוך `nully_offer`; אתר); בבית, כותרת ה-hero במקום ה-H1 המוסתר «Nully Supplements».\n2. og:image: לפי `snippets/meta-tags.liquid`; תמונת שיתוף מ-A8 (אייל בוחר ב-Theme editor אם יש הגדרה).\n3. JSON-LD: `WebSite` (בבית), `BreadcrumbList` (ב-PDP), `FAQPage` מאותו מקור כמו ה-FAQ הגלוי (T2.6), בלי לשכפל `Product` (`rg \"application/ld+json\"`).\n4. `AggregateRating`: הממוצע והספירה מה-CSV (T2.3) רק אחרי השילוב.\n5. פירורי לחם גלויים ב-PDP (בית › המוצר).\n6. רשימה לאייל (🏪): תפריט עברי קצר (המוצר · איך זה עובד · שאלות · צור קשר), שמשויך בטיוטה דרך הגדרת ה-header; תיאור החנות (meta); SEO title/description למוצר; שם הקולקציה «Home page».\n## הצלחה ובדיקה\n`rg -c \"<h1\"` = 1 בכל עמוד; Rich Results Test / Schema validator עובר; ה-LD זהה לתוכן הגלוי.",
+  "sort": 27,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T3.9",
+  "wave": 3,
+  "title": "עמודי תוכן: \"מה זה ALPHA‑GPC\", \"סוכרייה מול כדור\", \"מדריך להורים\"",
+  "source": "💡18, 💡14",
+  "finding_ids": [],
+  "idea_ids": [
+   "18",
+   "14"
+  ],
+  "impact": "נמוכה-בינונית",
+  "impact_level": 1.5,
+  "kind": "🤖",
+  "status": "open",
+  "status_raw": "✅",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T2.6"
+  ],
+  "needs_inputs": [],
+  "effort": "3–5 ש'",
+  "effort_min_h": 3.0,
+  "effort_max_h": 5.0,
+  "details": "- **מה:** \"מה זה ALPHA‑GPC\", \"סוכרייה מול כדור\", \"מדריך להורים\" (בבלוג או בעמודים). תבנית `templates/article.json` / `templates/page.json`; קישורים מה-FAQ. עובדות מהקופי הקיים ומהתמונות.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## שלבים\n1. 3 מאמרים/עמודים. Claude Code כותב טיוטות מהקופי הקיים (`nully_inside`, `nully_absorption`, `nully_compare`, `nully_format`) ומהתמונות (A4). עובדה חסרה: `[[להשלמה]]`.\n2. 🏪 אייל יוצר את המאמרים בבלוג «News» (או עמודים) ומדביק. בערכה: עיצוב `templates/article.json` / `sections/main-blog-post.liquid` בסגנון המותג, ו-CTA להצעה בסוף כל מאמר.\n3. קישורים מה-FAQ למאמרים.\n## הצלחה\n3 מאמרים מוכנים, עם תבנית מעוצבת ו-CTA.",
+  "sort": 28,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T3.10",
+  "wave": 3,
+  "title": "ניקיון חשבון ומלאי",
+  "source": "F18",
+  "finding_ids": [
+   "F18"
+  ],
+  "idea_ids": [],
+  "impact": "נמוכה",
+  "impact_level": 1,
+  "kind": "🏪",
+  "status": "open",
+  "status_raw": "✅",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [],
+  "needs_inputs": [],
+  "effort": "1 ש'",
+  "effort_min_h": 1.0,
+  "effort_max_h": 1.0,
+  "details": "- **מה:** הערכה הישנה, `AGENTS.md` בטיוטה, בלוג «News» ריק, קולקציה «Home page», ומעקב מלאי (`tracked: false`; תומך בהבטחת \"מלאי שמור\").",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## פלט\n`../checklists/cleanup.md` לאייל:\n- הערכה הישנה «Nully | נולי» (`154501906484`): החלטה של אייל.\n- `AGENTS.md` בטיוטה (אם נמצא ב-T0.1): להסיר באישור. מחיקה ב-push מחייבת `--only AGENTS.md` **בלי** `--nodelete`; להסביר לאייל.\n- בלוג «News» (משמש ב-T3.9), קולקציה «Home page».\n- מלאי: `tracked: false` ← להפעיל מעקב (תומך בהבטחת \"מלאי שמור\").",
+  "sort": 29,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T3.11",
+  "wave": 3,
+  "title": "רשימת המתנה טרום-השקה (אופציונלי)",
+  "source": "💡7 (מותאם)",
+  "finding_ids": [],
+  "idea_ids": [
+   "7"
+  ],
+  "impact": "נמוכה-בינונית",
+  "impact_level": 1.5,
+  "kind": "🏪",
+  "status": "open",
+  "status_raw": "✅ (אופציונלי)",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": "אופציונלי",
+  "depends_on": [
+   "T3.1"
+  ],
+  "needs_inputs": [],
+  "effort": "0.5–1 ש'",
+  "effort_min_h": 0.5,
+  "effort_max_h": 1.0,
+  "details": "- **התאמה:** דף הסיסמה מרונדר מהערכה **החיה**, והטיוטה תפורסם רק ב-T4.2. לכן, אם אייל רוצה, הוא מפעיל סיסמה על החנות (Admin) עם דף הסיסמה של הערכה החיה (Horizon כולל טופס הרשמה). במקביל, דף סיסמה ממותג נבנה בטיוטה (`templates/password.json`, `sections/password.liquid`) לשימוש בעתיד.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## הקשר\nדף הסיסמה מרונדר מהערכה **החיה**, והטיוטה תפורסם רק ב-T4.2.\n## שלבים\n1. צעדים לאייל, אם הוא רוצה: Online Store › Preferences › Password protection, עם הודעה בעברית. הטופס של Horizon החיה אוסף מיילים ללקוחות.\n2. בטיוטה: עיצוב `templates/password.json` / `sections/password.liquid` / `layout/password.liquid` בסגנון NULLY, לשימוש עתידי.\n3. חיבור לכלי המייל (T3.2): המרשמים יקבלו את מייל ההשקה.\n## הצלחה\nצ'קליסט לאייל + דף סיסמה מעוצב בטיוטה.",
+  "sort": 30,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T4.1",
+  "wave": 4,
+  "title": "בדיקת קבלה מלאה",
+  "source": "—",
+  "finding_ids": [],
+  "idea_ids": [],
+  "impact": "קריטית",
+  "impact_level": 4,
+  "kind": "🤖+👤",
+  "status": "open",
+  "status_raw": "✅ (אחרי גלים 1–3)",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [],
+  "needs_inputs": [],
+  "effort": "3–4 ש'",
+  "effort_min_h": 3.0,
+  "effort_max_h": 4.0,
+  "details": "ראו את הצ'קליסט בהמשך. הפלט: דוח בעברית עם כל סעיף, עובר או לא עובר, וראיה.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## שלבים\nעבור על כל סעיף בצ'קליסט שב-`work-plan.md` (בדיקת קבלה), ותעד עובר/לא עובר עם ראיה (צילום, HTML, Network) ב-`../launch/acceptance.md`:\n- publish-gate (כולל אפס «ערבות», «ימי ניסיון», «החזר כספי», «מארז התנסות»);\n- משפך מנוי וחד-פעמי עד הצ'קאאוט;\n- עברית ו-₪;\n- טקסטי משלוח והמד בעגלה;\n- ביקורות ודירוג מה-CSV;\n- ה-10%;\n- אירועי אנליטיקה;\n- Lighthouse במובייל מול ה-baseline;\n- iOS ו-Android;\n- «לרכישה», Sticky ATC, WhatsApp.\n## הצלחה\nכל הסעיפים עוברים, או שיש רשימת חוסרים ברורה. **אין פרסום.**",
+  "sort": 31,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T4.2",
+  "wave": 4,
+  "title": "השקה: פרסום הטיוטה (הצמדת הדומיין)",
+  "source": "D6",
+  "finding_ids": [],
+  "idea_ids": [],
+  "impact": "קריטית",
+  "impact_level": 4,
+  "kind": "🏪 אייל בלבד",
+  "status": "blocked",
+  "status_raw": "⏸ סיום כל השיפורים + אישור מפורש",
+  "blockers": [
+   "T4.1"
+  ],
+  "partial_blockers": [],
+  "wait_note": "אחרי סיום כל השיפורים ו-T4.1, ורק באישור מפורש של אייל. אייל מבצע; Claude Code לא מפרסם.",
+  "depends_on": [
+   "T4.1"
+  ],
+  "needs_inputs": [],
+  "effort": "0.5 ש'",
+  "effort_min_h": 0.5,
+  "effort_max_h": 0.5,
+  "details": "- **מה:** אייל, ורק הוא, מפרסם את הטיוטה ב-Online Store › Themes › Publish. אם הופעלה סיסמה ב-T3.11, הוא מסיר אותה. אחר כך: בדיקה ב-incognito של `nully-shop.com`, צ'קאאוט, ושהפיקסלים פועלים.\n- **Claude Code לא מבצע את הצעד הזה.**",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## מטרה\nצ'קליסט השקה לאייל. **Claude Code לא מריץ `shopify theme publish` ולא מבצע שום פעולה בחנות.**\n## פלט `../launch/go-live.md`\n1. תנאי מקדים: T4.1 עבר, ואייל אישר בכתב.\n2. Online Store › Themes › «Nully Horizon RTL» › Publish (אייל).\n3. אם הופעלה סיסמה (T3.11): להסיר.\n4. מיד אחרי: ב-incognito, `nully-shop.com` מציג את הטיוטה (`Shopify.theme.id = 154899021876`, role main); הוספה לסל וצ'קאאוט; פיקסלים (Meta Test Events / GA4 Realtime); מובייל.\n5. אם יש בעיה: Themes › הערכה הקודמת › Publish (אייל).",
+  "sort": 32,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T5.1",
+  "wave": 5,
+  "title": "ניסויי A/B",
+  "source": "synthesis §4.10",
+  "finding_ids": [],
+  "idea_ids": [],
+  "impact": "גבוהה",
+  "impact_level": 3,
+  "kind": "🤖+👤",
+  "status": "blocked",
+  "status_raw": "🔒 **D3** + השקה",
+  "blockers": [
+   "D3",
+   "T4.2"
+  ],
+  "partial_blockers": [],
+  "wait_note": "חסום עד D3 + השקה ותנועה",
+  "depends_on": [
+   "T3.1",
+   "T4.2"
+  ],
+  "needs_inputs": [],
+  "effort": "לא ידוע",
+  "effort_min_h": null,
+  "effort_max_h": null,
+  "details": "כותרת hero להורים (החלופות מ-T2.7) · ברירת מחדל של חבילה · הצגת המנוי מול החד-פעמי · וידאו מעל ה-fold (T5.2). *ניסוי הערבות הוסר (D2).* לכל ניסוי מגדירים מראש השערה, מדד ונפח.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## מטרה\nלתכנן ניסויים:\n1. כותרת hero להורים (החלופות מ-T2.7).\n2. ברירת מחדל של חבילה (רק אני / זוגי).\n3. הצגת עוגן המנוי (חיסכון ב-₪ מול %).\n4. וידאו מעל ה-fold (T5.2).\n*אין ניסוי ערבות (D2).*\n## פלט\n`../experiments/plan.md`: השערה, וריאציות, מדד ראשי (המרה / AOV / שיעור בחירת מנוי) ומשני, נפח מינימלי לפי מחשבון (בלי להניח נתוני תנועה), ומימוש כהגדרות ערכה בטיוטה. הכלי לבחירת אייל (מוסיף סקריפט).",
+  "sort": 33,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T5.2",
+  "wave": 5,
+  "title": "וידאו מעל ה-fold (כווריאציה בניסוי A/B)",
+  "source": "💡22",
+  "finding_ids": [],
+  "idea_ids": [
+   "22"
+  ],
+  "impact": "בינונית",
+  "impact_level": 2,
+  "kind": "🤖",
+  "status": "blocked",
+  "status_raw": "⏸ A9",
+  "blockers": [
+   "A9"
+  ],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T5.1"
+  ],
+  "needs_inputs": [
+   "A9"
+  ],
+  "effort": "2–3 ש'",
+  "effort_min_h": 2.0,
+  "effort_max_h": 3.0,
+  "details": "10–20 שניות, בלי autoplay כבד, כווריאציה ב-T5.1. בודקים מול LCP.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## שלבים\n1. בלוק וידאו ב-`nully_hero` (או החלפת התמונה) עם `poster`, `muted`, `playsinline`, `preload=\"none\"` ובלי autoplay כבד; ב-`prefers-reduced-motion` מוצגת תמונה.\n2. מתג הגדרה, כדי להשתמש בו כווריאציה ב-T5.1.\n## הצלחה ובדיקה\nLCP לא מחמיר (מדידה); מובייל.",
+  "sort": 34,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T5.3",
+  "wave": 5,
+  "title": "חבר מביא חבר",
+  "source": "💡19",
+  "finding_ids": [],
+  "idea_ids": [
+   "19"
+  ],
+  "impact": "בינונית",
+  "impact_level": 2,
+  "kind": "🏪+🤖",
+  "status": "blocked",
+  "status_raw": "⏸ בחירת כלי",
+  "blockers": [
+   "T4.2"
+  ],
+  "partial_blockers": [],
+  "wait_note": "ממתין לבחירת כלי (אפליקציית referral) + השקה",
+  "depends_on": [
+   "T4.2"
+  ],
+  "needs_inputs": [],
+  "effort": "2–4 ש'",
+  "effort_min_h": 2.0,
+  "effort_max_h": 4.0,
+  "details": "אחרי שיש לקוחות. את הסכומים קובע אייל.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## שלבים\n1. השוואה קצרה בין 2–3 כלים (תמחור, עברית/RTL, משקל סקריפט). לא מתקינים.\n2. אחרי שאייל בוחר ומתקין: מיקום בערכה (פוטר, דף תודה, מייל אחרי רכישה), RTL. את הסכומים קובע אייל.",
+  "sort": 35,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T5.4",
+  "wave": 5,
+  "title": "שכבות נאמנות למנויים",
+  "source": "💡20",
+  "finding_ids": [],
+  "idea_ids": [
+   "20"
+  ],
+  "impact": "בינונית (שימור)",
+  "impact_level": 2,
+  "kind": "🏪+🤖",
+  "status": "blocked",
+  "status_raw": "🔒 **D3**",
+  "blockers": [
+   "D3"
+  ],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T1.2"
+  ],
+  "needs_inputs": [],
+  "effort": "3–6 ש'",
+  "effort_min_h": 3.0,
+  "effort_max_h": 6.0,
+  "details": "הטבה שגדלה עם משך המנוי (בדומה ל-Gruns). תלוי ביכולות האפליקציה.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## שלבים\n1. בדוק אם האפליקציה שנבחרה תומכת בהנחה מדורגת לפי מספר משלוחים (בדומה ל-Gruns Green→Golden).\n2. הצע מבנה שכבות (את הערכים קובע אייל) וקופי בעברית, ותצוגה בכרטיס המנוי (\"ככל שנשארים — חוסכים יותר\"), רק אם קיים בפועל.",
+  "sort": 36,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ },
+ {
+  "id": "T5.5",
+  "wave": 5,
+  "title": "לוח שנה שיווקי לעונות של הורים",
+  "source": "💡23",
+  "finding_ids": [],
+  "idea_ids": [
+   "23"
+  ],
+  "impact": "נמוכה-בינונית",
+  "impact_level": 1.5,
+  "kind": "🤖 (מסמך)",
+  "status": "open",
+  "status_raw": "✅",
+  "blockers": [],
+  "partial_blockers": [],
+  "wait_note": null,
+  "depends_on": [
+   "T2.7"
+  ],
+  "needs_inputs": [],
+  "effort": "1–2 ש'",
+  "effort_min_h": 1.0,
+  "effort_max_h": 2.0,
+  "details": "מסמך: תחילת שנה, מבחנים, חופשות, חגים (דפוס של אתרי הייחוס). את המבצעים קובע אייל.",
+  "prompt": "## הקשר (קבוע)\n- חנות Shopify של אייל גולדמן: nully-shop.com (`cfam0j-2j.myshopify.com`). עברית היא שפה ראשית ו-₪ (ILS) המטבע. פרויקט אישי שעדיין לא פורסם. **המטרה היחידה: שיעור המרה גבוה, משפך לקוח טוב ו-UX מצוין ביחס לאתרי הייחוס** (Gruns, Smiley, Wonders Teva, Woof, Goom, Harmony ועוד). **קהל ראשי: הורים לילדים.**\n- מוצר יחיד: «NULLY ברייני — סוכריות על מקל לריכוז» (`nully-brainy`). סוכריית מציצה על מקל עם ALPHA‑GPC, ויטמינים B6/B12, אומגה 3, סיבים, כורכום וספירולינה; 30 סוכריות במארז. וריאנטים: רק אני / זוגי / משפחתי (220/400/540 ₪ = מחיר המנוי). המחיר החד-פעמי (290/580/870) שמור ב-metafield `nully.onetime_price`. **אסטרטגיה: מנוי כברירת המחדל וכאפשרות הזולה משמעותית.**\n- ערכה: טיוטה \"Nully Horizon RTL\" (`154899021876`, UNPUBLISHED), מבוססת על Horizon של Shopify, בעברית RTL. הכיוון ב-`snippets/nully-direction.liquid`, הטוקנים והפונטים ב-`snippets/nully-tokens.liquid`. סקשנים בבית: nully_hero, nully_trust, nully_format, nully_story, nully_unwrap, nully_quality, nully_inside, nully_absorption, nully_scenarios, nully_compare, nully_offer, nully_faq, nully_cta. אלה מזהים/סוגים ב-`templates/index.json`, ולכן **צריך לאתר את קובצי ה-Liquid לפני עריכה**. JS: `assets/nully-*.js`.\n- מסמכים: `/workspace/analysis/work-plan.md` (התוכנית וההחלטות), `nully-vs-references.md` (F1–F18), `nully-draft-audit.md`.\n\n## כללי עבודה (חובה)\n1. עובדים **רק** על עותק מקומי של הטיוטה `154899021876`. **אסור**: `shopify theme publish`, `--live`, push לכל theme id אחר, push בלי `--theme 154899021876`. הפרסום הוא צעד של אייל בלבד, בסוף (T4.2).\n2. לפני push: `shopify theme pull --theme 154899021876` (כדי לא לדרוס שינויים מה-Theme editor), `git diff` לאייל, ו**המתנה לאישור מפורש \"מאשר push\"**. push עם `--only <קבצים>` ו-`--nodelete`.\n3. **לא נוגעים בהגדרות החנות או באפליקציות** (Admin API, מוצרים, מדיה, תפריטים, שפות, הנחות, מלאי, אינטגרציות). כשנדרש: כותבים לאייל רשימת צעדים ועוצרים.\n4. **לא ממציאים נתונים.** ביקורות, דירוגים ומספרים מגיעים מ-CSV הביקורות או מאייל; עובדות על המוצר מתמונות המוצר; מחירים מהמוצר. כשחסר: `[[להשלמה: …]]`, והרכיב נשאר מוסתר.\n5. הקופי השיווקי הקיים נשאר כקופי חזק (כולל «עד 8 שעות של פוקוס», «פי 36»).\n6. **אין ערבות ואין מארז התנסות.** לא מוסיפים בשום מקום תגי ערבות, \"ימי ניסיון\", \"החזר כספי\" או מארז התנסות.\n7. שומרים על RTL (`dir`, חיצים, ניווט מקלדת ב-`nully-offer-cards`) ולא משנים לוגיקה שלא התבקשה.\n8. בסוף: דוח קצר בעברית. קבצים ששונו, diff תמציתי, בדיקות ותוצאות, ומה נשאר פתוח.\n\n## פלט\n`../marketing/calendar.md`: עונות רלוונטיות להורים (תחילת שנת לימודים, תקופות מבחנים, חופשות, חגים), עם רעיון מסר ומיקום (announcement, hero, מייל) לכל עונה. **אין מבצעים או הנחות**; אייל קובע. בלי תאריכים מומצאים: תאריכים מדויקים `[[להשלמה]]`, או לפי לוח השנה הרשמי.",
+  "sort": 37,
+  "progress": 0,
+  "assignee": null,
+  "notes": null,
+  "updated_at": "2026-10-04T12:00:00+03:00",
+  "updated_by": "seed"
+ }
+]
