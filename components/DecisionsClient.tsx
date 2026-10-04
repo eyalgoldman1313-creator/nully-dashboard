@@ -1,12 +1,13 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useAct } from './ui';
+import { useAct, useConfirm } from './ui';
 import Md from './Md';
-import { fmtDate, TSTATUS_CLASS } from '@/lib/labels';
+import Icon from './Icon';
+import { fmtDate } from '@/lib/labels';
 import { STATUS_LABEL } from '@/lib/logic';
 
-function Card({ d, tasks, act, busy }: any) {
+function Card({ d, tasks, act, busy, onReset }: any) {
   const [sel, setSel] = useState<string | null>(d.chosen || d.recommended || null);
   const [note, setNote] = useState(d.note || '');
   const blocked = tasks.filter((t: any) => (t.blockers || []).includes(d.id) || (t.partial_blockers || []).includes(d.id));
@@ -15,61 +16,67 @@ function Card({ d, tasks, act, busy }: any) {
   const decided = d.status === 'decided';
   const chosen = d.options.find((o: any) => o.id === d.chosen);
   return (
-    <article id={d.id} className={`card ${decided ? 'decided' : 'pending'}`} style={{ scrollMarginTop: 80 }}>
+    <article id={d.id} className="card">
       <div className="row between">
         <h3><span className="tid">{d.id}</span> · {d.title}</h3>
-        <span className={`chip ${decided ? 'ok' : 'warn'}`}>{decided ? 'הוכרעה' : 'ממתינה להחלטה'}</span>
+        <span className={`chip ${decided ? 'ok' : 'warn'}`}>{decided ? 'הוכרעה' : 'ממתינה'}</span>
       </div>
       <p>{d.question}</p>
 
       {d.options.length > 0 && (
         <div role="radiogroup" aria-label="אפשרויות">
           {d.options.map((o: any) => (
-            <label key={o.id} className={`opt ${sel === o.id ? 'sel' : ''} ${o.disabled || decided ? 'dis' : ''}`} style={{ fontWeight: 400 }}>
+            <label key={o.id} className={`opt ${sel === o.id ? 'sel' : ''} ${o.disabled || decided ? 'dis' : ''}`}>
               <input type="radio" name={d.id} disabled={o.disabled || decided} checked={sel === o.id} onChange={() => setSel(o.id)} />
               <b>{o.label}</b>
-              {d.recommended === o.id && <span className="chip brand" style={{ marginInlineStart: 8 }}>⭐ המלצה</span>}
-              {d.chosen === o.id && <span className="chip ok" style={{ marginInlineStart: 8 }}>✓ נבחר</span>}
-              {o.disabled && <span className="chip" style={{ marginInlineStart: 8 }}>לא רלוונטי כרגע</span>}
-              {o.detail && <div className="small muted" style={{ marginTop: 4 }}>{o.detail}</div>}
+              {d.recommended === o.id && <span className="meta"> · <Icon name="star" /> המלצה</span>}
+              {d.chosen === o.id && <span className="chip ok">נבחר</span>}
+              {o.disabled && <span className="meta"> · לא רלוונטי כרגע</span>}
+              {o.detail && <div className="meta" dir="auto">{o.detail}</div>}
             </label>
           ))}
         </div>
       )}
 
       {decided ? (
-        <div className="small" style={{ marginTop: 8 }}>
-          {chosen ? <p><b>ההכרעה:</b> {chosen.label}</p> : null}
-          {d.decided_note && <p className="muted">{d.decided_note}</p>}
-          {d.note && <p><b>הערה שלך:</b> {d.note}</p>}
-          <p className="muted tiny">{d.decided_by ? `הוכרע ע"י ${d.decided_by} · ${fmtDate(d.decided_at)}` : ''}</p>
-          {d.options.length > 0 && <button className="btn sm" disabled={busy} onClick={() => confirm('לפתוח את ההחלטה מחדש? משימות שנפתחו בגללה יחסמו שוב.') && act({ action: 'decision_reset', id: d.id }, 'ההחלטה נפתחה מחדש')}>↩ שינוי החלטה</button>}
+        <div>
+          {chosen ? <p><b>ההכרעה:</b> <bdi dir="auto">{chosen.label}</bdi></p> : null}
+          {d.decided_note && <p className="muted" dir="auto">{d.decided_note}</p>}
+          {d.note && <p><b>הערה:</b> <bdi dir="auto">{d.note}</bdi></p>}
+          {d.decided_by ? <p className="meta">הוכרע על ידי <bdi dir="auto">{d.decided_by}</bdi> · {fmtDate(d.decided_at)}</p> : null}
+          {d.options.length > 0 && <button type="button" className="btn" disabled={busy} onClick={() => onReset(d.id)}><Icon name="undo" mirror />פתיחה מחדש</button>}
         </div>
       ) : (
         <>
           <label htmlFor={'n' + d.id}>הערה (לא חובה)</label>
-          <textarea id={'n' + d.id} value={note} onChange={(e) => setNote(e.target.value)} placeholder="למשל: מאשר בתנאי ש…" />
-          <div className="row" style={{ marginTop: 10 }}>
-            <button className="btn primary" disabled={busy || !sel} onClick={() => act({ action: 'decision_choose', id: d.id, option: sel, note }, `${d.id} הוכרעה`)}>✓ אשר את הבחירה</button>
-            {d.recommended && sel !== d.recommended && <button className="btn" disabled={busy} onClick={() => { setSel(d.recommended); act({ action: 'decision_choose', id: d.id, option: d.recommended, note }, `${d.id}: אושרה ההמלצה`); }}>⭐ אשר את ההמלצה</button>}
+          <textarea id={'n' + d.id} dir="auto" value={note} onChange={(e) => setNote(e.target.value)} placeholder="למשל: מאשר בתנאי ש…" />
+          <div className="row">
+            <button type="button" className="btn primary" disabled={busy || !sel} onClick={() => act({ action: 'decision_choose', id: d.id, option: sel, note }, `${d.id} הוכרעה`)}>אישור הבחירה</button>
+            {d.recommended && sel !== d.recommended && <button type="button" className="btn" disabled={busy} onClick={() => { setSel(d.recommended); act({ action: 'decision_choose', id: d.id, option: d.recommended, note }, `${d.id}: אושרה ההמלצה`); }}>אישור ההמלצה</button>}
           </div>
         </>
       )}
 
       {list.length > 0 && (
-        <div style={{ marginTop: 12 }}>
-          <b className="small">{decided ? 'משימות שההחלטה משחררת/שחררה' : 'מה ההחלטה פותחת'}:</b>
-          <div className="row" style={{ marginTop: 4 }}>
-            {list.map((id) => { const t = tasks.find((x: any) => x.id === id); return (
-              <Link key={id} href={`/board?task=${id}`} className={`chip ${t ? TSTATUS_CLASS[t.status] : ''}`} title={t?.title}>{id}{t ? ` · ${t.title.slice(0, 28)} (${STATUS_LABEL[t.status]})` : ''}</Link>
-            ); })}
+        <div>
+          <p><b>{decided ? 'משימות שההחלטה משחררת' : 'מה ההחלטה פותחת'}</b></p>
+          <div className="link-list">
+            {list.map((id) => {
+              const t = tasks.find((x: any) => x.id === id);
+              return (
+                <Link key={id} href={`/board?task=${id}`}>
+                  <span className="tid">{id}</span>
+                  {t ? <><bdi dir="auto">{t.title}</bdi><span className={`chip ${t.status === 'done' ? 'ok' : t.status === 'blocked' ? 'bad' : t.status === 'in_progress' ? 'brand' : 'info'}`}>{STATUS_LABEL[t.status]}</span></> : null}
+                </Link>
+              );
+            })}
           </div>
-          {!decided && blocked.length > 0 && <p className="tiny muted">משימות שנשארות חסומות גם אחרי ההחלטה בגלל חסם אחר יישארו חסומות.</p>}
+          {!decided && blocked.length > 0 && <p className="meta">משימה שנשארת חסומה גם אחרי ההחלטה, בגלל חסם אחר, תישאר חסומה.</p>}
         </div>
       )}
 
-      {d.evidence && <details style={{ marginTop: 12 }}><summary>ראיות ופירוט מלא</summary><Md text={d.evidence} /></details>}
-      <p className="tiny muted" style={{ marginTop: 8 }}>מקור: {d.source}</p>
+      {d.evidence && <details><summary>ראיות ופירוט</summary><Md text={d.evidence} /></details>}
+      <p className="meta">מקור: <bdi dir="auto">{d.source}</bdi></p>
     </article>
   );
 }
@@ -80,42 +87,106 @@ function InputRow({ i, tasks, act, busy }: any) {
   const provided = i.status === 'provided';
   const blocked = tasks.filter((t: any) => (t.blockers || []).includes(i.id) || (t.partial_blockers || []).includes(i.id));
   const list = Array.from(new Set([...(i.tasks || []), ...blocked.map((t: any) => t.id)]));
+  const statusLabel = provided ? 'סופק' : i.kind === 'admin_action' ? 'ממתין לביצוע' : 'חסר';
   return (
-    <article id={i.id} className="card" style={{ scrollMarginTop: 80 }}>
-      <div className="row between">
-        <h3><span className="tid">{i.id}</span> · {i.title}</h3>
-        <span className={`chip ${provided ? 'ok' : 'warn'}`}>{provided ? 'סופק' : i.kind === 'admin_action' ? 'ממתין לביצוע שלך' : 'חסר'}</span>
+    <li id={i.id} className="check-row">
+      <div className="check-main">
+        <span className="tid">{i.id}</span>
+        <div>
+          <h3>{i.title}</h3>
+          <p className="meta">
+            <span className={`chip ${provided ? 'ok' : 'warn'}`}>{statusLabel}</span>
+            {i.fmt && i.kind !== 'admin_action' ? <> · <bdi dir="auto">{i.fmt}</bdi></> : null}
+          </p>
+          {i.kind === 'admin_action' && i.fmt && <details><summary>צעדי הביצוע</summary><Md text={i.fmt} /></details>}
+          {list.length > 0 && (
+            <p className="meta">משימות: {list.map((id: string, idx: number) => (
+              <span key={id}>{idx > 0 ? ' · ' : ''}<Link href={`/board?task=${id}`} className="tid">{id}</Link></span>
+            ))}</p>
+          )}
+          {i.note && !open && <p className="meta">הערה: <bdi dir="auto">{i.note}</bdi></p>}
+          {open && <textarea dir="auto" value={note} onChange={(e) => setNote(e.target.value)} placeholder="הערה" aria-label={`הערה עבור ${i.id}`} />}
+        </div>
       </div>
-      {i.fmt && (i.kind === 'admin_action' ? <details><summary>צעדי הביצוע</summary><Md text={i.fmt} /></details> : <p className="small muted">פורמט/מיקום: {i.fmt}</p>)}
-      <div className="row" style={{ margin: '6px 0' }}>{list.map((id) => <Link key={id} className="chip info" href={`/board?task=${id}`}>{id}</Link>)}</div>
-      {open && <textarea value={note} onChange={(e) => setNote(e.target.value)} placeholder="הערה (למשל: הועלה ל-/workspace/uploads)" />}
-      <div className="row" style={{ marginTop: 6 }}>
-        <button className={`btn sm ${provided ? '' : 'ok'}`} disabled={busy} onClick={() => act({ action: 'input_update', id: i.id, status: provided ? 'needed' : 'provided', note }, provided ? 'סומן כחסר' : `${i.id} סופק`)}>{provided ? '↩ סמן כחסר' : '✓ סמן כסופק / בוצע'}</button>
-        <button className="btn sm" onClick={() => setOpen(!open)}>הערה</button>
+      <div className="row">
+        <button type="button" className={`btn ${provided ? '' : 'ok'}`} disabled={busy} onClick={() => act({ action: 'input_update', id: i.id, status: provided ? 'needed' : 'provided', note }, provided ? 'סומן כחסר' : `${i.id} סופק`)}>
+          {provided ? <><Icon name="undo" mirror />סימון כחסר</> : <><Icon name="check" />סימון כסופק</>}
+        </button>
+        <button type="button" className="btn" onClick={() => setOpen(!open)}>{open ? 'סגירה' : 'הערה'}</button>
       </div>
-      {i.note && !open && <p className="small muted">הערה: {i.note}</p>}
-    </article>
+    </li>
   );
 }
 
 export default function DecisionsClient({ decisions, inputs, tasks }: any) {
   const { act, busy, Toast } = useAct();
+  const { confirm, dialog } = useConfirm();
+  const [section, setSection] = useState<'decisions' | 'inputs'>('decisions');
   const [tab, setTab] = useState<'pending' | 'decided' | 'all'>('pending');
+  const [inputTab, setInputTab] = useState<'needed' | 'provided' | 'all'>('needed');
+  const [pendingHash, setPendingHash] = useState<string | null>(null);
   const list = decisions.filter((d: any) => tab === 'all' || (tab === 'pending' ? d.status === 'open' : d.status === 'decided'));
   const pendingCount = decisions.filter((d: any) => d.status === 'open').length;
+  const needed = inputs.filter((i: any) => i.status === 'needed');
+  const inputList = inputs.filter((i: any) => inputTab === 'all' || i.status === inputTab);
+
+  useEffect(() => {
+    const h = decodeURIComponent(window.location.hash.replace(/^#/, ''));
+    if (!h) return;
+    if (h === 'inputs' || inputs.some((i: any) => i.id === h)) setSection('inputs');
+    setPendingHash(h);
+  }, [inputs]);
+  useEffect(() => {
+    if (!pendingHash) return;
+    document.getElementById(pendingHash)?.scrollIntoView({ block: 'start' });
+  }, [pendingHash, section]);
+
+  async function onReset(id: string) {
+    const ok = await confirm({
+      title: 'פתיחת ההחלטה מחדש',
+      body: 'משימות שנפתחו בגלל ההחלטה ייחסמו שוב.',
+      confirmLabel: 'פתיחה מחדש',
+      danger: true,
+    });
+    if (ok) await act({ action: 'decision_reset', id }, 'ההחלטה נפתחה מחדש');
+  }
+
+  function onTabKey(e: React.KeyboardEvent) {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') setSection((s) => (s === 'decisions' ? 'inputs' : 'decisions'));
+  }
+
   return (
     <>
-      <div className="seg">
-        <button className={tab === 'pending' ? 'on' : ''} onClick={() => setTab('pending')}>ממתינות ({pendingCount})</button>
-        <button className={tab === 'decided' ? 'on' : ''} onClick={() => setTab('decided')}>הוכרעו ({decisions.length - pendingCount})</button>
-        <button className={tab === 'all' ? 'on' : ''} onClick={() => setTab('all')}>הכל</button>
+      <div className="seg" role="tablist" aria-label="החלטות או קלטים" onKeyDown={onTabKey}>
+        <button type="button" role="tab" id="tab-dec" aria-selected={section === 'decisions'} aria-controls="panel-dec" className={section === 'decisions' ? 'on' : ''} onClick={() => setSection('decisions')}>החלטות ({pendingCount} ממתינות)</button>
+        <button type="button" role="tab" id="tab-in" aria-selected={section === 'inputs'} aria-controls="panel-in" className={section === 'inputs' ? 'on' : ''} onClick={() => setSection('inputs')}>קלטים שחסרים ({needed.length})</button>
       </div>
-      <div className="grid g2">{list.map((d: any) => <Card key={d.id} d={d} tasks={tasks} act={act} busy={busy} />)}</div>
-      {!list.length && <p className="muted">אין החלטות בקטגוריה הזו 🎉</p>}
 
-      <h2 id="inputs" style={{ scrollMarginTop: 80 }}>קלטים ונכסים שחסרים ממך ({inputs.filter((i: any) => i.status === 'needed').length} חסרים)</h2>
-      <p className="muted small">סימון פריט כסופק משחרר משימות שחיכו רק לו (למשל A1 → T0.3).</p>
-      <div className="grid g2">{inputs.map((i: any) => <InputRow key={i.id} i={i} tasks={tasks} act={act} busy={busy} />)}</div>
+      <div role="tabpanel" id="panel-dec" aria-labelledby="tab-dec" hidden={section !== 'decisions'}>
+        <h2>החלטות</h2>
+        <div className="seg" aria-label="סינון החלטות">
+          <button type="button" className={tab === 'pending' ? 'on' : ''} onClick={() => setTab('pending')}>ממתינות ({pendingCount})</button>
+          <button type="button" className={tab === 'decided' ? 'on' : ''} onClick={() => setTab('decided')}>הוכרעו ({decisions.length - pendingCount})</button>
+          <button type="button" className={tab === 'all' ? 'on' : ''} onClick={() => setTab('all')}>הכל</button>
+        </div>
+        <div className="grid g2">{list.map((d: any) => <Card key={d.id} d={d} tasks={tasks} act={act} busy={busy} onReset={onReset} />)}</div>
+        {!list.length && <p className="muted">אין החלטות בקטגוריה הזו.</p>}
+      </div>
+
+      <div role="tabpanel" id="panel-in" aria-labelledby="tab-in" hidden={section !== 'inputs'}>
+        <h2 id="inputs">קלטים ונכסים</h2>
+        <p className="lede">סימון פריט כסופק משחרר משימות שחיכו רק לו.</p>
+        <div className="seg" aria-label="סינון קלטים">
+          <button type="button" className={inputTab === 'needed' ? 'on' : ''} onClick={() => setInputTab('needed')}>חסרים ({needed.length})</button>
+          <button type="button" className={inputTab === 'provided' ? 'on' : ''} onClick={() => setInputTab('provided')}>סופקו ({inputs.length - needed.length})</button>
+          <button type="button" className={inputTab === 'all' ? 'on' : ''} onClick={() => setInputTab('all')}>הכל</button>
+        </div>
+        <ul className="check-list surface">
+          {inputList.map((i: any) => <InputRow key={i.id} i={i} tasks={tasks} act={act} busy={busy} />)}
+        </ul>
+        {!inputList.length && <p className="muted">אין פריטים בקטגוריה הזו.</p>}
+      </div>
+      {dialog}
       {Toast}
     </>
   );

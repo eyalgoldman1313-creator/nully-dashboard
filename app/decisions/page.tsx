@@ -8,8 +8,10 @@ export default async function Decisions() {
   const slim = tasks.map((t) => ({ id: t.id, title: t.title, status: t.status, blockers: t.blockers, partial_blockers: t.partial_blockers }));
   return (
     <>
-      <h1>החלטות וקלטים</h1>
-      <p className="muted">בחירת אפשרות (או אישור ההמלצה) תשחרר אוטומטית את המשימות שהיו חסומות רק בגללה. אפשר להוסיף הערה, וכל שינוי נרשם ביומן הפעילות.</p>
+      <header className="page-head">
+        <h1>החלטות וקלטים</h1>
+        <p className="lede">אישור בחירה משחרר משימות שהיו חסומות רק בגללה. כל שינוי נרשם ביומן.</p>
+      </header>
       <DecisionsClient decisions={decisions} inputs={inputs} tasks={slim} />
     </>
   );
