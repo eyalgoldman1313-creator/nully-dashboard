@@ -8,10 +8,10 @@ export default async function Board({ searchParams }: { searchParams: Promise<{ 
   const sp = await searchParams;
   const { tasks, decisions, inputs, findings, resolved } = await loadAll();
   return (
-    <>
+    <div className="board-page">
       <header className="page-head">
         <h1>לוח משימות</h1>
-        <p className="lede">לחיצה על משימה פותחת פרטים, סטטוס והעתקת פרומפט.</p>
+        <p className="lede">כל משימה נפתחת לפרטים, סטטוס והעתקת פרומפט.</p>
       </header>
       <Subnav items={WORK_NAV} />
       <TaskBoard
@@ -23,6 +23,6 @@ export default async function Board({ searchParams }: { searchParams: Promise<{ 
         initialTask={sp.task || null}
         initialColumn={sp.col || null}
       />
-    </>
+    </div>
   );
 }

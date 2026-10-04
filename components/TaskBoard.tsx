@@ -42,8 +42,8 @@ export default function TaskBoard({ tasks, decisions, inputs, findings, resolved
   const [wave, setWave] = useState<string>('all');
   const [q, setQ] = useState('');
   const [sel, setSel] = useState<string | null>(initialTask);
-  const startCol = initialColumn && (STATUSES as readonly string[]).includes(initialColumn) ? initialColumn : 'open';
-  const [mobileStatus, setMobileStatus] = useState(startCol);
+  const startCol = initialColumn && (STATUSES as readonly string[]).includes(initialColumn) ? initialColumn : 'all';
+  const [statusFilter, setStatusFilter] = useState(startCol);
   const [doneOpen, setDoneOpen] = useState(startCol === 'done');
   const filtered = tasks.filter((t) => (wave === 'all' || String(t.wave) === wave) && (!q || (t.id + ' ' + t.title + ' ' + (t.source || '')).toLowerCase().includes(q.toLowerCase())));
   const byId = Object.fromEntries(tasks.map((t) => [t.id, t]));
@@ -84,33 +84,39 @@ export default function TaskBoard({ tasks, decisions, inputs, findings, resolved
         <span className="meta">{filtered.length} משימות</span>
       </div>
 
-      <div className="seg board-tabs" role="tablist" aria-label="סטטוס">
-        {STATUSES.map((st) => {
-          const n = filtered.filter((t) => t.status === st).length;
-          return (
-            <button key={st} type="button" role="tab" aria-selected={mobileStatus === st} className={mobileStatus === st ? 'on' : ''} onClick={() => setMobileStatus(st)}>
-              {STATUS_LABEL[st]} <span className="num">{n}</span>
-            </button>
-          );
-        })}
+      <div className="seg" aria-label="סינון לפי סטטוס">
+        {STATUSES.map((st) => (
+          <button key={st} type="button" className={statusFilter === st ? 'on' : ''} onClick={() => setStatusFilter(st)}>
+            {STATUS_LABEL[st]} ({filtered.filter((t) => t.status === st).length})
+          </button>
+        ))}
+        <button type="button" className={statusFilter === 'all' ? 'on' : ''} onClick={() => setStatusFilter('all')}>הכל ({filtered.length})</button>
       </div>
 
-      <div className="kanban">
-        {(['open', 'in_progress', 'blocked'] as const).map((st) => (
-          <Column key={st} st={st} tasks={filtered.filter((t) => t.status === st)} active={mobileStatus === st} onOpen={setSel} />
-        ))}
-        <section className={`col col-done st-done${mobileStatus === 'done' ? ' is-active' : ''}${doneOpen ? ' is-open' : ''}`} id="col-done" aria-label={STATUS_LABEL.done}>
-          <button type="button" className="col-head done-toggle" aria-expanded={doneOpen} onClick={() => setDoneOpen((v) => !v)}>
-            <h2><i className="col-mark" aria-hidden="true" />{STATUS_LABEL.done}</h2>
-            <span className="col-count">{filtered.filter((t) => t.status === 'done').length}</span>
-            <Icon name="chevron" mirror className="done-chev" />
-          </button>
-          <div className="col-body">
-            {filtered.filter((t) => t.status === 'done').map((t) => <TaskCard key={t.id} t={t} onOpen={() => setSel(t.id)} />)}
-            {!filtered.some((t) => t.status === 'done') && <p className="empty-col">אין משימות שבוצעו.</p>}
-          </div>
-        </section>
-      </div>
+      {(statusFilter === 'all' ? STATUSES : [statusFilter]).map((st) => {
+        const list = filtered.filter((t) => t.status === st);
+        const collapsible = st === 'done' && statusFilter === 'all';
+        const collapsed = collapsible && !doneOpen;
+        return (
+          <section key={st} className="section" id={`col-${st}`} aria-label={STATUS_LABEL[st]}>
+            {collapsible ? (
+              <button type="button" className="section-head" aria-expanded={doneOpen} onClick={() => setDoneOpen((v) => !v)}>
+                <h2>{STATUS_LABEL[st]} <span className="muted num">({list.length})</span></h2>
+                <Icon name="chevron" mirror />
+              </button>
+            ) : (
+              <div className="section-head">
+                <h2>{STATUS_LABEL[st]} <span className="muted num">({list.length})</span></h2>
+              </div>
+            )}
+            {!collapsed && (
+              list.length
+                ? <div className="grid">{list.map((t) => <TaskRow key={t.id} t={t} onOpen={setSel} />)}</div>
+                : <p className="muted">אין משימות.</p>
+            )}
+          </section>
+        );
+      })}
 
       {task && <Detail key={task.id} t={task} close={() => setSel(null)} open={setSel} rs={rs} title={title} byId={byId} findings={findings} act={act} busy={busy} setStatus={setStatus} />}
       {dialog}
@@ -119,29 +125,16 @@ export default function TaskBoard({ tasks, decisions, inputs, findings, resolved
   );
 }
 
-function TaskCard({ t, onOpen }: { t: any; onOpen: () => void }) {
+function TaskRow({ t, onOpen }: { t: any; onOpen: (id: string) => void }) {
   return (
-    <article className={`tcard st-${t.status}`}>
-      <button type="button" className="tcard-open" onClick={onOpen}>
-        <span className="tcard-title">{t.title}</span>
-        <span className="tcard-meta"><span className="tid">{t.id}</span><span aria-hidden="true">·</span><span>גל {t.wave}</span></span>
-      </button>
+    <article className="card">
+      <div className="row between">
+        <h3>{t.title}</h3>
+        <span className={`chip ${TSTATUS_CLASS[t.status]}`}>{STATUS_LABEL[t.status]}</span>
+      </div>
+      <p className="meta"><span className="tid">{t.id}</span> · גל {t.wave}</p>
+      <button type="button" className="btn" onClick={() => onOpen(t.id)}>פרטים</button>
     </article>
-  );
-}
-
-function Column({ st, tasks, active, onOpen }: { st: string; tasks: any[]; active: boolean; onOpen: (id: string) => void }) {
-  return (
-    <section className={`col st-${st}${active ? ' is-active' : ''}`} id={`col-${st}`} aria-label={STATUS_LABEL[st]}>
-      <div className="col-head">
-        <h2><i className="col-mark" aria-hidden="true" />{STATUS_LABEL[st]}</h2>
-        <span className="col-count">{tasks.length}</span>
-      </div>
-      <div className="col-body">
-        {tasks.map((t) => <TaskCard key={t.id} t={t} onOpen={() => onOpen(t.id)} />)}
-        {!tasks.length && <p className="empty-col">אין משימות.</p>}
-      </div>
-    </section>
   );
 }
 
