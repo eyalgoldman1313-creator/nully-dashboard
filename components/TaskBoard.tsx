@@ -1,15 +1,22 @@
 'use client';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { useAct } from './ui';
+import { useAct, useConfirm } from './ui';
 import Effort from './Effort';
 import Md from './Md';
+import Icon from './Icon';
+import Modal from './Modal';
 import { STATUS_LABEL, STATUSES } from '@/lib/logic';
-import { TSTATUS_CLASS, impactClass, WAVE_NAME } from '@/lib/labels';
+import { TSTATUS_CLASS, WAVE_NAME } from '@/lib/labels';
 
-type Props = { tasks: any[]; decisions: any[]; inputs: any[]; findings: any[]; resolved: string[]; initialTask: string | null };
+type Props = { tasks: any[]; decisions: any[]; inputs: any[]; findings: any[]; resolved: string[]; initialTask: string | null; initialColumn?: string | null };
 
-function CopyPrompt({ id, className = 'btn primary sm' }: { id: string; className?: string }) {
+function kindText(kind?: string) {
+  if (!kind) return '';
+  return kind.replaceAll('🤖', 'בוט').replaceAll('🏪', 'חנות');
+}
+
+function CopyPrompt({ id, className = 'btn' }: { id: string; className?: string }) {
   const [state, setState] = useState<'idle' | 'busy' | 'done' | 'err'>('idle');
   async function go(e: React.MouseEvent) {
     e.stopPropagation(); setState('busy');
@@ -21,77 +28,120 @@ function CopyPrompt({ id, className = 'btn primary sm' }: { id: string; classNam
       setState('done'); setTimeout(() => setState('idle'), 2200);
     } catch { setState('err'); setTimeout(() => setState('idle'), 2500); }
   }
-  return <button type="button" className={className} onClick={go} disabled={state === 'busy'}>{state === 'done' ? 'הועתק ✓' : state === 'err' ? 'שגיאה' : '📋 העתק פרומפט'}</button>;
+  return (
+    <button type="button" className={className} onClick={go} disabled={state === 'busy'}>
+      {state === 'done' ? <><Icon name="check" />הועתק</> : state === 'err' ? 'שגיאה בהעתקה' : <><Icon name="copy" />העתקת פרומפט</>}
+    </button>
+  );
 }
 
-export default function TaskBoard({ tasks, decisions, inputs, findings, resolved, initialTask }: Props) {
+export default function TaskBoard({ tasks, decisions, inputs, findings, resolved, initialTask, initialColumn }: Props) {
   const { act, busy, Toast } = useAct();
+  const { confirm, dialog } = useConfirm();
   const rs = useMemo(() => new Set(resolved), [resolved]);
   const [wave, setWave] = useState<string>('all');
   const [q, setQ] = useState('');
   const [sel, setSel] = useState<string | null>(initialTask);
+  const startCol = initialColumn && (STATUSES as readonly string[]).includes(initialColumn) ? initialColumn : 'open';
+  const [mobileStatus, setMobileStatus] = useState(startCol);
   const filtered = tasks.filter((t) => (wave === 'all' || String(t.wave) === wave) && (!q || (t.id + ' ' + t.title + ' ' + (t.source || '')).toLowerCase().includes(q.toLowerCase())));
   const byId = Object.fromEntries(tasks.map((t) => [t.id, t]));
   const title = (id: string) => decisions.find((d) => d.id === id)?.title || inputs.find((i) => i.id === id)?.title || byId[id]?.title || '';
   const task = sel ? byId[sel] : null;
 
+  useEffect(() => {
+    if (initialColumn) document.getElementById('col-' + initialColumn)?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }, [initialColumn]);
+
   async function setStatus(t: any, status: string, extra: any = {}) {
     try { await act({ action: 'task_update', id: t.id, status, ...extra }, `${t.id} → ${STATUS_LABEL[status]}`); }
     catch (e: any) {
-      if (String(e.message).startsWith('blocked_by:') && confirm(`המשימה ${t.id} עדיין חסומה ע"י ${e.message.slice(11)}. להמשיך בכל זאת?`))
-        await act({ action: 'task_update', id: t.id, status, force: true, ...extra }, `${t.id} → ${STATUS_LABEL[status]}`);
+      if (String(e.message).startsWith('blocked_by:')) {
+        const ok = await confirm({
+          title: 'המשימה עדיין חסומה',
+          body: `המשימה ${t.id} חסומה על ידי ${e.message.slice(11)}. להמשיך בכל זאת?`,
+          confirmLabel: 'המשך בכל זאת',
+          danger: true,
+        });
+        if (ok) await act({ action: 'task_update', id: t.id, status, force: true, ...extra }, `${t.id} → ${STATUS_LABEL[status]}`);
+      }
     }
   }
 
   return (
     <>
-      <div className="row" style={{ margin: '10px 0' }}>
-        <select value={wave} onChange={(e) => setWave(e.target.value)} style={{ width: 'auto' }} aria-label="גל">
-          <option value="all">כל הגלים</option>
-          {[0, 1, 2, 3, 4, 5].map((w) => <option key={w} value={w}>גל {w} · {WAVE_NAME[w]}</option>)}
-        </select>
-        <input placeholder="חיפוש משימה…" value={q} onChange={(e) => setQ(e.target.value)} style={{ maxWidth: 260 }} />
-        <span className="muted small">{filtered.length} משימות</span>
+      <div className="filters">
+        <label className="inline-field">גל
+          <select value={wave} onChange={(e) => setWave(e.target.value)} aria-label="גל">
+            <option value="all">כל הגלים</option>
+            {[0, 1, 2, 3, 4, 5].map((w) => <option key={w} value={w}>גל {w} · {WAVE_NAME[w]}</option>)}
+          </select>
+        </label>
+        <label className="inline-field">חיפוש
+          <input aria-label="חיפוש משימה" dir="auto" placeholder="מזהה, כותרת או מקור" value={q} onChange={(e) => setQ(e.target.value)} />
+        </label>
+        <span className="meta">{filtered.length} משימות</span>
       </div>
+
+      <div className="seg board-tabs" role="tablist" aria-label="סטטוס">
+        {STATUSES.map((st) => {
+          const n = filtered.filter((t) => t.status === st).length;
+          return (
+            <button key={st} type="button" role="tab" aria-selected={mobileStatus === st} className={mobileStatus === st ? 'on' : ''} onClick={() => setMobileStatus(st)}>
+              {STATUS_LABEL[st]} <span className="num">{n}</span>
+            </button>
+          );
+        })}
+      </div>
+
       <div className="kanban">
         {STATUSES.map((st) => {
           const col = filtered.filter((t) => t.status === st);
           return (
-            <section className="col" key={st} aria-label={STATUS_LABEL[st]}>
-              <h3><span>{STATUS_LABEL[st]}</span><span className={`chip ${TSTATUS_CLASS[st]}`}>{col.length}</span></h3>
+            <section className={`col${mobileStatus === st ? ' is-active' : ''}`} id={`col-${st}`} key={st} aria-label={STATUS_LABEL[st]}>
+              <div className="col-head"><h2>{STATUS_LABEL[st]}</h2><span className="num">{col.length}</span></div>
               {col.map((t) => {
                 const openBl = (t.blockers || []).filter((b: string) => !rs.has(b));
                 const openPartial = (t.partial_blockers || []).filter((b: string) => !rs.has(b));
                 return (
-                  <article className="tcard" key={t.id} onClick={() => setSel(t.id)} tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && setSel(t.id)}>
-                    <div className="row between"><span className="tid">{t.id}</span><span className="chip">גל {t.wave}</span></div>
-                    <h4>{t.title}</h4>
-                    <div className="row">
-                      <span className={`chip ${impactClass(t.impact_level)}`}>השפעה: {t.impact}</span>
-                      <span className="chip">⏱ <Effort text={t.effort} /></span>
-                    </div>
-                    {openBl.length > 0 && <div className="row" style={{ marginTop: 6 }}>{openBl.map((b: string) => <span key={b} className="chip bad">🔒 {b}</span>)}</div>}
-                    {openPartial.length > 0 && <div className="row" style={{ marginTop: 6 }}>{openPartial.map((b: string) => <span key={b} className="chip warn">חלקית ממתין ל-{b}</span>)}</div>}
-                    {t.status === 'in_progress' && <div className="bar" style={{ marginTop: 8 }}><i className="prog" style={{ width: `${t.progress}%` }} /></div>}
-                    <div className="row" style={{ marginTop: 8 }} onClick={(e) => e.stopPropagation()}>
-                      {t.status === 'open' && <button className="btn sm" disabled={busy} onClick={() => setStatus(t, 'in_progress')}>▶ התחל</button>}
-                      {t.status === 'in_progress' && <button className="btn sm ok" disabled={busy} onClick={() => setStatus(t, 'done')}>✓ סיום</button>}
-                      {t.status === 'done' && <button className="btn sm" disabled={busy} onClick={() => setStatus(t, 'open')}>↩ פתח מחדש</button>}
-                      {t.hasPrompt && <CopyPrompt id={t.id} className="btn sm primary" />}
-                    </div>
+                  <article className="tcard" key={t.id}>
+                    <button type="button" className="tcard-open" onClick={() => setSel(t.id)}>
+                      <span className="row between"><span className="tid">{t.id}</span><span className={`chip ${TSTATUS_CLASS[t.status]}`}>{STATUS_LABEL[t.status]}</span></span>
+                      <span className="tcard-title">{t.title}</span>
+                      <span className="meta">
+                        {t.impact} · <Effort text={t.effort} /> · גל {t.wave}
+                        {openBl.length > 0 && <> · <span className="lockline"><Icon name="lock" />{openBl.length} חסמים</span></>}
+                        {openPartial.length > 0 && <> · חלקית <bdi className="tid">{openPartial.join(', ')}</bdi></>}
+                      </span>
+                    </button>
+                    {(t.status === 'open' || t.status === 'in_progress' || t.status === 'done') && (
+                      <div className="tcard-actions">
+                        {t.status === 'in_progress' && <div className="bar" style={{ marginBlockEnd: 8 }} aria-hidden="true"><i className="prog" style={{ flexBasis: `${t.progress || 0}%` }} /></div>}
+                        {t.status === 'open' && <button type="button" className="btn" disabled={busy} onClick={() => setStatus(t, 'in_progress')}><Icon name="play" />התחלה</button>}
+                        {t.status === 'in_progress' && <button type="button" className="btn ok" disabled={busy} onClick={() => setStatus(t, 'done')}><Icon name="check" />סיום</button>}
+                        {t.status === 'done' && <button type="button" className="btn" disabled={busy} onClick={() => setStatus(t, 'open')}><Icon name="undo" mirror />פתיחה מחדש</button>}
+                      </div>
+                    )}
                   </article>
                 );
               })}
-              {!col.length && <p className="muted small" style={{ padding: 6 }}>אין משימות</p>}
+              {!col.length && <p className="muted">אין משימות בסטטוס הזה.</p>}
             </section>
           );
         })}
       </div>
 
       {task && <Detail key={task.id} t={task} close={() => setSel(null)} open={setSel} rs={rs} title={title} byId={byId} findings={findings} act={act} busy={busy} setStatus={setStatus} />}
+      {dialog}
       {Toast}
     </>
   );
+}
+
+function refOf(id: string) {
+  if (id.startsWith('D') || /^A\d|^E1$/.test(id)) return '/decisions#' + id;
+  if (id.startsWith('F')) return '/findings#' + id;
+  return null;
 }
 
 function Detail({ t, close, open, rs, title, byId, findings, act, busy, setStatus }: any) {
@@ -104,70 +154,94 @@ function Detail({ t, close, open, rs, title, byId, findings, act, busy, setStatu
     setShowPrompt(!showPrompt);
     if (promptText == null) { const j = await (await fetch('/api/prompt?id=' + t.id)).json(); setPromptText(j.prompt || ''); }
   }
-  const chip = (id: string, kind: string) => {
+  function commitProgress(v: number) {
+    act({ action: 'task_update', id: t.id, progress: v }, 'התקדמות עודכנה');
+  }
+  const dep = (id: string, openTone: string) => {
     const ok = rs.has(id);
-    const href = id.startsWith('D') || /^A\d|^E1$/.test(id) ? '/decisions#' + id : null;
-    return (
-      <span key={id} className={`chip ${ok ? 'ok' : kind}`} title={title(id)}>
-        {ok ? '✓' : '🔒'} {href ? <Link href={href} style={{ color: 'inherit' }}>{id}</Link> : id}{title(id) ? ` · ${String(title(id)).slice(0, 34)}` : ''}
-      </span>
+    const href = refOf(id);
+    const inner = (
+      <>
+        <span className={`chip ${ok ? 'ok' : openTone}`}>{ok ? 'נסגר' : 'פתוח'}</span>
+        <bdi className="tid">{id}</bdi>
+        {title(id) ? <bdi dir="auto">{String(title(id))}</bdi> : null}
+      </>
     );
+    return href
+      ? <Link key={id} href={href}>{inner}</Link>
+      : <span key={id} className="row">{inner}</span>;
   };
   return (
-    <div className="modal-bg" onClick={close} role="dialog" aria-modal="true" aria-label={t.title}>
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <div className="row between">
-          <span><span className="tid">{t.id}</span> · גל {t.wave} · {WAVE_NAME[t.wave]}</span>
-          <button className="btn sm" onClick={close} aria-label="סגור">✕</button>
-        </div>
-        <h2 style={{ margin: '6px 0' }}>{t.title}</h2>
-        <div className="row">
-          <span className={`chip ${TSTATUS_CLASS[t.status]}`}>{STATUS_LABEL[t.status]}</span>
-          <span className={`chip ${impactClass(t.impact_level)}`}>השפעה: {t.impact}</span>
-          <span className="chip">מאמץ: <Effort text={t.effort} /></span>
-          <span className="chip">{t.kind}</span>
-        </div>
-        {t.wait_note && <p className="small" style={{ color: 'var(--amber)', fontWeight: 700 }}>{t.wait_note}</p>}
-        <p className="small muted">מקור: {t.source}</p>
-
-        <label>סטטוס</label>
-        <div className="seg">
-          {STATUSES.map((s) => <button key={s} className={t.status === s ? 'on' : ''} disabled={busy || t.status === s} onClick={() => setStatus(t, s)}>{STATUS_LABEL[s]}</button>)}
-        </div>
-
-        <h3>תלויות וחסמים</h3>
-        <div className="small">
-          <p><b>חסמים ({(t.blockers || []).length}):</b> {(t.blockers || []).length ? <span className="row" style={{ display: 'inline-flex' }}>{t.blockers.map((b: string) => chip(b, 'bad'))}</span> : <span className="muted">אין</span>}</p>
-          {(t.partial_blockers || []).length > 0 && <p><b>חסם חלקי:</b> <span className="row" style={{ display: 'inline-flex' }}>{t.partial_blockers.map((b: string) => chip(b, 'warn'))}</span></p>}
-          <p><b>תלוי במשימות:</b> {(t.depends_on || []).length ? (t.depends_on as string[]).map((d) => <button key={d} className={`chip ${byId[d]?.status === 'done' ? 'ok' : ''}`} onClick={() => open(d)} style={{ cursor: 'pointer', marginInlineEnd: 4 }}>{d} · {STATUS_LABEL[byId[d]?.status] || ''}</button>) : <span className="muted">אין</span>}</p>
-          {(t.needs_inputs || []).length > 0 && <p><b>נדרש מאייל:</b> {(t.needs_inputs as string[]).map((i) => chip(i, ''))}</p>}
-          {(t.finding_ids || []).length > 0 && <p><b>ממצאים קשורים:</b> {(t.finding_ids as string[]).map((f) => <Link key={f} className="chip info" href={'/findings#' + f} style={{ marginInlineEnd: 4 }}>{f} · {String(findings.find((x: any) => x.id === f)?.title || '').slice(0, 30)}</Link>)}</p>}
-        </div>
-
-        {t.status === 'in_progress' && (
-          <>
-            <label>התקדמות: {progress}%</label>
-            <input type="range" min={0} max={100} step={5} value={progress} onChange={(e) => setProgress(+e.target.value)} onMouseUp={() => act({ action: 'task_update', id: t.id, progress }, 'התקדמות עודכנה')} onTouchEnd={() => act({ action: 'task_update', id: t.id, progress }, 'התקדמות עודכנה')} />
-          </>
-        )}
-
-        <h3 style={{ marginTop: 14 }}>פרטי המשימה</h3>
-        <Md text={t.details} />
-
-        <div className="row" style={{ margin: '12px 0' }}>
-          <CopyPrompt id={t.id} />
-          <button className="btn sm" onClick={preview}>{showPrompt ? 'הסתר' : 'הצג'} פרומפט</button>
-        </div>
-        {showPrompt && <div className="pre" dir="rtl">{promptText ?? 'טוען…'}</div>}
-
-        <label htmlFor="as">אחראי</label>
-        <input id="as" value={assignee} onChange={(e) => setAssignee(e.target.value)} placeholder="Claude Code / אייל / בוט…" />
-        <label htmlFor="nt">הערות</label>
-        <textarea id="nt" value={notes} onChange={(e) => setNotes(e.target.value)} />
-        <div className="sticky-actions">
-          <button className="btn primary" disabled={busy} onClick={() => act({ action: 'task_update', id: t.id, notes, assignee }, 'נשמר')}>שמירת הערות</button>
-        </div>
+    <Modal variant="sheet" titleId="task-title" onClose={close}>
+      <div className="row between">
+        <span className="meta"><span className="tid">{t.id}</span> · גל {t.wave} · {WAVE_NAME[t.wave]}</span>
+        <button type="button" className="btn" onClick={close} aria-label="סגירה"><Icon name="close" /></button>
       </div>
-    </div>
+      <h2 id="task-title">{t.title}</h2>
+      <p className="meta">
+        <span className={`chip ${TSTATUS_CLASS[t.status]}`}>{STATUS_LABEL[t.status]}</span>
+        {' · '}{t.impact} · מאמץ <Effort text={t.effort} />{kindText(t.kind) ? <> · {kindText(t.kind)}</> : null}
+      </p>
+      {t.wait_note && <p className="note-warn" dir="auto">{t.wait_note}</p>}
+      <p className="meta">מקור: <bdi dir="auto">{t.source}</bdi></p>
+
+      <h3>סטטוס</h3>
+      <div className="seg" role="group" aria-label="שינוי סטטוס">
+        {STATUSES.map((s) => <button key={s} type="button" className={t.status === s ? 'on' : ''} disabled={busy || t.status === s} onClick={() => setStatus(t, s)}>{STATUS_LABEL[s]}</button>)}
+      </div>
+
+      <h3>תלויות וחסמים</h3>
+      <p><b>חסמים ({(t.blockers || []).length})</b></p>
+      {(t.blockers || []).length ? <div className="link-list">{t.blockers.map((b: string) => dep(b, 'bad'))}</div> : <p className="muted">אין</p>}
+      {(t.partial_blockers || []).length > 0 && <><p><b>חסם חלקי</b></p><div className="link-list">{t.partial_blockers.map((b: string) => dep(b, 'warn'))}</div></>}
+      <p><b>תלוי במשימות</b></p>
+      {(t.depends_on || []).length ? (
+        <div className="link-list">
+          {(t.depends_on as string[]).map((d) => (
+            <button key={d} type="button" className="btn start" onClick={() => open(d)}>
+              <span className="tid">{d}</span>
+              <span className={`chip ${byId[d]?.status === 'done' ? 'ok' : 'info'}`}>{STATUS_LABEL[byId[d]?.status] || '—'}</span>
+            </button>
+          ))}
+        </div>
+      ) : <p className="muted">אין</p>}
+      {(t.needs_inputs || []).length > 0 && <><p><b>נדרש ממך</b></p><div className="link-list">{(t.needs_inputs as string[]).map((i) => dep(i, 'warn'))}</div></>}
+      {(t.finding_ids || []).length > 0 && (
+        <><p><b>ממצאים קשורים</b></p>
+          <div className="link-list">
+            {(t.finding_ids as string[]).map((f) => (
+              <Link key={f} href={'/findings#' + f}><span className="tid">{f}</span><bdi dir="auto">{String(findings.find((x: any) => x.id === f)?.title || '')}</bdi></Link>
+            ))}
+          </div>
+        </>
+      )}
+
+      {t.status === 'in_progress' && (
+        <>
+          <label htmlFor="prog">התקדמות: <span className="num">{progress}%</span></label>
+          <input id="prog" type="range" min={0} max={100} step={5} value={progress} aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress} aria-valuetext={`${progress} אחוז`}
+            onChange={(e) => setProgress(+e.target.value)}
+            onPointerUp={(e) => commitProgress(+(e.target as HTMLInputElement).value)}
+            onKeyUp={(e) => { if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(e.key)) commitProgress(+(e.target as HTMLInputElement).value); }} />
+        </>
+      )}
+
+      <h3>פרטי המשימה</h3>
+      <Md text={t.details} />
+
+      <div className="row">
+        <CopyPrompt id={t.id} />
+        <button type="button" className="btn" onClick={preview}>{showPrompt ? 'הסתרת פרומפט' : 'הצגת פרומפט'}</button>
+      </div>
+      {showPrompt && <div className="pre" dir="auto">{promptText ?? 'טוען…'}</div>}
+
+      <label htmlFor="as">אחראי</label>
+      <input id="as" dir="auto" value={assignee} onChange={(e) => setAssignee(e.target.value)} placeholder="Claude Code / אייל / בוט…" />
+      <label htmlFor="nt">הערות</label>
+      <textarea id="nt" dir="auto" value={notes} onChange={(e) => setNotes(e.target.value)} />
+      <div className="sticky-actions">
+        <button type="button" className="btn primary" disabled={busy} onClick={() => act({ action: 'task_update', id: t.id, notes, assignee }, 'נשמר')}>שמירה</button>
+      </div>
+    </Modal>
   );
 }
