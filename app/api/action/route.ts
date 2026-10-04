@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { applyAction } from '@/lib/actions';
 
-// Used by the dashboard UI (session cookie is enforced by middleware). Actor is always Eyal.
+// Used by the dashboard UI (no login required). Actor is always Eyal.
 const ALLOWED = new Set(['task_update', 'decision_choose', 'decision_reset', 'input_update', 'issue_add', 'issue_update', 'issue_delete', 'finding_update']);
 export async function POST(req: Request) {
   const body = await req.json().catch(() => null);

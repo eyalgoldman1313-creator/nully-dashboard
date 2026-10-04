@@ -9,7 +9,7 @@ findings (F1–F18), issues, draft-vs-previous snapshot diff and an activity log
 `/findings` F1–F18 · `/issues` notes · `/changes` snapshot diff · `/activity` who changed what.
 
 ## Auth
-Everything is behind a shared-password login (`DASHBOARD_PASSWORD`, signed httpOnly cookie, `SESSION_SECRET`).
+The UI has no login (open to anyone with the link). Only the bot API (`POST /api/bot-update`, `GET /api/export`) is protected with `Authorization: Bearer BOT_TOKEN`.
 The bot endpoints use a bearer token (`BOT_TOKEN`).
 
 ## Data model (Supabase schema `nully`, not exposed via REST)
@@ -54,5 +54,5 @@ policies, menus, locales and a checksum manifest of all theme files. `/changes` 
 so git history records every status/decision change.
 
 ## Env vars (Vercel)
-`SUPABASE_URL, SUPABASE_ANON_KEY, DASH_DB_TOKEN, DASHBOARD_PASSWORD, SESSION_SECRET, BOT_TOKEN`. The Shopify secret is **not** deployed;
+`SUPABASE_URL, SUPABASE_ANON_KEY, DASH_DB_TOKEN, BOT_TOKEN`. The Shopify secret is **not** deployed;
 snapshots run from the box and are pushed through the API.

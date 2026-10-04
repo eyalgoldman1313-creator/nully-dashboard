@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 const ITEMS = [
   ['/', 'סקירה'], ['/timeline', 'ציר זמן'], ['/board', 'לוח משימות'], ['/decisions', 'החלטות'], ['/findings', 'ממצאים'],
@@ -8,9 +8,6 @@ const ITEMS = [
 ];
 export default function Nav() {
   const path = usePathname();
-  const router = useRouter();
-  if (path === '/login') return null;
-  async function logout() { await fetch('/api/logout', { method: 'POST' }); router.push('/login'); router.refresh(); }
   return (
     <header className="topbar">
       <div className="topbar-in">
@@ -20,7 +17,6 @@ export default function Nav() {
             <Link key={href} href={href} className={(href === '/' ? path === '/' : path.startsWith(href)) ? 'active' : ''}>{label}</Link>
           ))}
         </nav>
-        <button className="logout" onClick={logout}>יציאה</button>
       </div>
     </header>
   );
