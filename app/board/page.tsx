@@ -11,7 +11,7 @@ export default async function Board({ searchParams }: { searchParams: Promise<{ 
     <>
       <header className="page-head">
         <h1>לוח משימות</h1>
-        <p className="lede">פתוח, בעבודה, חסום ובוצע. לחיצה על כרטיס פותחת פרטים, תלויות והעתקת פרומפט.</p>
+        <p className="lede">לחיצה על משימה פותחת פרטים, סטטוס והעתקת פרומפט.</p>
       </header>
       <Subnav items={WORK_NAV} />
       <TaskBoard

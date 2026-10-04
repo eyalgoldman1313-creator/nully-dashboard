@@ -44,6 +44,7 @@ export default function TaskBoard({ tasks, decisions, inputs, findings, resolved
   const [sel, setSel] = useState<string | null>(initialTask);
   const startCol = initialColumn && (STATUSES as readonly string[]).includes(initialColumn) ? initialColumn : 'open';
   const [mobileStatus, setMobileStatus] = useState(startCol);
+  const [doneOpen, setDoneOpen] = useState(startCol === 'done');
   const filtered = tasks.filter((t) => (wave === 'all' || String(t.wave) === wave) && (!q || (t.id + ' ' + t.title + ' ' + (t.source || '')).toLowerCase().includes(q.toLowerCase())));
   const byId = Object.fromEntries(tasks.map((t) => [t.id, t]));
   const title = (id: string) => decisions.find((d) => d.id === id)?.title || inputs.find((i) => i.id === id)?.title || byId[id]?.title || '';
@@ -95,46 +96,52 @@ export default function TaskBoard({ tasks, decisions, inputs, findings, resolved
       </div>
 
       <div className="kanban">
-        {STATUSES.map((st) => {
-          const col = filtered.filter((t) => t.status === st);
-          return (
-            <section className={`col${mobileStatus === st ? ' is-active' : ''}`} id={`col-${st}`} key={st} aria-label={STATUS_LABEL[st]}>
-              <div className="col-head"><h2>{STATUS_LABEL[st]}</h2><span className="num">{col.length}</span></div>
-              {col.map((t) => {
-                const openBl = (t.blockers || []).filter((b: string) => !rs.has(b));
-                const openPartial = (t.partial_blockers || []).filter((b: string) => !rs.has(b));
-                return (
-                  <article className="tcard" key={t.id}>
-                    <button type="button" className="tcard-open" onClick={() => setSel(t.id)}>
-                      <span className="row between"><span className="tid">{t.id}</span><span className={`chip ${TSTATUS_CLASS[t.status]}`}>{STATUS_LABEL[t.status]}</span></span>
-                      <span className="tcard-title">{t.title}</span>
-                      <span className="meta">
-                        {t.impact} · <Effort text={t.effort} /> · גל {t.wave}
-                        {openBl.length > 0 && <> · <span className="lockline"><Icon name="lock" />{openBl.length} חסמים</span></>}
-                        {openPartial.length > 0 && <> · חלקית <bdi className="tid">{openPartial.join(', ')}</bdi></>}
-                      </span>
-                    </button>
-                    {(t.status === 'open' || t.status === 'in_progress' || t.status === 'done') && (
-                      <div className="tcard-actions">
-                        {t.status === 'in_progress' && <div className="bar" style={{ marginBlockEnd: 8 }} aria-hidden="true"><i className="prog" style={{ flexBasis: `${t.progress || 0}%` }} /></div>}
-                        {t.status === 'open' && <button type="button" className="btn" disabled={busy} onClick={() => setStatus(t, 'in_progress')}><Icon name="play" />התחלה</button>}
-                        {t.status === 'in_progress' && <button type="button" className="btn ok" disabled={busy} onClick={() => setStatus(t, 'done')}><Icon name="check" />סיום</button>}
-                        {t.status === 'done' && <button type="button" className="btn" disabled={busy} onClick={() => setStatus(t, 'open')}><Icon name="undo" mirror />פתיחה מחדש</button>}
-                      </div>
-                    )}
-                  </article>
-                );
-              })}
-              {!col.length && <p className="muted">אין משימות בסטטוס הזה.</p>}
-            </section>
-          );
-        })}
+        {(['open', 'in_progress', 'blocked'] as const).map((st) => (
+          <Column key={st} st={st} tasks={filtered.filter((t) => t.status === st)} active={mobileStatus === st} onOpen={setSel} />
+        ))}
+        <section className={`col col-done st-done${mobileStatus === 'done' ? ' is-active' : ''}${doneOpen ? ' is-open' : ''}`} id="col-done" aria-label={STATUS_LABEL.done}>
+          <button type="button" className="col-head done-toggle" aria-expanded={doneOpen} onClick={() => setDoneOpen((v) => !v)}>
+            <h2><i className="col-mark" aria-hidden="true" />{STATUS_LABEL.done}</h2>
+            <span className="col-count">{filtered.filter((t) => t.status === 'done').length}</span>
+            <Icon name="chevron" mirror className="done-chev" />
+          </button>
+          <div className="col-body">
+            {filtered.filter((t) => t.status === 'done').map((t) => <TaskCard key={t.id} t={t} onOpen={() => setSel(t.id)} />)}
+            {!filtered.some((t) => t.status === 'done') && <p className="empty-col">אין משימות שבוצעו.</p>}
+          </div>
+        </section>
       </div>
 
       {task && <Detail key={task.id} t={task} close={() => setSel(null)} open={setSel} rs={rs} title={title} byId={byId} findings={findings} act={act} busy={busy} setStatus={setStatus} />}
       {dialog}
       {Toast}
     </>
+  );
+}
+
+function TaskCard({ t, onOpen }: { t: any; onOpen: () => void }) {
+  return (
+    <article className={`tcard st-${t.status}`}>
+      <button type="button" className="tcard-open" onClick={onOpen}>
+        <span className="tcard-title">{t.title}</span>
+        <span className="tcard-meta"><span className="tid">{t.id}</span><span aria-hidden="true">·</span><span>גל {t.wave}</span></span>
+      </button>
+    </article>
+  );
+}
+
+function Column({ st, tasks, active, onOpen }: { st: string; tasks: any[]; active: boolean; onOpen: (id: string) => void }) {
+  return (
+    <section className={`col st-${st}${active ? ' is-active' : ''}`} id={`col-${st}`} aria-label={STATUS_LABEL[st]}>
+      <div className="col-head">
+        <h2><i className="col-mark" aria-hidden="true" />{STATUS_LABEL[st]}</h2>
+        <span className="col-count">{tasks.length}</span>
+      </div>
+      <div className="col-body">
+        {tasks.map((t) => <TaskCard key={t.id} t={t} onOpen={() => onOpen(t.id)} />)}
+        {!tasks.length && <p className="empty-col">אין משימות.</p>}
+      </div>
+    </section>
   );
 }
 
