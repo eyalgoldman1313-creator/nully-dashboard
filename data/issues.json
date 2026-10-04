@@ -1,0 +1,161 @@
+[
+  {
+    "id": "I1",
+    "body": "אצל Harmony, site-by-harmony.md מתאר מנוי Seal פעיל של 15%, אבל בבדיקה היום לא נמצאו selling plans פעילים ב-13 מוצרים. הסקריפט של Seal עדיין נטען.",
+    "kind": "note",
+    "title": "אצל Harmony, site-by-harmony.md מתאר מנוי Seal פעיל של 15%, אבל בבדיקה היום לא נמצאו selli…",
+    "author": "bot:grok-bot",
+    "source": "work-plan.md › הערות על המקורות",
+    "status": "open",
+    "related": [],
+    "created_at": "2026-10-04T09:00:00+00:00",
+    "resolution": null,
+    "updated_at": "2026-10-04T09:00:00+00:00"
+  },
+  {
+    "id": "I10",
+    "body": "זמן אספקה (SLA) והאם יש ספק משלוחים עם נקודות איסוף\nמשפיע על: F7\nמקור אפשרי: אייל",
+    "kind": "unknown",
+    "title": "לא ידוע: זמן אספקה (SLA) והאם יש ספק משלוחים עם נקודות איסוף",
+    "author": "bot:grok-bot",
+    "source": "characterization.md › §6 חוסרי מידע",
+    "status": "open",
+    "related": [
+      "F7"
+    ],
+    "created_at": "2026-10-04T09:00:00+00:00",
+    "resolution": null,
+    "updated_at": "2026-10-04T09:00:00+00:00"
+  },
+  {
+    "id": "I11",
+    "body": "נתוני תנועה/המרה קיימים\nמשפיע על: הערכת השפעה בפועל וניסויים\nמקור אפשרי: אייל / אין כרגע — ההשפעה במסמך הערכה בלבד",
+    "kind": "unknown",
+    "title": "לא ידוע: נתוני תנועה/המרה קיימים",
+    "author": "bot:grok-bot",
+    "source": "characterization.md › §6 חוסרי מידע",
+    "status": "open",
+    "related": [],
+    "created_at": "2026-10-04T09:00:00+00:00",
+    "resolution": null,
+    "updated_at": "2026-10-04T09:00:00+00:00"
+  },
+  {
+    "id": "I2",
+    "body": "synthesis-references.md §4.5 ממליץ גם על Recharge ו-Skio, ואף אחד מהם לא זוהה באתרי הייחוס.",
+    "kind": "note",
+    "title": "synthesis-references.md §4.5 ממליץ גם על Recharge ו-Skio, ואף אחד מהם לא זוהה באתרי הייחוס…",
+    "author": "bot:grok-bot",
+    "source": "work-plan.md › הערות על המקורות",
+    "status": "open",
+    "related": [],
+    "created_at": "2026-10-04T09:00:00+00:00",
+    "resolution": null,
+    "updated_at": "2026-10-04T09:00:00+00:00"
+  },
+  {
+    "id": "I3",
+    "body": "ב-Smiley וב-Woof יש שתי קבוצות selling plans במקביל (Appstle + GID 66228322305). שם הערכה של Smiley (\"תיקון למעבר מנויים\") רומז על מעבר בין אפליקציות; לא ידוע מה פעיל בצ'קאאוט.",
+    "kind": "note",
+    "title": "ב-Smiley וב-Woof יש שתי קבוצות selling plans במקביל (Appstle + GID 66228322305). שם הערכה …",
+    "author": "bot:grok-bot",
+    "source": "work-plan.md › הערות על המקורות",
+    "status": "open",
+    "related": [],
+    "created_at": "2026-10-04T09:00:00+00:00",
+    "resolution": null,
+    "updated_at": "2026-10-04T09:00:00+00:00"
+  },
+  {
+    "id": "I4",
+    "body": "כפתור ה-hero «לחסוך 50%» לא תואם את 40/45/51% בכרטיסים (T2.1).",
+    "kind": "note",
+    "title": "כפתור ה-hero «לחסוך 50%» לא תואם את 40/45/51% בכרטיסים (T2.1).",
+    "author": "bot:grok-bot",
+    "source": "work-plan.md › הערות על המקורות",
+    "status": "open",
+    "related": [],
+    "created_at": "2026-10-04T09:00:00+00:00",
+    "resolution": null,
+    "updated_at": "2026-10-04T09:00:00+00:00"
+  },
+  {
+    "id": "I5",
+    "body": "התנהגות הוספה לסל ל\"חד-פעמי\" (מחיר 220 יחויב?) — הסקה, לא נבדק\nמשפיע על: F1, F10\nמקור אפשרי: בדיקה ידנית בערכה / אייל",
+    "kind": "unknown",
+    "title": "לא ידוע: התנהגות הוספה לסל ל\"חד-פעמי\" (מחיר 220 יחויב?) — הסקה, לא נבדק",
+    "author": "bot:grok-bot",
+    "source": "characterization.md › §6 חוסרי מידע",
+    "status": "open",
+    "related": [
+      "F1",
+      "F10"
+    ],
+    "created_at": "2026-10-04T09:00:00+00:00",
+    "resolution": null,
+    "updated_at": "2026-10-04T09:00:00+00:00"
+  },
+  {
+    "id": "I6",
+    "body": "אפליקציות מותקנות, פיקסלים, שער תשלום (PayPal נראה), אמצעי תשלום ישראליים\nמשפיע על: F1, F13\nמקור אפשרי: אייל / גישת Admin רחבה יותר",
+    "kind": "unknown",
+    "title": "לא ידוע: אפליקציות מותקנות, פיקסלים, שער תשלום (PayPal נראה), אמצעי תשלום ישראליים",
+    "author": "bot:grok-bot",
+    "source": "characterization.md › §6 חוסרי מידע",
+    "status": "open",
+    "related": [
+      "F1",
+      "F13"
+    ],
+    "created_at": "2026-10-04T09:00:00+00:00",
+    "resolution": null,
+    "updated_at": "2026-10-04T09:00:00+00:00"
+  },
+  {
+    "id": "I7",
+    "body": "תבניות מייל, flows, דף תודה\nמשפיע על: F13\nמקור אפשרי: אייל",
+    "kind": "unknown",
+    "title": "לא ידוע: תבניות מייל, flows, דף תודה",
+    "author": "bot:grok-bot",
+    "source": "characterization.md › §6 חוסרי מידע",
+    "status": "open",
+    "related": [
+      "F13"
+    ],
+    "created_at": "2026-10-04T09:00:00+00:00",
+    "resolution": null,
+    "updated_at": "2026-10-04T09:00:00+00:00"
+  },
+  {
+    "id": "I8",
+    "body": "LCP/INP/CLS\nמשפיע על: F14\nמקור אפשרי: הרצת Lighthouse/PSI",
+    "kind": "unknown",
+    "title": "לא ידוע: LCP/INP/CLS",
+    "author": "bot:grok-bot",
+    "source": "characterization.md › §6 חוסרי מידע",
+    "status": "open",
+    "related": [
+      "F14"
+    ],
+    "created_at": "2026-10-04T09:00:00+00:00",
+    "resolution": null,
+    "updated_at": "2026-10-04T09:00:00+00:00"
+  },
+  {
+    "id": "I9",
+    "body": "תווית סופית: ערכים, כמויות, אלרגנים; 30 יחידות = 28 ימי שימוש?\nמשפיע על: F9, F12, F4\nמקור אפשרי: אייל / היצרן",
+    "kind": "unknown",
+    "title": "לא ידוע: תווית סופית: ערכים, כמויות, אלרגנים; 30 יחידות = 28 ימי שימוש?",
+    "author": "bot:grok-bot",
+    "source": "characterization.md › §6 חוסרי מידע",
+    "status": "open",
+    "related": [
+      "F9",
+      "F12",
+      "F4"
+    ],
+    "created_at": "2026-10-04T09:00:00+00:00",
+    "resolution": null,
+    "updated_at": "2026-10-04T09:00:00+00:00"
+  }
+]

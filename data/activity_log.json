@@ -1,0 +1,50 @@
+[
+  {
+    "at": "2026-10-04T10:02:56.585716+00:00",
+    "id": 1,
+    "actor": "bot:grok-bot",
+    "action": "seed",
+    "details": null,
+    "summary": "הנתונים נטענו מקבצי הניתוח (work-plan, characterization, nully-vs-references, claude-code-prompts)",
+    "entity_id": null,
+    "actor_type": "bot",
+    "entity_type": "system"
+  },
+  {
+    "at": "2026-10-04T10:03:00.802763+00:00",
+    "id": 2,
+    "actor": "bot:shopify-snapshot",
+    "action": "snapshot",
+    "details": {
+      "hash": "64e15b0991a3de6e"
+    },
+    "summary": "נשמר צילום מצב ראשוני של הטיוטה (snapshot ראשוני)",
+    "entity_id": "2026-10-04T09-57-45-403Z",
+    "actor_type": "bot",
+    "entity_type": "snapshot"
+  },
+  {
+    "at": "2026-10-04T10:27:32.702913+00:00",
+    "id": 19,
+    "actor": "bot:shopify-snapshot",
+    "action": "snapshot",
+    "details": {
+      "hash": "7e1903793676472f"
+    },
+    "summary": "נשמר צילום מצב של הטיוטה — 2026-10-04T10-27-29-794Z",
+    "entity_id": "2026-10-04T10-27-29-794Z",
+    "actor_type": "bot",
+    "entity_type": "snapshot"
+  },
+  {
+    "at": "2026-10-04T10:28:05.84565+00:00",
+    "id": 20,
+    "actor": "bot:grok",
+    "action": "note",
+    "details": null,
+    "summary": "הלוח עלה לאוויר. נתוני הבסיס נטענו מקובצי הניתוח ונשמר צילום טיוטה שני שמראה שינוי חיצוני ב-sections/marquee.liquid",
+    "entity_id": null,
+    "actor_type": "bot",
+    "entity_type": "system"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "2026-10-04T09-57-45-403Z",
+    "label": "snapshot ראשוני",
+    "source": "shopify-snapshot.mjs (read-only)",
+    "created_by": "bot:shopify-snapshot",
+    "captured_at": "2026-10-04T09:57:45.403+00:00",
+    "content_hash": "64e15b0991a3de6e"
+  },
+  {
+    "id": "2026-10-04T10-27-29-794Z",
+    "label": null,
+    "source": "shopify-snapshot.mjs (read-only)",
+    "created_by": "bot:shopify-snapshot",
+    "captured_at": "2026-10-04T10:27:29.794+00:00",
+    "content_hash": "7e1903793676472f"
+  }
+]

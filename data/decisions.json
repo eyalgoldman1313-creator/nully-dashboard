@@ -1,0 +1,319 @@
+[
+  {
+    "id": "D1",
+    "note": null,
+    "title": "משלוח",
+    "chosen": "design",
+    "source": "work-plan §החלטות שהתקבלו; characterization §7; F7",
+    "status": "decided",
+    "options": [
+      {
+        "id": "design",
+        "label": "העיצוב הוא מקור האמת",
+        "detail": "חינם לנקודת איסוף מעל 300 ₪, 19 ₪ לנקודת איסוף, 35 ₪ עד הדלת, 20 ₪ שדרוג במנוי"
+      },
+      {
+        "id": "shopify",
+        "label": "הגדרת Shopify",
+        "detail": "ישראל 35 ₪ קבוע + חינם מ-250 ₪ (מקור: F7)"
+      }
+    ],
+    "evidence": null,
+    "question": "סף ומחיר משלוח: להתיישר על העיצוב (300) או על הגדרת Shopify (250)?",
+    "unblocks": [
+      "T1.6",
+      "T2.9"
+    ],
+    "decided_at": "2026-10-03T21:00:00+00:00",
+    "decided_by": "eyal",
+    "updated_at": "2026-10-04T09:00:00+00:00",
+    "updated_by": "seed",
+    "recommended": null,
+    "decided_note": "ספק המשלוחים כבר מחובר ונמצא מחוץ לתחום. הוסרו משימות הגדרת המשלוח; נשארו אחידות טקסט ועיצוב (T1.6) ומד משלוח חינם לפי 300 ₪ (T2.9)."
+  },
+  {
+    "id": "D2",
+    "note": null,
+    "title": "ערבות",
+    "chosen": "none",
+    "source": "work-plan §החלטות שהתקבלו; F6",
+    "status": "decided",
+    "options": [
+      {
+        "id": "none",
+        "label": "אין ערבות"
+      },
+      {
+        "id": "g30",
+        "label": "ערבות 30 יום",
+        "detail": "כמו Gruns (מקור: F6)"
+      },
+      {
+        "id": "g60",
+        "label": "ערבות 60 יום",
+        "detail": "כמו Wonders/Softella (מקור: F6)"
+      }
+    ],
+    "evidence": null,
+    "question": "ערבות: כן/לא, כמה ימים?",
+    "unblocks": [],
+    "decided_at": "2026-10-03T21:00:00+00:00",
+    "decided_by": "eyal",
+    "updated_at": "2026-10-04T09:00:00+00:00",
+    "updated_by": "seed",
+    "recommended": null,
+    "decided_note": "הוסרו משימת הערבות וכל הרכיבים שתלויים בה. כלל 6: לא מוסיפים תגי ערבות, \"ימי ניסיון\" או \"החזר כספי\"."
+  },
+  {
+    "id": "D3",
+    "note": null,
+    "title": "איזו אפליקציית מנוי",
+    "chosen": null,
+    "source": "work-plan §D3; d3/D3-evidence.md",
+    "status": "open",
+    "options": [
+      {
+        "id": "shopify-subscriptions",
+        "label": "Shopify Subscriptions (של Shopify)",
+        "detail": "נמצאה כנראה אצל Smiley ו-Woof לצד Appstle. כרטיסי ההצעה המותאמים (nully-offer-cards.js) צריכים רק לשלוח selling_plan, לא נדרש ווידג'ט. סביר שמוסיפה מעט סקריפטים, ושומרת על יתרון \"0 סקריפטים צד-ג'\". לבדוק: תמחור ותמיכה בתוכנית Basic; עברית בפורטל; דילוג/השהיה; הנחה קבועה."
+      },
+      {
+        "id": "appstle",
+        "label": "Appstle",
+        "detail": "פיצ'רים רבים (פורטל, דילוג, upsell, נאמנות), פעילה אצל Smiley ו-Woof (ישראליות). לבדוק: משקל הסקריפט; אפשרות לבטל את הווידג'ט ולהשתמש בכרטיסים שלנו; תמחור."
+      },
+      {
+        "id": "seal",
+        "label": "Seal Subscriptions",
+        "detail": "פשוטה יחסית; פעילה אצל Craftly, מותקנת אצל Harmony. הסקריפט נטען בכל עמוד."
+      },
+      {
+        "id": "payeo",
+        "label": "Payeo",
+        "detail": "אפליקציה ישראלית עם \"מתנות למנויים\" (GOOM). פחות מידע; לבדוק תמחור ותמיכה."
+      }
+    ],
+    "evidence": ": אפליקציות המנוי באתרי הייחוס (ראיות)\n*נבדק ב-4.10.2026 בסביבות 11:50 (שעון ישראל): `curl` ציבורי לעמוד המוצר ול-`/products/<handle>.js`, ובדיקה של `selling_plan_groups[].app_id` ושל כתובות הסקריפטים. הפירוט והקבצים הגולמיים נמצאים ב-`/workspace/analysis/d3/D3-evidence.md`. השדה `app_id` הוא מחרוזת שהאפליקציה עצמה קובעת: ראיה חזקה, לא הוכחה מוחלטת.*\n\n| חנות | אפליקציה שזוהתה | ראיה מרכזית | רמת ודאות |\n|---|---|---|---|\n| **Smiley** (try-smiley.com) | **Appstle**, ובנוסף קבוצה של אפליקציה עם GID `66228322305` (כנראה Shopify Subscriptions) | `selling_plan_groups`: `app_id: \"appstle\"` + `app_id: \"gid://shopify/App/66228322305\"` (\"Deliver every month, 40.00 ₪ off\"). קוד ערכה `appstleGroup`. שם הערכה \"ShrinePro - תיקון למעבר מנויים\" | Appstle: גבוהה. השנייה: הסקה |\n| **Craftly** (craftly.co.il) | **Seal Subscriptions** | `app_id: \"Seal Subscriptions\"` במוצר הקלאב; סקריפט `cdn-app.sealsubscriptions.com/shopify/public/js/sealsubscriptions.js?shop=utd1vs-h6.myshopify.com`. יש גם classes של Appstle ב-HTML, בלי קבוצה פעילה | גבוהה |\n| **Woof** (mywoof-il.com) | **Appstle**, ובנוסף קבוצה של GID `66228322305` | `app_id: \"appstle\"` (\"Woof Subscription\", 20%) + `app_id: \"gid://shopify/App/66228322305\"` (\"Deliver every month, 20% off\") | Appstle: גבוהה. השנייה: הסקה |\n| **GOOM** (goom.co.il) | **Payeo** (ישראלית) | `app_id: \"payeo_subscription_app_unique_key_285987766273\"`; סקריפט `cdn.shopify.com/extensions/…/payeo-309/assets/subscription-widget-new.js`. לא Skio | גבוהה |\n| **Harmony** (by-harmony.co.il) | **הסקריפט של Seal נטען, אבל לא נמצאו selling plans פעילים** | `cdn-app.sealsubscriptions.com/…/sealsubscriptions.js?shop=by-harmony-8672.myshopify.com`. בורר \"מנוי מתחדש 15%\" מסקשן ערכה מותאם. `selling_plan_groups = []` ב-13 מוצרים שנבדקו | Seal מותקן: גבוהה. פעיל: **לא זוהה** |\n\n**לא זוהו באף אחד מחמשת האתרים:** Recharge, Skio, Loop, Bold. *GID `66228322305` מופיע בדוגמאות של תיעוד Shopify, ושמות התוכניות תואמים לאפליקציה של Shopify. זו הסקה שלא אומתה.*\n\n### השוואת מועמדות עבור NULLY\n| אפליקציה | נמצאה אצל | התאמה לטיוטה | נקודות לבדיקה לפני בחירה |\n|---|---|---|---|\n| **Shopify Subscriptions** (של Shopify) | כנראה Smiley ו-Woof, לצד Appstle | יוצרת selling plans רגילים. כרטיסי ההצעה המותאמים (`nully-offer-cards.js`) צריכים רק לשלוח `selling_plan`, ולכן לא נדרש ווידג'ט. ניהול המנוי דרך חשבונות הלקוח של Shopify. סביר שמוסיפה מעט סקריפטים, וזה שומר על יתרון \"0 סקריפטים צד-ג'\" | תמחור ותמיכה בתוכנית Basic; עברית בפורטל; דילוג/השהיה; הנחה קבועה |\n| **Appstle** | Smiley, Woof (ישראליות) | פיצ'רים רבים (פורטל, דילוג, upsell, נאמנות), ונמצאה פעילה אצל שתי חנויות ישראליות | משקל הסקריפט; אפשרות לבטל את הווידג'ט שלה ולהשתמש בכרטיסים שלנו; תמחור |\n| **Seal Subscriptions** | Craftly (פעיל), Harmony (מותקן) | פשוטה יחסית, ונמצאה בשתי חנויות ישראליות | אותן נקודות; הסקריפט נטען בכל עמוד |\n| **Payeo** | GOOM | אפליקציה ישראלית עם \"מתנות למנויים\" | פחות מידע; לבדוק תמחור ותמיכה |\n\n**המלצה (הערכה שלי):** להתחיל ב-**Shopify Subscriptions**. הטיוטה כבר כוללת כרטיסי הצעה מותאמים, ומה שחסר הוא רק selling plan אמיתי ופורטל. אפליקציה שלא מוסיפה ווידג'ט שומרת על המהירות. **אם** יתברר שחסר פיצ'ר קריטי (למשל פורטל בעברית מלאה, דילוג/השהיה או שכבות נאמנות, T5.4), החלופה היא **Appstle**, שנמצאה פעילה אצל Smiley ו-Woof. לפני הבחירה אייל צריך לאמת בחנות האפליקציות: תמחור, תמיכה בתוכנית Basic ועברית.\n\n---",
+    "question": "איזו אפליקציית מנוי להתקין (selling plans + פורטל ניהול מנוי בעברית)?",
+    "unblocks": [
+      "T1.2",
+      "T2.1",
+      "T3.5",
+      "T5.1",
+      "T5.4"
+    ],
+    "decided_at": null,
+    "decided_by": null,
+    "updated_at": "2026-10-04T09:00:00+00:00",
+    "updated_by": "seed",
+    "recommended": "shopify-subscriptions",
+    "decided_note": null
+  },
+  {
+    "id": "D4",
+    "note": null,
+    "title": "קהל יעד",
+    "chosen": "parents",
+    "source": "work-plan §החלטות שהתקבלו; F11",
+    "status": "decided",
+    "options": [
+      {
+        "id": "parents",
+        "label": "הורים לילדים"
+      },
+      {
+        "id": "students",
+        "label": "סטודנטים"
+      },
+      {
+        "id": "other",
+        "label": "אחר"
+      }
+    ],
+    "evidence": null,
+    "question": "קהל ראשי להשקה",
+    "unblocks": [
+      "T2.6",
+      "T2.7",
+      "T3.9"
+    ],
+    "decided_at": "2026-10-03T21:00:00+00:00",
+    "decided_by": "eyal",
+    "updated_at": "2026-10-04T09:00:00+00:00",
+    "updated_by": "seed",
+    "recommended": null,
+    "decided_note": "הקופי, ה-FAQ, ה-hero ותוכן ההורים שוחררו לביצוע (T2.6, T2.7, T3.9)."
+  },
+  {
+    "id": "D5",
+    "note": null,
+    "title": "מקור הביקורות / הוכחה חברתית",
+    "chosen": null,
+    "source": "work-plan §D5; E7",
+    "status": "open",
+    "options": [
+      {
+        "id": "A",
+        "label": "A. נבחרות סטטיות בערכה",
+        "detail": "Claude Code ממיר את ה-CSV (מקומית) לבלוקים של סקשן הביקורות ב-templates/*.json: כרטיסים נבחרים, ציטוט מוביל, ודירוג ממוצע וספירה שמחושבים מה-CSV. יתרונות: אין אפליקציה ואין שינוי בחנות, מהיר, בלי סקריפטים. חסרונות: מספר הבלוקים מוגבל (עד 50), עדכון מחייב הרצה מחדש."
+      },
+      {
+        "id": "B",
+        "label": "B. Metaobjects",
+        "detail": "🏪 הגדרת metaobject review ויבוא ה-CSV; הערכה קוראת ממנו. יתרונות: נתונים מסודרים, ללא הגבלת בלוקים. חסרונות: פעולת Admin וכלי יבוא."
+      },
+      {
+        "id": "C",
+        "label": "C. אפליקציית ביקורות בהמשך",
+        "detail": "Loox / Judge.me / Junip. אייל החליט לא בשלב זה (E7) ולכן האפשרות לא רלוונטית כרגע.",
+        "disabled": true
+      }
+    ],
+    "evidence": ": איך משלבים את הביקורות מה-CSV (3 אפשרויות)\n| אפשרות | איך | יתרונות | חסרונות |\n|---|---|---|---|\n| **A. נבחרות סטטיות בערכה** | Claude Code ממיר את ה-CSV (מקומית) לבלוקים של סקשן הביקורות ב-`templates/*.json`: כרטיסים נבחרים, ציטוט מוביל, ודירוג ממוצע וספירה **שמחושבים מה-CSV** | אין אפליקציה ואין שינוי בחנות (רק בטיוטה). מהיר, בלי סקריפטים, ושליטה מלאה בעיצוב וב-RTL | מספר הבלוקים בסקשן מוגבל (בדרך כלל עד 50). עדכון מחייב הרצה מחדש. לא מתאים לאלפי ביקורות |\n| **B. Metaobjects** | 🏪 הגדרת metaobject `review` (שם, דירוג, טקסט, תאריך, תמונה, תרחיש) ויבוא ה-CSV (עם כלי יבוא או סקריפט שאייל מריץ). הערכה מציגה מה-metaobjects | נתונים מסודרים בחנות, עריכה נוחה ב-Admin, ללא הגבלת בלוקים, ומתאים ל-JSON-LD | מחייב פעולת Admin וכלי יבוא. יותר עבודה בהתחלה |\n| **C. אפליקציית ביקורות בהמשך** | יבוא ה-CSV לאפליקציה (Loox / Judge.me / Junip) | איסוף אוטומטי, ביקורות עם תמונות ו-\"רכישה מאומתת\" | אייל החליט לא בשלב זה (E7). מוסיף סקריפט |\n\n**המלצה:** **A עכשיו**: 12–24 ביקורות נבחרות (המספר יוחלט אחרי שנראה את ה-CSV), עם הדירוג והספירה שמחושבים מכל הקובץ. כך האזורים של T2.2 מתמלאים מהר בלי לגעת בחנות. **B כשלב ב'**, אם רוצים להציג את כל הביקורות או לעדכן בתדירות גבוהה. מבנה הסקשן ב-A ייבנה כך שאפשר יהיה להחליף את המקור ל-metaobjects בלי לשנות עיצוב.\n\n---",
+    "question": "איך משלבים את הביקורות מה-CSV באתר?",
+    "unblocks": [
+      "T2.3",
+      "T3.8"
+    ],
+    "decided_at": null,
+    "decided_by": null,
+    "updated_at": "2026-10-04T10:26:50.826+00:00",
+    "updated_by": "eyal",
+    "recommended": "A",
+    "decided_note": null
+  },
+  {
+    "id": "D6",
+    "note": null,
+    "title": "דומיין",
+    "chosen": "last",
+    "source": "work-plan §החלטות שהתקבלו; F15",
+    "status": "decided",
+    "options": [
+      {
+        "id": "last",
+        "label": "רק בסוף",
+        "detail": "הדומיין הראשי יוצמד לטיוטה (פרסום) רק אחרי שכל השיפורים הושלמו, כשלב ההשקה האחרון ובאישור מפורש"
+      }
+    ],
+    "evidence": null,
+    "question": "מתי מצמידים את הדומיין הראשי לטיוטה (פרסום)?",
+    "unblocks": [
+      "T4.2"
+    ],
+    "decided_at": "2026-10-03T21:00:00+00:00",
+    "decided_by": "eyal",
+    "updated_at": "2026-10-04T09:00:00+00:00",
+    "updated_by": "seed",
+    "recommended": null,
+    "decided_note": "T4.2 הוא הצעד האחרון, ומבוצע על ידי אייל בלבד."
+  },
+  {
+    "id": "E2",
+    "note": null,
+    "title": "\"מה לחבר?\"",
+    "chosen": null,
+    "source": "work-plan §החלטות שהתקבלו",
+    "status": "decided",
+    "options": [],
+    "evidence": null,
+    "question": "\"מה לחבר?\"",
+    "unblocks": [],
+    "decided_at": "2026-10-03T21:00:00+00:00",
+    "decided_by": "eyal",
+    "updated_at": "2026-10-04T09:00:00+00:00",
+    "updated_by": "seed",
+    "recommended": null,
+    "decided_note": "אייל ביקש הצעה — סעיף אינטגרציות + T3.1"
+  },
+  {
+    "id": "E3",
+    "note": null,
+    "title": "תווית",
+    "chosen": null,
+    "source": "work-plan §החלטות שהתקבלו",
+    "status": "decided",
+    "options": [],
+    "evidence": null,
+    "question": "תווית",
+    "unblocks": [],
+    "decided_at": "2026-10-03T21:00:00+00:00",
+    "decided_by": "eyal",
+    "updated_at": "2026-10-04T09:00:00+00:00",
+    "updated_by": "seed",
+    "recommended": null,
+    "decided_note": "המידע כבר מופיע בתמונות המוצר — עובדות נקראות מהתמונות. מחיר ליום לא מחושב אלא אם הוא מופיע בתמונות (אופציונלי ב-T2.1)"
+  },
+  {
+    "id": "E4",
+    "note": null,
+    "title": "תעודות",
+    "chosen": null,
+    "source": "work-plan §החלטות שהתקבלו",
+    "status": "decided",
+    "options": [],
+    "evidence": null,
+    "question": "תעודות",
+    "unblocks": [],
+    "decided_at": "2026-10-03T21:00:00+00:00",
+    "decided_by": "eyal",
+    "updated_at": "2026-10-04T09:00:00+00:00",
+    "updated_by": "seed",
+    "recommended": null,
+    "decided_note": "נמצאות מחוץ לאתר — הוסר"
+  },
+  {
+    "id": "E6",
+    "note": null,
+    "title": "חבילות",
+    "chosen": null,
+    "source": "work-plan §החלטות שהתקבלו",
+    "status": "decided",
+    "options": [],
+    "evidence": null,
+    "question": "חבילות",
+    "unblocks": [],
+    "decided_at": "2026-10-03T21:00:00+00:00",
+    "decided_by": "eyal",
+    "updated_at": "2026-10-04T09:00:00+00:00",
+    "updated_by": "seed",
+    "recommended": null,
+    "decided_note": "אין מארז התנסות. דוחפים לרכישת מנוי דרך מחיר מנוי זול משמעותית — T2.1 נבנה סביב מנוי כברירת המחדל והאפשרות הכי אטרקטיבית"
+  },
+  {
+    "id": "E7",
+    "note": null,
+    "title": "אפליקציית ביקורות",
+    "chosen": null,
+    "source": "work-plan §החלטות שהתקבלו",
+    "status": "decided",
+    "options": [],
+    "evidence": null,
+    "question": "אפליקציית ביקורות",
+    "unblocks": [],
+    "decided_at": "2026-10-03T21:00:00+00:00",
+    "decided_by": "eyal",
+    "updated_at": "2026-10-04T09:00:00+00:00",
+    "updated_by": "seed",
+    "recommended": null,
+    "decided_note": "לא בשלב זה — הביקורות ישולבו בלי אפליקציה (D5)"
+  },
+  {
+    "id": "E8",
+    "note": null,
+    "title": "סיפור מייסד",
+    "chosen": null,
+    "source": "work-plan §החלטות שהתקבלו",
+    "status": "decided",
+    "options": [],
+    "evidence": null,
+    "question": "סיפור מייסד",
+    "unblocks": [],
+    "decided_at": "2026-10-03T21:00:00+00:00",
+    "decided_by": "eyal",
+    "updated_at": "2026-10-04T09:00:00+00:00",
+    "updated_by": "seed",
+    "recommended": null,
+    "decided_note": "יתווסף בהמשך — סקשן placeholder נדחה, כבוי (T2.11)"
+  }
+]
