@@ -116,14 +116,14 @@ export default async function Changes({ searchParams }: { searchParams: Promise<
                 <div key={p.handle}>
                   <p><b>{p.title}</b> <span className="chip">{p.status}</span> <span className="ltr muted">{p.handle}</span></p>
                   <div className="table-wrap">
-                    <table className="tbl">
+                    <table className="tbl stack">
                       <thead><tr><th>וריאנט</th><th className="num">מחיר</th><th className="num">לפני</th><th className="num">חד־פעמי</th></tr></thead>
                       <tbody>{p.variants.map((v: any) => (
                         <tr key={v.title}>
-                          <td>{v.title}</td>
-                          <td className="num"><bdi>{ils(v.price)}</bdi></td>
-                          <td className="num"><bdi>{ils(v.compareAtPrice)}</bdi></td>
-                          <td className="num"><bdi>{v.onetimePrice ? safeAmount(v.onetimePrice) : '—'}</bdi></td>
+                          <td data-label="וריאנט">{v.title}</td>
+                          <td className="num" data-label="מחיר"><bdi>{ils(v.price)}</bdi></td>
+                          <td className="num" data-label="לפני"><bdi>{ils(v.compareAtPrice)}</bdi></td>
+                          <td className="num" data-label="חד־פעמי"><bdi>{v.onetimePrice ? safeAmount(v.onetimePrice) : '—'}</bdi></td>
                         </tr>
                       ))}</tbody>
                     </table>
@@ -145,9 +145,9 @@ export default async function Changes({ searchParams }: { searchParams: Promise<
       <section className="section">
         <h2>צילומים שמורים</h2>
         <div className="table-wrap surface">
-          <table className="tbl">
+          <table className="tbl stack">
             <thead><tr><th>נלקח</th><th>תווית</th><th>מקור</th><th>hash</th></tr></thead>
-            <tbody>{snaps.map((s) => <tr key={s.id}><td className="num">{fmtDate(s.captured_at)}</td><td><bdi dir="auto">{s.label || '—'}</bdi></td><td><bdi dir="auto">{s.created_by}</bdi></td><td className="ltr">{s.content_hash}</td></tr>)}</tbody>
+            <tbody>{snaps.map((s) => <tr key={s.id}><td className="num" data-label="נלקח">{fmtDate(s.captured_at)}</td><td data-label="תווית"><bdi dir="auto">{s.label || '—'}</bdi></td><td data-label="מקור"><bdi dir="auto">{s.created_by}</bdi></td><td className="ltr" data-label="hash">{s.content_hash}</td></tr>)}</tbody>
           </table>
         </div>
       </section>
