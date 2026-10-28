@@ -318,6 +318,8 @@ details[open] > summary::before { transform: rotate(90deg); }
 .finding-sum { align-items: center; }
 .finding-sum h3 { flex: 1; min-inline-size: 0; font-size: 1rem; margin: 0; font-weight: 600; }
 .finding-body { padding: 4px 0 16px 1.4rem; }
+.status-line .fmt::before { content: " · "; }
+.task-links .tid + .tid::before { content: " · "; font-weight: 400; color: var(--muted); }
 details > summary.finding-sum { align-items: center; }
 
 .timeline { position: relative; display: flex; flex-direction: column; gap: var(--space-5); padding-inline-start: 28px; }
@@ -395,12 +397,142 @@ details > summary.finding-sum { align-items: center; }
   .tabbar a:hover, .tabbar button:hover { text-decoration: none; }
   .subnav { display: flex; }
   .progress-panel { grid-template-columns: 1fr; }
-  .need-row { grid-template-columns: auto minmax(0, 1fr); }
-  .need-row .chip { grid-column: 2; justify-self: start; }
+  .need-row {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: 8px;
+    row-gap: 6px;
+  }
+  .need-row .tid { grid-column: 1; grid-row: 1; }
+  .need-row .chip { grid-column: 2; grid-row: 1; justify-self: end; align-self: center; }
+  .need-row > :nth-child(2) { grid-column: 1 / -1; grid-row: 2; min-inline-size: 0; }
+  .need-row h3, .need-row p { overflow-wrap: anywhere; }
   .toast { inset-block-end: calc(var(--tabbar) + 12px + env(safe-area-inset-bottom)); }
   [id] { scroll-margin-block-start: 72px; }
-  h1 { font-size: 1.5rem; }
-  .finding-body { padding-inline-start: 0; }
+  h1 { font-size: 1.5rem; text-wrap: wrap; }
+  h2, h3, h4 { text-wrap: wrap; }
+  h2, h3, h4, .t, .lede, .meta, bdi { overflow-wrap: break-word; }
+  .finding-body { padding: 8px 0 16px; }
+
+  .appbar .brand { min-block-size: 44px; }
+  .tabbar a, .tabbar button { min-inline-size: 0; line-height: 1.15; overflow-wrap: anywhere; }
+
+  .filters {
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    gap: 8px;
+    inline-size: 100%;
+    max-inline-size: 100%;
+    min-inline-size: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+  }
+  .filters .inline-field { flex: 0 0 auto; min-inline-size: 12rem; }
+  .filters:has(input) .inline-field { flex: 1 1 0; min-inline-size: 0; }
+  .filters:has(input) .inline-field:has(select) { flex: 0 0 8.25rem; min-inline-size: 8.25rem; }
+  .filters:has(input) .inline-field:has(input) { flex: 1 1 auto; min-inline-size: 6.5rem; }
+  .filters .check { flex: 0 0 auto; white-space: nowrap; }
+  .filters .meta { flex: none; white-space: nowrap; align-self: center; }
+  .filters .btn { flex: none; }
+  .seg {
+    flex-wrap: nowrap;
+    max-inline-size: 100%;
+    min-inline-size: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+  }
+  .seg button, .seg a { flex: 0 0 auto; }
+
+  summary.finding-sum { flex-wrap: wrap; align-items: center; column-gap: 8px; row-gap: 6px; }
+  summary.finding-sum .tid { order: 1; }
+  summary.finding-sum .chip { order: 2; }
+  summary.finding-sum .meta { order: 3; }
+  summary.finding-sum h3 { order: 4; flex: 1 1 100%; min-inline-size: 0; }
+
+  .card > .row.between,
+  .surface > .row.between,
+  .wave > .row.between,
+  .modal-panel > .row.between {
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .card > .row.between > h3,
+  .surface > .row.between > h3,
+  .wave > .row.between > h2,
+  .modal-panel > .row.between > .meta {
+    flex: 1 1 auto;
+    min-inline-size: 0;
+  }
+  .card > .row.between > .chip,
+  .surface > .row.between > .chip,
+  .wave > .row.between > .chip { flex: none; }
+
+  .link-list a, .link-list .row { align-items: center; row-gap: 4px; }
+  .link-list .tid { order: 1; }
+  .link-list .chip { order: 2; margin-inline-start: auto; flex: none; }
+  .link-list bdi { order: 3; flex: 1 1 100%; min-inline-size: 0; }
+
+  .trow { align-items: center; row-gap: 4px; padding-block: 12px; }
+  .trow .t, .trow .meta { min-inline-size: 0; }
+  .trow:has(.chip) {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 8px;
+    row-gap: 2px;
+  }
+  .trow:has(.chip) .tid { grid-column: 1; grid-row: 1; }
+  .trow:has(.chip) .chip { grid-column: 3; grid-row: 1; justify-self: end; }
+  .trow:has(.chip) .t { grid-column: 1 / -1; grid-row: 2; }
+  .trow:has(.chip) .meta { grid-column: 1 / -1; grid-row: 3; }
+  .finding { padding-block: 8px; }
+
+  .status-line { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+  .status-line .chip { flex: none; }
+  .status-line .fmt { flex: 1 1 100%; min-inline-size: 0; }
+  .status-line .fmt::before { content: none; }
+
+  .task-links { display: flex; flex-wrap: wrap; align-items: center; column-gap: 2px; }
+  .task-links a.tid { display: inline-flex; align-items: center; min-block-size: 44px; padding-inline: 4px; }
+
+  .ltr, code { max-inline-size: 100%; overflow-wrap: anywhere; }
+  .tid { white-space: nowrap; flex: none; }
+  .check-row { flex-direction: column; align-items: stretch; }
+  .check-main { align-items: flex-start; }
+  .check-main > div { min-inline-size: 0; flex: 1; }
+  .check-row > .row { justify-content: flex-start; }
+
+  table.tbl.stack { display: block; inline-size: 100%; }
+  table.tbl.stack thead { display: none; }
+  table.tbl.stack tbody, table.tbl.stack tr, table.tbl.stack td { display: block; inline-size: auto; }
+  table.tbl.stack tr {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    margin-block-end: 8px;
+    background: var(--surface);
+  }
+  table.tbl.stack td {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    border: 0;
+    padding: 4px 0;
+    text-align: start;
+    min-inline-size: 0;
+  }
+  table.tbl.stack td::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-weight: 700;
+    flex: none;
+  }
+  table.tbl.stack td.num { text-align: start; }
+  table.tbl.stack td.ltr { overflow-wrap: anywhere; }
 }
 
 @media (prefers-reduced-motion: reduce) {

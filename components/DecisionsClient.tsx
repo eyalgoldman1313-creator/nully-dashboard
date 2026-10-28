@@ -94,14 +94,14 @@ function InputRow({ i, tasks, act, busy }: any) {
         <span className="tid">{i.id}</span>
         <div>
           <h3>{i.title}</h3>
-          <p className="meta">
+          <p className="meta status-line">
             <span className={`chip ${provided ? 'ok' : 'warn'}`}>{statusLabel}</span>
-            {i.fmt && i.kind !== 'admin_action' ? <> · <bdi dir="auto">{i.fmt}</bdi></> : null}
+            {i.fmt && i.kind !== 'admin_action' ? <bdi className="fmt" dir="auto">{i.fmt}</bdi> : null}
           </p>
           {i.kind === 'admin_action' && i.fmt && <details><summary>צעדי הביצוע</summary><Md text={i.fmt} /></details>}
           {list.length > 0 && (
-            <p className="meta">משימות: {list.map((id: string, idx: number) => (
-              <span key={id}>{idx > 0 ? ' · ' : ''}<Link href={`/board?task=${id}`} className="tid">{id}</Link></span>
+            <p className="meta task-links">משימות: {list.map((id: string) => (
+              <Link key={id} href={`/board?task=${id}`} className="tid">{id}</Link>
             ))}</p>
           )}
           {i.note && !open && <p className="meta">הערה: <bdi dir="auto">{i.note}</bdi></p>}
